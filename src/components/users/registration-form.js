@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { fetchRegistration } from "../../actions/registration";
 
 class RegistrationForm extends React.Component {
   render() {
@@ -50,7 +52,14 @@ class RegistrationForm extends React.Component {
           placeholder="confirm password"
         />
 
-        <button name="register" type="submit">
+        <button
+          name="register"
+          type="submit"
+          onClick={e => {
+            e.preventDefault();
+            this.props.dispatch(fetchRegistration());
+          }}
+        >
           Let's go!
         </button>
       </form>
@@ -58,4 +67,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default RegistrationForm;
+export default connect()(RegistrationForm);
