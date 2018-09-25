@@ -82,17 +82,9 @@ export class natureForm extends React.Component {
         //Amenities
         <label for="amenities">Amenities</label>
         <div>
-          <input type="radio" id="amenitiesChoice1"
-           name="amenities" value="wheelchair">
-          <label for="amenitiesChoice1">Wheelchair Accessible</label>
-
-          <input type="radio" id="amenitiesChoice2"
-           name="amenities" value="grill">
-          <label for="amenitiesChoice2">Grill</label>
-
-          <input type="radio" id="amenitiesChoice3"
-           name="amenities" value="dog-area">
-          <label for="amenitiesChoice3">Dog area</label>
+          <input type="checkbox" name="amenities1" value="Grill">Grill<br>
+          <input type="checkbox" name="amenities2" value="Playground">Playground<br>
+          <input type="checkbox" name="amenities3" value="Bathrooms" checked>Bathrooms<br>
         </div>
 
         //Special Instructions
