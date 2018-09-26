@@ -17,10 +17,6 @@ export const loginRequestError = err => ({
   payload: err
 });
 
-const storeAuthInfo = authToken => {
-  const decodedToken = jwtDecode(authToken);
-};
-
 export const fetchLogin = credentials => dispatch => {
   console.log("You've Logged In!");
   dispatch(makeLoginRequest);
@@ -35,13 +31,12 @@ export const fetchLogin = credentials => dispatch => {
     })
     .then(parsedResponse => {
       console.log(parsedResponse);
-      // dispatch(loginRequestSuccess(parsedResponse))
-      // dispatch(saveAuthToken(parsedResponse))
       return jwtDecode(parsedResponse.authToken);
     })
     .then(decodedToken => {
       console.log("this is the decoded token", decodedToken);
       dispatch(loginRequestSuccess(decodedToken));
+      saveAuthToken(decodedToken);
     })
     .catch(err => {
       dispatch(loginRequestError(err.message));
