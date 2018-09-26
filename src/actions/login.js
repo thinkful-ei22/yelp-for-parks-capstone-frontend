@@ -1,5 +1,4 @@
-import { normalizeResponseErrors } from "../utils";
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import { normalizeResponseErrors, saveAuthToken, clearAuthToken} from "../utils";
 import jwtDecode from "jwt-decode";
 import { BACKEND_URL } from "../config";
 

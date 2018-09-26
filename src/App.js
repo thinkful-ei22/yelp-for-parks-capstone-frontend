@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import { refreshAuthToken } from '../actions/login';
+import { refreshAuthToken } from './actions/login';
 
 import LoginPage from "./components/users/login-page";
 import RegistrationPage from "./components/users/registration-page";

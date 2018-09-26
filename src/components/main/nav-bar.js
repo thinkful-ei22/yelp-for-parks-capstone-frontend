@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { clearAuth } from '../actions/login';
-import { clearAuthToken } from '../local-storage';
+import { clearAuth } from '../../actions/login';
+import { clearAuthToken } from '../../utils';
 import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
@@ -14,7 +14,7 @@ class NavBar extends React.Component {
   render() {
     // Only render the log out button if we are logged in
     let logOutButton;
-    if (this.props.loggedIn) {
+    if (this.props.loggedIn.currentUser) {
       logOutButton = (
         <button onClick={() => this.logOut()}>Log out</button>
       );
@@ -33,7 +33,7 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth !== null
 });
 
 export default connect(mapStateToProps)(NavBar);
