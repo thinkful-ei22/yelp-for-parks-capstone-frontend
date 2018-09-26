@@ -1,21 +1,3 @@
-//LOCAL STORAGE OPERATIONS
-
-export const loadAuthToken = () => {
-  return localStorage.getItem("authToken");
-};
-
-export const saveAuthToken = authToken => {
-  try {
-    localStorage.setItem("authToken", authToken);
-  } catch (e) {}
-};
-
-export const clearAuthToken = () => {
-  try {
-    localStorage.removeItem("authToken");
-  } catch (e) {}
-};
-
 //NORMALIZE ERROR RESPONSES FROM API
 // Boilerplate code for handling errors from the API.  If the error response
 // contains JSON then we return a rejected promise containing the decoded
