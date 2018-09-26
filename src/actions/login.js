@@ -1,4 +1,8 @@
-import { saveAuthToken, normalizeResponseErrors } from "../utils";
+import {
+  saveAuthToken,
+  normalizeResponseErrors,
+  loadAuthToken
+} from "../utils";
 import jwtDecode from "jwt-decode";
 import { BACKEND_URL } from "../config";
 
@@ -31,12 +35,39 @@ export const fetchLogin = credentials => dispatch => {
     })
     .then(parsedResponse => {
       console.log(parsedResponse);
+      saveAuthToken(parsedResponse.authToken);
       return jwtDecode(parsedResponse.authToken);
     })
     .then(decodedToken => {
       console.log("this is the decoded token", decodedToken);
-      dispatch(loginRequestSuccess(decodedToken));
-      saveAuthToken(decodedToken);
+      dispatch(loginRequestSuccess(decodedToken.user));
+    })
+    .catch(err => {
+      dispatch(loginRequestError(err.message));
+    });
+};
+
+export const refreshAuthToken = () => dispatch => {
+  const token = loadAuthToken();
+  fetch(`${BACKEND_URL}/api/auth/refresh`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log("parsed token is:", parsedResponse);
+      saveAuthToken(parsedResponse.authToken);
+      return jwtDecode(parsedResponse.authToken);
+    })
+    .then(decodedToken => {
+      console.log("this is the decoded token", decodedToken);
+      dispatch(loginRequestSuccess(decodedToken.user));
     })
     .catch(err => {
       dispatch(loginRequestError(err.message));
