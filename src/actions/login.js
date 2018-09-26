@@ -24,7 +24,7 @@ export const loginRequestError = err => ({
 export const fetchLogin = credentials => dispatch => {
   console.log("You've Logged In!");
   dispatch(makeLoginRequest);
-  fetch(`${BACKEND_URL}/api/auth/login`, {
+  fetch(`${BACKEND_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials)
@@ -49,7 +49,7 @@ export const fetchLogin = credentials => dispatch => {
 
 export const refreshAuthToken = () => dispatch => {
   const token = loadAuthToken();
-  fetch(`${BACKEND_URL}/api/auth/refresh`, {
+  fetch(`${BACKEND_URL}/auth/refresh`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
