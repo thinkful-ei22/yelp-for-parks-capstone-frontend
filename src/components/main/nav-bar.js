@@ -23,6 +23,9 @@ class NavBar extends React.Component {
       <div>
         <ul>
           <li>App Title</li>
+          <li>Add a nature location</li>
+          <li>Edit your nature locations</li>
+          <li>Home</li>
           <Link to="/">
             <li>{logOutButton}</li>
           </Link>
