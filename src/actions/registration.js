@@ -22,7 +22,7 @@ export const fetchRegistration = credentials => dispatch => {
   } else {
     console.log(credentials);
     dispatch(makeRegistrationRequest());
-    fetch(`${BACKEND_URL}/api/users`, {
+    fetch(`${BACKEND_URL}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials)

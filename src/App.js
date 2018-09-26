@@ -1,52 +1,60 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 import { refreshAuthToken } from './actions/login';
 
 import LoginPage from "./components/users/login-page";
 import RegistrationPage from "./components/users/registration-page";
 import NavBar from "./components/main/nav-bar";
+import LandingPage from "./components/main/landing-page";
+import Dashboard from "./components/main/dashboard";
 
 import "./App.css";
 class App extends Component {
-// Persistence
-componentDidUpdate(prevProps) {
+  // Persistence
+  componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
-        // When we are logged in, refresh the auth token periodically
-        this.startPeriodicRefresh();
+      // When we are logged in, refresh the auth token periodically
+      this.startPeriodicRefresh();
     } else if (prevProps.loggedIn && !this.props.loggedIn) {
-        // Stop refreshing when we log out
-        this.stopPeriodicRefresh();
+      // Stop refreshing when we log out
+      this.stopPeriodicRefresh();
     }
-}
+  }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     this.stopPeriodicRefresh();
-}
+  }
 
-startPeriodicRefresh() {
+  startPeriodicRefresh() {
     this.refreshInterval = setInterval(
-        () => this.props.dispatch(refreshAuthToken()),
-        60 * 60 * 1000 // One hour
+      () => this.props.dispatch(refreshAuthToken()),
+      60 * 60 * 1000 // One hour
     );
-}
+  }
 
-stopPeriodicRefresh() {
+  stopPeriodicRefresh() {
     if (!this.refreshInterval) {
-        return;
+      return;
     }
 
     clearInterval(this.refreshInterval);
-}
+  }
 
   render() {
     return (
-      <main>
-        <NavBar />
-        <Route path="/login" component={LoginPage} exact />
-        <Route path="/register" component={RegistrationPage} exact />
-      </main>
+      <Router>
+        <main>
+          <NavBar />
+          <Route path="/" component={LandingPage} exact />
+          <Route path="/login" component={LoginPage} exact />
+          <Route path="/register" component={RegistrationPage} exact />
+          <Route path="/dashboard" component={Dashboard} exact />
+        </main>
+      </Router>
     );
   }
 }
+
+
 
 export default App;

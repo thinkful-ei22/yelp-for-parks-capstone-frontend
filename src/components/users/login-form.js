@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchLogin } from "../../actions/login";
+import { fetchLogin, refreshAuthToken } from "../../actions/login";
 
 class LoginForm extends React.Component {
   render() {
@@ -49,6 +49,17 @@ class LoginForm extends React.Component {
           }}
         >
           Sign in
+        </button>
+
+        <button
+          type="button"
+          name="BUTTON-TO-TEST-AUTHTOKEN-REFRESH"
+          onClick={e => {
+            e.preventDefault();
+            this.props.dispatch(refreshAuthToken());
+          }}
+        >
+          refresher
         </button>
       </form>
     );
