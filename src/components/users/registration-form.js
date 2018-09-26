@@ -11,6 +11,7 @@ class RegistrationForm extends React.Component {
           id="registration-username"
           className="registration-input"
           type="text"
+          ref={input => (this.username = input)}
           placeholder="username"
         />
 
@@ -22,6 +23,7 @@ class RegistrationForm extends React.Component {
           id="registration-first-name"
           className="registration-input"
           type="text"
+          ref={input => (this.firstName = input)}
           placeholder="first name"
         />
 
@@ -33,6 +35,7 @@ class RegistrationForm extends React.Component {
           id="registration-last-name"
           className="registration-input"
           type="text"
+          ref={input => (this.lastName = input)}
           placeholder="last name"
         />
 
@@ -41,6 +44,7 @@ class RegistrationForm extends React.Component {
           id="registration-password"
           className="registration-input"
           type="text"
+          ref={input => (this.password = input)}
           placeholder="password"
         />
 
@@ -49,6 +53,7 @@ class RegistrationForm extends React.Component {
           id="registration-confirm-password"
           className="registration-input"
           type="text"
+          ref={input => (this.confirmPassword = input)}
           placeholder="confirm password"
         />
 
@@ -57,7 +62,15 @@ class RegistrationForm extends React.Component {
           type="submit"
           onClick={e => {
             e.preventDefault();
-            this.props.dispatch(fetchRegistration());
+            this.props.dispatch(
+              fetchRegistration({
+                username: this.username.value,
+                firstName: this.firstName.value,
+                lastName: this.lastName.value,
+                password: this.password.value,
+                confirmPassword: this.confirmPassword.value
+              })
+            );
           }}
         >
           Let's go!

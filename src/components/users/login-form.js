@@ -2,23 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchLogin } from "../../actions/login";
 
-class LoginForm {
+class LoginForm extends React.Component {
   render() {
     return (
       <form className="login-form">
-        <label for="username" className="login-label" />
+        <label htmlFor="username" className="login-label" />
         <input
           id="login-username"
           className="login-input"
           type="text"
+          ref={input => (this.username = input)}
           placeholder="username"
         />
 
-        <label for="password" className="login-label" />
+        <label htmlFor="password" className="login-label" />
         <input
           id="login-password"
           className="login-input"
           type="text"
+          ref={input => (this.password = input)}
           placeholder="password"
         />
 
@@ -29,7 +31,7 @@ class LoginForm {
             id="remember-me-box"
             name="remember me"
           />
-          <label for="remember-me-box">Remember me</label>
+          <label htmlFor="remember-me-box">Remember me</label>
         </div>
 
         <button
@@ -38,7 +40,12 @@ class LoginForm {
           id="login-button"
           onClick={e => {
             e.preventDefault();
-            this.props.dispatch(fetchLogin());
+            this.props.dispatch(
+              fetchLogin({
+                username: this.username.value,
+                password: this.password.value
+              })
+            );
           }}
         >
           Sign in
