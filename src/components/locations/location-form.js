@@ -1,15 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createLocation } from "../../actions/location";
+import { Redirect } from "react-router";
 
-export default class LocationForm extends React.Component {
+class LocationForm extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    if (this.props.locationState.redirecting) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/location"
+          }}
+        />
+      );
+    }
     return (
       <div className="location-form-container">
         <form>
-          <label for="title">Title</label>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             name="title-input-box"
@@ -17,13 +29,13 @@ export default class LocationForm extends React.Component {
             ref={input => (this.title = input)}
           />
 
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
             name="description-text-area"
             placeholder="A recently renovated neighborhood park in the heart of Portland's Pearl District"
             ref={input => (this.description = input)}
           />
-          <label for="addressLine">Address Line</label>
+          <label htmlFor="addressLine">Address Line</label>
           <input
             type="text"
             id="addressLine"
@@ -94,12 +106,12 @@ export default class LocationForm extends React.Component {
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
-          <label htmlFor="zipcode">Zip code</label>
+          <label htmlFor="zipCode">Zip code</label>
           <input
             type="text"
-            id="zipcode"
-            ref={input => (this.zipcode = input)}
-            name="zipcode-input-box"
+            id="zipCode"
+            ref={input => (this.zipCode = input)}
+            name="zipCode-input-box"
             placeholder="30301"
           />
 
@@ -131,22 +143,47 @@ export default class LocationForm extends React.Component {
                 value="Bathrooms"
                 id="amenities3"
                 ref={input => (this.bathroom = input)}
-                checked
+                defaultChecked
               />
               <br />
             </fieldset>
           </div>
 
-          <label for="special-instructions">Special Instructions</label>
+          <label htmlFor="special-instructions">Special Instructions</label>
           <textarea
             name="special-instructions-text-area"
             placeholder="Clow Elementary School is 0.3 miles away and the school children are released at 3:30 PM, thus the park may get crowded at around that time."
             ref={input => (this.specialInstructions = input)}
           />
 
-          <button type="button">Submit</button>
+          <button
+            type="button"
+            name="submit"
+            onClick={e => {
+              e.preventDefault();
+              this.props.dispatch(
+                createLocation({
+                  title: this.title.value,
+                  address: this.addressLine.value,
+                  city: this.city.value,
+                  state: this.state.value,
+                  zipCode: this.zipCode.value,
+                  description: this.description.value,
+                  specialInstructions: this.specialInstructions.value
+                  // amenities:
+                })
+              );
+            }}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  locationState: state.location
+});
+export default connect(mapStateToProps)(LocationForm);
