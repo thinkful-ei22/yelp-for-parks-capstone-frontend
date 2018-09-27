@@ -5,8 +5,7 @@ class CommentReview extends React.Component {
     return (
       <div>
         //When we have time for styling - switch to Star ratings with fontAwesome
-        //But for now...we'll use radio buttons
-
+        //But for now...we'll use regular radio buttons
         <form>
           <p>Share your thoughts!</p>
           <div>
