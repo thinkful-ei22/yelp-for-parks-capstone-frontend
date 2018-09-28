@@ -2,14 +2,38 @@ import React from "react";
 
 
 class LocationEdit extends React.Component {
-  render() {
+	constructor(props){
+		super(props)
+		this.state = {
+			editingTitle: false,
+			editingDescription: false,
+			editingAddress: false,
+			editingCity:false,
+			editingState: false,
+			editingZipCode: false 
+		}
+	}
+
+  render() 
     return (
       <div>
         <h1>Edit your Location</h1>
           <button className="logout-button" type="button">Log out</button>
 
-          <label for="edit-location-title">Edit your Location Title</label>
-          <input id="edit-location-title" type="text" />
+          {
+						this.state.editingTitle?
+						<div>
+							<label for="edit-location-title">Edit your Location Title</label>
+							<input id="edit-location-title" type="text" value={this.props.locationState.currentLocation.title}/>
+						</div>
+						:
+						<div>
+						<p>{this.props.locationState.currentLocation.title}</p>
+						<button name="edit-title" id="edit-title" type="button" onClick=>{() => this.setState({
+							editingTitle: true
+						})} />
+						</div>
+					}
 
           <label for="edit-location-description">Edit your Description</label>
           <textarea id="edit-location-description" rows="3" columns="33"></textarea>
@@ -82,4 +106,8 @@ class LocationEdit extends React.Component {
   }
 }
 
-export default LocationEdit;
+
+const mapStateToProps = state => ({
+  locationState: state.location
+});
+export default connect()(LocationEdit);
