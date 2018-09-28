@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchRegistration } from "../../actions/registration";
+import { fetchRegistration, createRequest } from "../../actions/registration";
 
 class RegistrationForm extends React.Component {
   render() {
