@@ -1,12 +1,14 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
-import './App.css';
-import LoginPage from './components/users/login-page';
-import RegistrationPage from './components/users/registration-page';
-import LandingPage from './components/main/landing-page';
-import Dashboard from './components/main/dashboard';
-import {refreshAuthToken} from './actions/login';
+import React from "react";
+import { connect } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
+import "./App.css";
+import LoginPage from "./components/users/login-page";
+import RegistrationPage from "./components/users/registration-page";
+import LandingPage from "./components/main/landing-page";
+import Dashboard from "./components/main/dashboard";
+import LocationForm from "./components/locations/location-form";
+import LocationIndividual from "./components/locations/location-individual";
+import { refreshAuthToken } from "./actions/login";
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -41,10 +43,12 @@ export class App extends React.Component {
   render() {
     return (
       <main>
-        <Route path="/" component={LandingPage} />
-        <Route path='/dashboard' component ={Dashboard} />
+        <Route path="/" component={LandingPage} exact />
+        <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/login" component={LoginPage} exact />
         <Route path="/register" component={RegistrationPage} exact />
+        <Route path="/location/add" component={LocationForm} exact />
+        <Route path="/location" component={LocationIndividual} exact />
       </main>
     );
   }
