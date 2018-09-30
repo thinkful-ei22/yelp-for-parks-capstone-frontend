@@ -24,8 +24,9 @@ export const toggleRedirect = () => ({
 });
 
 export const CREATE_USER = "CREATE_USER";
-export const createUser = dispatch => {
-  //dispatch(userRequest());
+export const createUser = userObject => dispatch => {
+  console.log("user profile request initiated");
+  dispatch(userRequest());
   return fetch(`${BACKEND_URL}/users/${loadUser().id}`, {
     method: 'GET'
   })
@@ -36,10 +37,10 @@ export const createUser = dispatch => {
   })
   .then(parsedResponse => {
     console.log('Parsed Response', parsedResponse)
-    //dispatch(userRequestSuccess(parsedResponse));
-    //dispatch(toggleRedirect());
+    dispatch(userRequestSuccess(parsedResponse));
+    dispatch(toggleRedirect());
   })
   .catch(err => {
-    //dispatch(userRequestError(err.message));
+    dispatch(userRequestError(err.message));
   });
 }

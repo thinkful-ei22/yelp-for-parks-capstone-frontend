@@ -10,11 +10,11 @@ class LocationEdit extends React.Component {
 			editingAddress: false,
 			editingCity:false,
 			editingState: false,
-			editingZipCode: false 
+			editingZipCode: false
 		}
 	}
 
-  render() 
+  render()
     return (
       <div>
         <h1>Edit your Location</h1>
