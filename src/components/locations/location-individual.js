@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createUser } from "../../actions/user";
 import CommentForm from "../comments/comment-form";
 
 class LocationIndividual extends React.Component {
@@ -17,6 +18,7 @@ class LocationIndividual extends React.Component {
 
         {/*comments*/}
         {<CommentForm />}
+        <button type="button" onClick={() => this.props.dispatch(createUser())}>author</button>
       </div>
     );
   }

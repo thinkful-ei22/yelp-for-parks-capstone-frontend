@@ -24,9 +24,22 @@ export const toggleRedirect = () => ({
 });
 
 export const CREATE_USER = "CREATE_USER";
-export const createUser = () => {
+export const createUser = dispatch => {
+  //dispatch(userRequest());
   return fetch(`${BACKEND_URL}/users/${loadUser().id}`, {
     method: 'GET'
   })
-  .then(res => res.json())
+  .then(res => {
+    console.log('Raw Response', res)
+    normalizeResponseErrors(res);
+    return res.json();
+  })
+  .then(parsedResponse => {
+    console.log('Parsed Response', parsedResponse)
+    //dispatch(userRequestSuccess(parsedResponse));
+    //dispatch(toggleRedirect());
+  })
+  .catch(err => {
+    //dispatch(userRequestError(err.message));
+  });
 }

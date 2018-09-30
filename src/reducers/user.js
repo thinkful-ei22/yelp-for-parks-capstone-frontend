@@ -1,7 +1,8 @@
 import {
   USER_REQUEST,
   USER_REQUEST_SUCCESS,
-  USER_REQUEST_ERROR
+  USER_REQUEST_ERROR,
+  TOGGLE_REDIRECT
 } from "../actions/user";
 
 const initialState = {
@@ -12,23 +13,5 @@ const initialState = {
 };
 
 export default function userReducer(state = initialState, action) {
-  if(action.type === USER_REQUEST) {
-    return {
-      ...state,
-      loading: true
-    };
-  } else if(action.type === USER_REQUEST_SUCCESS) {
-    return {
-      ...state,
-      loading: false,
-      currentUser: action.payload
-    }
-  } else if(action.type === USER_REQUEST_ERROR) {
-    return {
-      ...state,
-      loading: false,
-      error: action.payload
-    }
-  }
   return state;
 }
