@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class UserProfile extends React.Component {
   //There will be Edit User Profile
@@ -15,9 +16,20 @@ class UserProfile extends React.Component {
   //those 4 piece of information
   render() {
     return (
-      <div>Hello world</div>
+      <div>
+      <p>Username</p>
+        <p>{this.props.userState.currentUser.username}</p>
+        <p>First Name</p>
+        <p>{this.props.userState.currentUser.firstName}</p>
+        <p>Last Name</p>
+        <p>{this.props.userState.currentUser.lastName}</p>
+      </div>
     );
   }
 }
 
-export default UserProfile;
+const mapStateToProps = state => ({
+  userState: state.user
+});
+
+export default connect(mapStateToProps)(UserProfile);
