@@ -8,8 +8,9 @@ export const makeLocationRequest = () => ({
 });
 
 export const TOGGLE_REDIRECT = "TOGGLE_REDIRECT";
-export const toggleRedirect = () => ({
-  type: TOGGLE_REDIRECT
+export const toggleRedirect = bool => ({
+  type: TOGGLE_REDIRECT,
+  payload: bool
 });
 
 export const CREATE_LOCATION_SUCCESS = "CREATE_LOCATION_SUCCESS";
@@ -50,7 +51,7 @@ export const createLocation = locationObject => dispatch => {
       // browserHistory.push(`${parsedResponse.location}`);
       console.log(parsedResponse);
       dispatch(createLocationSuccess(parsedResponse));
-      dispatch(toggleRedirect());
+      dispatch(toggleRedirect(true));
     })
     .catch(err => {
       dispatch(locationRequestError(err.message));
@@ -59,7 +60,32 @@ export const createLocation = locationObject => dispatch => {
 
 export const UPDATE_LOCATION = "UPDATE_LOCATION";
 export const updateLocation = (id, locationObject) => dispatch => {
-  console.log("Updated a location");
+  console.log("Updating location");
+  dispatch(makeLocationRequest());
+  const token = loadAuthToken();
+  console.log(id);
+  fetch(`${BACKEND_URL}/locations/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(locationObject)
+  })
+    .then(res => {
+      console.log("obtained response");
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log("parsed response");
+      console.log(parsedResponse);
+      dispatch(createLocationSuccess(parsedResponse));
+      dispatch(toggleRedirect());
+    })
+    .catch(err => {
+      dispatch(locationRequestError(err.message));
+    });
 };
 
 export const DELETE_LOCATION = "DELETE_LOCATION";

@@ -4,7 +4,10 @@ export default function LocationNode(props) {
   //props.fieldName is the field being described
   //props.editing is whether or not editing is true for the field
   //props.fieldData is the data for the field
-  if (props.fieldName === "description" && props.editing) {
+  //onclick will toggle the editing prop
+
+  //covering the case where we need a textarea not an input
+  if (props.fieldName === "Description" && props.editing) {
     return (
       <div>
         <label for={`edit-location-${props.fieldName}`}>
@@ -14,6 +17,9 @@ export default function LocationNode(props) {
           id={`edit-location-${props.fieldName}`}
           value={props.fieldData}
         />
+        <button name="save" onClick={props.onClick}>
+          save
+        </button>
       </div>
     );
   }
@@ -22,7 +28,13 @@ export default function LocationNode(props) {
       <div className="editing-node">
         <p>{props.fieldName}</p>
         <p>{props.fieldData}</p>
-        <button name={`edit-${props.fieldName}`} onClick={props.onClick()} />
+        <button
+          name={`edit-${props.fieldName}`}
+          onClick={() => props.onClick()}
+        >
+          {" "}
+          edit{" "}
+        </button>
       </div>
     );
   }
@@ -32,6 +44,9 @@ export default function LocationNode(props) {
         Edit your Location {props.fieldName}
       </label>
       <input id={`edit-location-${props.fieldName}`} value={props.fieldData} />
+      <button name="save" onClick={props.onClick()}>
+        save{" "}
+      </button>
     </div>
   );
 }
