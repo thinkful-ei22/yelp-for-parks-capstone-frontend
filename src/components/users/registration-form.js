@@ -43,7 +43,7 @@ class RegistrationForm extends React.Component {
         <input
           id="registration-password"
           className="registration-input"
-          type="text"
+          type="password"
           ref={input => (this.password = input)}
           placeholder="password"
         />
@@ -52,7 +52,7 @@ class RegistrationForm extends React.Component {
         <input
           id="registration-confirm-password"
           className="registration-input"
-          type="text"
+          type="password"
           ref={input => (this.confirmPassword = input)}
           placeholder="confirm password"
         />

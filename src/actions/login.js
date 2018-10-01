@@ -6,6 +6,11 @@ import {
 import jwtDecode from "jwt-decode";
 import { BACKEND_URL } from "../config";
 
+export const LOGOUT = "LOGOUT";
+export const logout = () => ({
+  type: LOGOUT
+});
+
 export const MAKE_LOGIN_REQUEST = "MAKE_LOGIN_REQUEST";
 export const makeLoginRequest = () => ({
   type: MAKE_LOGIN_REQUEST

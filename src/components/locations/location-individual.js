@@ -49,6 +49,7 @@ class LocationIndividual extends React.Component {
           onClick={() => {
             this.toggleEditState(true);
           }}
+          // className={}
         >
           Edit Location
         </button>
