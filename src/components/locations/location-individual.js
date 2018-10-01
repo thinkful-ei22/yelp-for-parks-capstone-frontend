@@ -1,11 +1,57 @@
 import React from "react";
 import { connect } from "react-redux";
+import { toggleRedirect } from "../../actions/location";
+import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 
+import { Redirect } from "react-router";
+
 class LocationIndividual extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editing: false,
+      editButtonVisible: false
+    };
+  }
+
+  toggleEditState = bool => {
+    this.setState({ editing: bool });
+  };
+
+  //===========================for working with redirects========
+  // componentWillMount() {
+  //   this.props.dispatch(toggleRedirect(false));
+  // }
+
   render() {
+    //===========================for working with redirects========
+    // if (this.props.locationState.redirecting) {
+    //   return (
+    //     <Redirect
+    //       to={{
+    //         pathname: "/location/edit"
+    //       }}
+    //     />
+    //   );
+    // }
+    //============================================================
+    if (this.state.editing === true) {
+      return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
+    }
+
     return (
+      //later add a ternary in the classname to hide this unless owner id valid
       <div>
+        <button
+          type="button"
+          name="edit-location"
+          onClick={() => {
+            this.toggleEditState(true);
+          }}
+        >
+          Edit Location
+        </button>
         {/*We pull the information from the state.*/}
         <h1>{this.props.locationState.currentLocation.title}</h1>
 

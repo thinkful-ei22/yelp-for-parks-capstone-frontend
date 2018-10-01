@@ -26,7 +26,7 @@ export default function locationReducer(state = initialState, action) {
     };
   }
   if (action.type === TOGGLE_REDIRECT) {
-    return { ...state, redirecting: !state.redirecting };
+    return { ...state, redirecting: action.payload };
   }
 
   if (action.type === UPDATE_LOCATION) {

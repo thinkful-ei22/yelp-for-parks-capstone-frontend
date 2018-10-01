@@ -1,32 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createLocation, toggleRedirect } from "../../actions/location";
-import { Redirect } from "react-router";
-
-class LocationForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+import { toggleRedirect, updateLocation } from "../../actions/location";
+class LocationEditor extends React.Component {
   componentWillMount() {
-    this.props.dispatch(toggleRedirect(false));
-  }
-  componentWillUnmount() {
     this.props.dispatch(toggleRedirect(false));
   }
 
   render() {
-    //if redirecting is true, we redirect to the location in state.
-    if (this.props.locationState.redirecting) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/location"
-          }}
-        />
-      );
-    }
-    //else, we present the form.
+    // if (this.props.locationState.redirecting) {
+    //   return (
+    //     <Redirect
+    //       to={{
+    //         pathname: "/location"
+    //       }}
+    //     />
+    //   );
+    // }
     return (
       <div className="location-form-container">
         <form>
@@ -36,6 +25,7 @@ class LocationForm extends React.Component {
             name="title-input-box"
             placeholder="Wallace Park"
             ref={input => (this.title = input)}
+            defaultValue={this.props.locationState.currentLocation.title}
           />
 
           <label htmlFor="description">Description</label>
@@ -43,6 +33,7 @@ class LocationForm extends React.Component {
             name="description-text-area"
             placeholder="A recently renovated neighborhood park in the heart of Portland's Pearl District"
             ref={input => (this.description = input)}
+            defaultValue={this.props.locationState.currentLocation.description}
           />
           <label htmlFor="addressLine">Address Line</label>
           <input
@@ -51,6 +42,7 @@ class LocationForm extends React.Component {
             name="address-input-box"
             placeholder="1763 Quail Run Drive"
             ref={input => (this.addressLine = input)}
+            defaultValue={this.props.locationState.currentLocation.address}
           />
           <label htmlFor="city">City</label>
           <input
@@ -59,10 +51,15 @@ class LocationForm extends React.Component {
             name="city-input-box"
             placeholder="Atlanta"
             ref={input => (this.city = input)}
+            defaultValue={this.props.locationState.currentLocation.city}
           />
 
           <label htmlFor="state">State</label>
-          <select id="state" ref={input => (this.state = input)}>
+          <select
+            id="state"
+            ref={input => (this.stateName = input)}
+            defaultValue={this.props.locationState.currentLocation.state}
+          >
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -122,6 +119,7 @@ class LocationForm extends React.Component {
             ref={input => (this.zipCode = input)}
             name="zipCode-input-box"
             placeholder="30301"
+            defaultValue={this.props.locationState.currentLocation.zipCode}
           />
 
           <div>
@@ -171,17 +169,18 @@ class LocationForm extends React.Component {
             onClick={e => {
               e.preventDefault();
               this.props.dispatch(
-                createLocation({
+                updateLocation(this.props.locationState.currentLocation.id, {
                   title: this.title.value,
                   address: this.addressLine.value,
                   city: this.city.value,
-                  state: this.state.value,
+                  state: this.stateName.value,
                   zipCode: this.zipCode.value,
                   description: this.description.value,
                   specialInstructions: this.specialInstructions.value
                   // amenities:
                 })
               );
+              this.props.stopEditing();
             }}
           >
             Submit
@@ -195,4 +194,4 @@ class LocationForm extends React.Component {
 const mapStateToProps = state => ({
   locationState: state.location
 });
-export default connect(mapStateToProps)(LocationForm);
+export default connect(mapStateToProps)(LocationEditor);
