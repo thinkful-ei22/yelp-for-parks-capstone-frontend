@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
         <input
           id="login-password"
           className="login-input"
-          type="text"
+          type="password"
           ref={input => (this.password = input)}
           placeholder="password"
         />

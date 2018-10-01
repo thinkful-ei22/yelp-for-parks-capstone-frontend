@@ -42,7 +42,7 @@ export class App extends React.Component {
 
   render() {
     return (
-      <main>
+      <main className ="App">
         <Route path="/" component={LandingPage} exact />
         <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/login" component={LoginPage} exact />

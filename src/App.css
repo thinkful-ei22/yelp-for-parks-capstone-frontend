@@ -1,3 +1,11 @@
+:root {
+  --dgreen: #72963D; /* PALM LEAF */
+  --grey: #A6ADB5; /* SILVER CHALICE */
+  --blue: #9EBFCE; /* PASTEL BLUE */
+  --pink: #EED9CF; /* CHAMPAGNE PINK */
+  --lgreen: #ABC798; /* LAUREL GREEN */
+  --black: #272727; /* custom black */
+}
 .App {
   text-align: center;
 }
@@ -25,4 +33,35 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+a:link, a:visited {
+    max-width: 100px;
+    background-color: var(--pink);
+    color: var(--black);
+    margin: 5px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center; 
+    text-decoration: none;
+    display: block;
+    border-radius: 90px;
+    border: 1px solid var(--black);
+}
+
+a:hover, a:active, button:hover {
+    background-color: var(--grey);
+}
+
+h2 {
+  font: 400 40px/1.5 Trebuchet MS;
+  margin: 0;
+  padding: 0;
+}
+
+button, input {
+  font: 200 18px/1.5 Trebuchet MS, sans-serif;
+  background-color: var(--pink);
 }
