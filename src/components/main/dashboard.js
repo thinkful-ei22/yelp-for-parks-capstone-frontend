@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userState: state.location
+  userState: state.user
 });
 
 export default connect(mapStateToProps)(Dashboard);
