@@ -14,7 +14,14 @@ class LocationIndividual extends React.Component {
         <p>{this.props.locationState.currentLocation.city}</p>
         <p>{this.props.locationState.currentLocation.state}</p>
         <p>{this.props.locationState.currentLocation.zipCode}</p>
+        //Once we retrieve the individual locationState
+        //We have access to its ownerId
+        //We need to do a GET by ID to get that users information!
+        //When we do retrieve it, we can add to the user reducer
+        //Then display it in another component called user-profile-other
 
+        <p>author</p>
+        <button type="button" onClick={}>{this.props.locationState.currentLocation.ownerId}</button>
         {/*comments*/}
         {<CommentForm />}
       </div>

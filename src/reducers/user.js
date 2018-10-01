@@ -9,7 +9,11 @@ const initialState = {
   currentUser: {},
   loading: false,
   error: "",
-  redirecting: false
+  redirecting: false,
+  otherUser: {},
+  loadingOther: false,
+  errorOther: "",
+  redirectingOther: false
 };
 
 export default function userReducer(state = initialState, action) {
