@@ -1,30 +1,32 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import requiresLogin from './requires-login';
+import React from "react";
+import { connect } from "react-redux";
+import { logout } from "../../actions/login";
+import { Redirect } from "react-router";
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   render() {
-    let logOutButton;
-    if (this.props.loggedIn) {
-      logOutButton = (
-        <button onClick={() => this.logOut()}>Log Out</button>
+    if (this.props.loggedIn.currentUser === null) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/login"
+          }}
+        />
       );
     }
     return (
       <div className="dashboard">
+        <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
         <h2>dashboard</h2>
-        {logOutButton}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth
+  loggedIn: state.user
 });
 
 export default connect(mapStateToProps)(Dashboard);
