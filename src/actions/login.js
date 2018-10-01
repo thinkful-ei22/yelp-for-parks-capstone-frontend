@@ -1,10 +1,16 @@
 import {
   saveAuthToken,
   normalizeResponseErrors,
-  loadAuthToken
+  loadAuthToken,
+  clearAuthToken
 } from "../utils";
 import jwtDecode from "jwt-decode";
 import { BACKEND_URL } from "../config";
+
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const clearAuth = () => ({
+  type: CLEAR_AUTH
+});
 
 export const MAKE_LOGIN_REQUEST = "MAKE_LOGIN_REQUEST";
 export const makeLoginRequest = () => ({
