@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { toggleRedirect } from "../../actions/location";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
-
+import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
 
 class LocationIndividual extends React.Component {
@@ -64,6 +64,7 @@ class LocationIndividual extends React.Component {
 
         {/*comments*/}
         {<CommentForm />}
+        <Link to="/dashboard">Dashboard</Link>
       </div>
     );
   }
