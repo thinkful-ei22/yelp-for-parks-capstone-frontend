@@ -1,9 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
+import { createOtherUser } from "../../actions/user";
 import CommentForm from "../comments/comment-form";
 
 class LocationIndividual extends React.Component {
   render() {
+    if (this.props.locationState.redirecting) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/otheruser"
+          }}
+        />
+      );
+    }
     return (
       <div>
         {/*We pull the information from the state.*/}
@@ -21,7 +32,7 @@ class LocationIndividual extends React.Component {
         //Then display it in another component called user-profile-other
 
         <p>author</p>
-        <button type="button" onClick={}>{this.props.locationState.currentLocation.ownerId}</button>
+        <button type="button" onClick={() => this.props.dispatch(createOtherUser())}>{this.props.locationState.currentLocation.ownerId}</button>
         {/*comments*/}
         {<CommentForm />}
       </div>
