@@ -1,5 +1,5 @@
 import React from "react";
-import CommentCard from "./comment-card";
+
 
 class CommentList extends React.Component {
   render() {
