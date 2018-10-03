@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
       );
     }
     return (
-      <div className="dashboard">
+            <div className="dashboard">
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
         <h2>dashboard</h2>
         <LocationList />
