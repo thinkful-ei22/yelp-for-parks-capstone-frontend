@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import CommentList from './comment-list';
+import CommentCard from './comment-card';
 
 class Comment extends React.Component {
   render() {
@@ -10,7 +12,8 @@ class Comment extends React.Component {
         <h1>Have you been here? Write a <Link to="/review">review!</Link></h1>
 
         <p>Check out what people are saying!</p>
-        //We would need to populate the comments here for the particular location
+        <CommentList />
+
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React from "react";
 
-class CommentReview extends React.Component {
+class CommentModal extends React.Component {
   render() {
     return (
       <div>
-        //When we have time for styling - switch to Star ratings with fontAwesome
-        //But for now...we'll use regular radio buttons
+        {/* When we have time for styling - switch to Star ratings with fontAwesome
+        But for now...we'll use regular radio buttons */}
         <form>
           <p>Share your thoughts!</p>
           <div>
@@ -29,7 +29,7 @@ class CommentReview extends React.Component {
              name="star" value="5" />
             <label for="starRating5">5</label>
           </div>
-
+          <input type="text" id="commentSubject" placeholder="subject line"></input>
           <textarea name="comment-text-area" rows="3" columns="33" placeholder="Write a comment!"></textarea>
           <div>
             <button type="submit">Submit</button>
@@ -40,4 +40,4 @@ class CommentReview extends React.Component {
   }
 }
 
-export default CommentReview;
+export default CommentModal;
