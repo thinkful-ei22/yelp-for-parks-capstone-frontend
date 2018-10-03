@@ -1,5 +1,7 @@
 import {
   CREATE_LOCATION_SUCCESS,
+  GET_ONE_LOCATION_SUCCESS,
+  GET_ALL_LOCATIONS_SUCCESS,
   LOCATION_REQUEST_ERROR,
   MAKE_LOCATION_REQUEST,
   UPDATE_LOCATION,
@@ -11,7 +13,8 @@ const initialState = {
   currentLocation: {},
   loading: false,
   error: "",
-  redirecting: false
+  redirecting: false,
+  locationList: null
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -25,6 +28,15 @@ export default function locationReducer(state = initialState, action) {
       currentLocation: action.payload
     };
   }
+
+  if (action.type === GET_ONE_LOCATION_SUCCESS) {
+    return { ...state, currentLocation: action.payload, loading: false };
+  }
+
+  if (action.type === GET_ALL_LOCATIONS_SUCCESS) {
+    return { ...state, loading: false, locationList: action.payload };
+  }
+
   if (action.type === TOGGLE_REDIRECT) {
     return { ...state, redirecting: action.payload };
   }
@@ -42,6 +54,10 @@ export default function locationReducer(state = initialState, action) {
         ...state.locations.filter(location => location.id !== action.id)
       ]
     };
+  }
+
+  if (action.type === LOCATION_REQUEST_ERROR) {
+    return { ...state, loading: false, error: action.payload };
   }
   return state;
 }

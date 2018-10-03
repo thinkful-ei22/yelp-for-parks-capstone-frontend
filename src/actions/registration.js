@@ -1,4 +1,5 @@
 import { BACKEND_URL } from "../config";
+import { fetchLogin } from "./login";
 
 export const MAKE_REGISTRATION_REQUEST = "MAKE_REGISTRATION_REQUEST";
 export const makeRegistrationRequest = () => ({
@@ -15,6 +16,12 @@ export const registrationRequestError = err => ({
   payload: err
 });
 
+export const TOGGLE_REDIRECTING = "TOGGLE_REDIRECTING";
+export const toggleRedirecting = bool => ({
+  type: TOGGLE_REDIRECTING,
+  payload: bool
+});
+
 export const fetchRegistration = credentials => dispatch => {
   if (credentials.password !== credentials.confirmPassword) {
     dispatch(registrationRequestError("Passwords do not match."));
@@ -23,13 +30,13 @@ export const fetchRegistration = credentials => dispatch => {
     console.log(credentials);
     dispatch(makeRegistrationRequest());
     console.log(BACKEND_URL);
-    fetch(`${BACKEND_URL}/users`, {
+    return fetch(`${BACKEND_URL}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials)
     })
       .then(res => {
-        if (res.status !== 200) {
+        if (res.status !== 201) {
           return Promise.reject(res);
         }
         return res.json();
@@ -38,6 +45,18 @@ export const fetchRegistration = credentials => dispatch => {
         dispatch(registrationRequestSuccess(parsedResponse.username));
         console.log("request succeeded");
         console.log(parsedResponse);
+        return parsedResponse;
+      })
+      .then(resObj => {
+        const user = {
+          username: resObj.username,
+          password: credentials.password
+        };
+        console.log(user);
+        dispatch(fetchLogin(user));
+      })
+      .then(() => {
+        dispatch(toggleRedirecting(true));
       })
       .catch(err => {
         console.log("Request failed,", err);
