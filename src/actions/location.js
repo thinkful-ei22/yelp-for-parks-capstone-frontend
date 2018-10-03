@@ -1,5 +1,6 @@
 import { loadAuthToken, normalizeResponseErrors } from "../utils";
 import { BACKEND_URL } from "../config";
+import axios from 'axios';
 // import { browserHistory } from "react-router";
 
 export const MAKE_LOCATION_REQUEST = "MAKE_LOCATION_REQUEST";
@@ -103,7 +104,7 @@ export const getOneLocation = id => dispatch => {
   const token = loadAuthToken();
   console.log(`getting location ${id}`);
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations/${id}`, {
+  return fetch(`${BACKEND_URL}/locations/${id}`, {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` }
   })
@@ -139,6 +140,46 @@ export const getAllLocations = () => dispatch => {
       dispatch(locationRequestError(err.message));
     });
 };
+
+export const GEOCODE_SUCCESS = 'GEOCODE_SUCCESS'
+export const geocodeSuccess = (latlng) => ({
+  type: GEOCODE_SUCCESS,
+  payload: latlng
+})
+
+export const geocode = locationObject => dispatch => {
+  console.log('This is the locationObject!', locationObject.currentLocation)
+  var location = {
+    adminDistrict: locationObject.currentLocation.state,
+    postalCode: locationObject.currentLocation.zipCode,
+    locality: locationObject.currentLocation.city,
+    addressLine: locationObject.currentLocation.address,
+    key: 'Av25hukp36GNb2z84eLlEqTM89_Ac6TK04lIvT6yraWADNTKr8YJFQ1DpR3Dac6g'
+  }
+  console.log("This is line 152 in geocode function", location)
+
+  let latitude;
+  let longitude;
+  let coordinates;
+  axios.get(`http://dev.virtualearth.net/REST/v1/Locations/US/${location.adminDistrict}/${location.postalCode}/${location.locality}/${location.addressLine}?o=json&key=${location.key}`)
+  .then(res => {
+    console.log("Latitude", res.data.resourceSets[0].resources[0].point.coordinates[0])
+    console.log("Longitude", res.data.resourceSets[0].resources[0].point.coordinates[1])
+    latitude = res.data.resourceSets[0].resources[0].point.coordinates[0];
+    longitude = res.data.resourceSets[0].resources[0].point.coordinates[1];
+    coordinates = {
+      lat: latitude,
+      lng: longitude
+    }
+    console.log("We got to line 174", coordinates);
+    return coordinates;
+  })
+  .then(latlng => {
+    console.log("This is latlng", latlng);
+    dispatch(geocodeSuccess(latlng))
+  })
+  .catch(err => console.log(err))
+}
 
 export const DELETE_LOCATION = "DELETE_LOCATION";
 export const deleteLocation = id => dispatch => {

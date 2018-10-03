@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
@@ -27,35 +28,6 @@ class LocationMap extends Component {
       haveUsersLocation: false,
       zoom: 2,
     }
-  }
-
-  geocode() {
-    var location = {
-      adminDistrict: 'OR',
-      postalCode: 97209,
-      locality: 'Portland',
-      addressLine: '1516 NW 25th Ave',
-      key: 'Av25hukp36GNb2z84eLlEqTM89_Ac6TK04lIvT6yraWADNTKr8YJFQ1DpR3Dac6g'
-    }
-
-    let latitude;
-    let longitude;
-    axios.get(`http://dev.virtualearth.net/REST/v1/Locations/US/${location.adminDistrict}/${location.postalCode}/${location.locality}/${location.addressLine}?o=json&key=${location.key}`)
-    .then(res => {
-      console.log("Latitude", res.data.resourceSets[0].resources[0].point.coordinates[0])
-      console.log("Longitude", res.data.resourceSets[0].resources[0].point.coordinates[1])
-      latitude = res.data.resourceSets[0].resources[0].point.coordinates[0];
-      longitude = res.data.resourceSets[0].resources[0].point.coordinates[1];
-      this.setState({
-        selectedlocation: {
-          lat: latitude,
-          lng: longitude
-        }
-      })
-      console.log(res)
-      return res.status(200).end();
-    })
-    .catch(err => console.log(err))
   }
 
   componentDidMount() {
@@ -87,11 +59,10 @@ class LocationMap extends Component {
   }
   render() {
     const position = [this.state.userlocation.lat, this.state.userlocation.lng]
-    const position2 = [this.state.selectedlocation.lat, this.state.selectedlocation.lng]
+    const position2 = [this.props.locationState.currentLatLng.lat, this.props.locationState.currentLatLng.lng]
     console.log('This is position 2', position2)
     return (
       <div>
-        <button onClick={() => this.geocode()}type="button">Test</button>
         <Map className="map" center={position} zoom={this.state.zoom}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -121,5 +92,8 @@ class LocationMap extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  locationState: state.location
+});
 
-export default LocationMap;
+export default connect(mapStateToProps)(LocationMap);

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleRedirect } from "../../actions/location";
+import { toggleRedirect, geocode } from "../../actions/location";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
@@ -21,8 +21,11 @@ class LocationIndividual extends React.Component {
     this.setState({
       redirectingToDashboard: false
     });
-    console.log(this.state);
+    //console.log(this.state);
+    console.log("This is line 25", this.props.locationState)
+    this.props.dispatch(geocode(this.props.locationState))
   }
+
   componentWillUnmount() {
     this.setState({
       redirectingToDashboard: false
