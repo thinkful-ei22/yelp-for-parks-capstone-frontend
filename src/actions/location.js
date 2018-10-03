@@ -25,7 +25,18 @@ export const locationRequestError = err => ({
   payload: err
 });
 
-export const CREATE_LOCATION = "CREATE_LOCATION";
+export const GET_ONE_LOCATION_SUCCESS = "GET_ONE_LOCATION_SUCCESS";
+export const getOneLocationSuccess = locationObject => ({
+  type: GET_ONE_LOCATION_SUCCESS,
+  payload: locationObject
+});
+
+export const GET_ALL_LOCATIONS_SUCCESS = "GET_ALL_LOCATIONS_SUCCESS";
+export const getAllLocationsSuccess = locationList => ({
+  type: GET_ALL_LOCATIONS_SUCCESS,
+  payload: locationList
+});
+
 export const createLocation = locationObject => dispatch => {
   console.log("request initiated");
   //grab the token from localstorage
@@ -88,7 +99,52 @@ export const updateLocation = (id, locationObject) => dispatch => {
     });
 };
 
+export const getOneLocation = id => dispatch => {
+  const token = loadAuthToken();
+  console.log(`getting location ${id}`);
+  dispatch(makeLocationRequest());
+  fetch(`${BACKEND_URL}/locations/${id}`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log("stored new location");
+      console.log(parsedResponse);
+      dispatch(getOneLocationSuccess(parsedResponse));
+    });
+};
+
+export const getAllLocations = () => dispatch => {
+  const token = loadAuthToken();
+  console.log("getting all locations");
+  dispatch(makeLocationRequest());
+  fetch(`${BACKEND_URL}/locations`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log("parsed response");
+      console.log(parsedResponse);
+      dispatch(getAllLocationsSuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(locationRequestError(err.message));
+    });
+};
+
 export const DELETE_LOCATION = "DELETE_LOCATION";
 export const deleteLocation = id => dispatch => {
   console.log("Deleted a location");
+  // dispatch(makeLocationRequest())
+  // fetch(`${BACKEND_URL}/${id}`, {
+
+  // })
 };

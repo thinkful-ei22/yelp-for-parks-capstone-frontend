@@ -1,9 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchRegistration } from "../../actions/registration";
+import {
+  fetchRegistration,
+  toggleRedirecting
+} from "../../actions/registration";
+import { Redirect } from "react-router";
 
 class RegistrationForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirecting: false
+    };
+  }
+
+  componentWillMount() {
+    this.props.dispatch(toggleRedirecting(false));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(toggleRedirecting(false));
+  }
+
   render() {
+    if (this.props.registrationState.redirecting === true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/dashboard"
+          }}
+        />
+      );
+    }
     return (
       <form>
         <label htmlFor="registration-username" className="registration-label" />
@@ -80,4 +108,7 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default connect()(RegistrationForm);
+const mapStateToProps = state => ({
+  registrationState: state.registration
+});
+export default connect(mapStateToProps)(RegistrationForm);

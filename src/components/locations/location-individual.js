@@ -11,12 +11,32 @@ class LocationIndividual extends React.Component {
     super(props);
     this.state = {
       editing: false,
-      editButtonVisible: false
+      editButtonVisible: false,
+      redirectingToDashboard: false
     };
+  }
+
+  componentWillMount() {
+    this.setState({
+      redirectingToDashboard: false
+    });
+    console.log(this.state);
+  }
+  componentWillUnmount() {
+    this.setState({
+      redirectingToDashboard: false
+    });
+    console.log(this.state);
   }
 
   toggleEditState = bool => {
     this.setState({ editing: bool });
+    console.log(this.state);
+  };
+
+  redirectToDashboard = bool => {
+    this.setState({ redirectingToDashboard: bool });
+    console.log(this.state);
   };
 
   //===========================for working with redirects========
@@ -38,6 +58,14 @@ class LocationIndividual extends React.Component {
     //============================================================
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
+    } else if (this.state.redirectingToDashboard === true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/dashboard"
+          }}
+        />
+      );
     }
 
     return (
@@ -52,6 +80,13 @@ class LocationIndividual extends React.Component {
           // className={}
         >
           Edit Location
+        </button>
+        <button
+          type="button"
+          name="back-to-dashboard"
+          onClick={() => this.redirectToDashboard(true)}
+        >
+          Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
         <h1>{this.props.locationState.currentLocation.title}</h1>
