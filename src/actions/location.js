@@ -59,7 +59,6 @@ export const createLocation = locationObject => dispatch => {
     })
     .then(parsedResponse => {
       console.log("parsed response");
-      // browserHistory.push(`${parsedResponse.location}`);
       console.log(parsedResponse);
       dispatch(createLocationSuccess(parsedResponse));
       dispatch(toggleRedirect(true));
