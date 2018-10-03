@@ -5,6 +5,7 @@ import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
+import LocationMap from "./location-map";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -89,6 +90,9 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
+        <div id="maproot">
+          <LocationMap />
+        </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
 
         <p>{this.props.locationState.currentLocation.description}</p>
