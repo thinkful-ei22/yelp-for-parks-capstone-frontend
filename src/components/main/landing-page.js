@@ -14,15 +14,15 @@ export function LandingPage(props) {
     <div className="home">
       <h1>Get Outside</h1>
       <main className="landing-img-section">
-      <img src={require('../../resources/landing-img.jpg')} alt="Image of a park in Honolulu, Hawaii" className="landing-img" />
-      <div>
-        <h2>Start Here</h2>
-        <p>What's in your neighborhood?</p>
-      </div>
+        <img src={require('../../resources/landing-img.jpg')} alt="Image of a park in Honolulu, Hawaii" className="landing-img" />
+        <div className="subtitle-box">
+          <h2>Start Here</h2>
+          <p>What's in your neighborhood?</p>
+        </div>
       </main>
-  <div>
-      <Link to="/register">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <div>
+        <Link to="/login" className="log-in-link">Log In</Link>
+        <Link to="/register" className="sign-up-link">Sign Up</Link>
       </div>
     </div>
   );
