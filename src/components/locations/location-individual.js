@@ -96,7 +96,7 @@ class LocationIndividual extends React.Component {
         <p>{this.props.locationState.currentLocation.city}</p>
         <p>{this.props.locationState.currentLocation.state}</p>
         <p>{this.props.locationState.currentLocation.zipCode}</p>
-        <p>{this.props.locationState.currentLocation.image}</p>
+        <img src={this.props.locationState.currentLocation.image} />
 
         {/*comments*/}
         {<CommentForm />}

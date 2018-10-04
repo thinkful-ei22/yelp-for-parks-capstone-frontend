@@ -4,21 +4,12 @@ import { createLocation, toggleRedirect } from "../../actions/location";
 import { Redirect } from "react-router";
 
 class LocationForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     this.props.dispatch(toggleRedirect(false));
   }
   componentWillUnmount() {
     this.props.dispatch(toggleRedirect(false));
-  }
-
-  handleImageUpload(e) {
-    e.preventDefault();
-    const data = new FormData();
-    data.append('file', this.uploadImage.files[0]);
   }
 
   render() {
@@ -68,7 +59,7 @@ class LocationForm extends React.Component {
           />
 
           <label htmlFor="state">State</label>
-          <select id="state" ref={input => (this.state = input)}>
+          <select id="state" ref={input => (this.stateName = input)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -189,12 +180,11 @@ class LocationForm extends React.Component {
               data.append('title', this.title.value);
               data.append('address', this.addressLine.value);
               data.append('city', this.city.value);
-              data.append('state', this.state.value);
+              data.append('state', this.stateName.value);
               data.append('zipCode', this.zipCode.value);
               data.append('description', this.description.value);
               data.append('specialInstructions', this.specialInstructions.value);
               data.append('image', this.uploadImage.files[0]);
-              console.log(data.get('image'))
               this.props.dispatch(
                 createLocation(data)
               );
