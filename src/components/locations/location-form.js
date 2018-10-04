@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createLocation, toggleRedirect } from "../../actions/location";
 import { Redirect } from "react-router";
+import { Link } from 'react-router-dom';
 
 class LocationForm extends React.Component {
 
@@ -193,6 +194,7 @@ class LocationForm extends React.Component {
             Submit
           </button>
         </form>
+        <Link to="/dashboard">Back to Dashboard</Link>
       </div>
     );
   }

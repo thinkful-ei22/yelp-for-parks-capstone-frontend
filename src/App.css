@@ -51,7 +51,7 @@ a:link, a:visited {
     border: 1px solid var(--black);
 }
 
-a:hover, a:active, button:hover {
+a:hover, a:active {
     background-color: var(--grey);
 }
 
@@ -61,7 +61,34 @@ h2 {
   padding: 0;
 }
 
-button, input {
-  font: 200 18px/1.5 Trebuchet MS, sans-serif;
-  background-color: var(--pink);
-}
+button {
+   border-top: 1px solid #272727;
+   background: #abc798;
+   background: -webkit-gradient(linear, left top, left bottom, from(#72963d), to(#abc798));
+   background: -webkit-linear-gradient(top, #72963d, #abc798);
+   background: -moz-linear-gradient(top, #72963d, #abc798);
+   background: -ms-linear-gradient(top, #72963d, #abc798);
+   background: -o-linear-gradient(top, #72963d, #abc798);
+   padding: 10.5px 10.5px;
+   -webkit-border-radius: 13px;
+   -moz-border-radius: 13px;
+   border-radius: 13px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #272727;
+   font-size: 16px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #eed9cf;
+   background: #eed9cf;
+   color: #272727;
+   }
+button:active {
+   border-top-color: #9ebfce;
+   background: #9ebfce;
+   }
