@@ -4,9 +4,6 @@ import { createLocation, toggleRedirect } from "../../actions/location";
 import { Redirect } from "react-router";
 
 class LocationForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     this.props.dispatch(toggleRedirect(false));
@@ -62,7 +59,7 @@ class LocationForm extends React.Component {
           />
 
           <label htmlFor="state">State</label>
-          <select id="state" ref={input => (this.state = input)}>
+          <select id="state" ref={input => (this.stateName = input)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -123,6 +120,14 @@ class LocationForm extends React.Component {
             name="zipCode-input-box"
             placeholder="30301"
           />
+          <label htmlFor="file">Zip code</label>
+          <input
+            type="file"
+            id="file"
+            ref={(ref) => { this.uploadImage = ref; }}
+            name="file"
+            placeholder="upload an image"
+          />
 
           <div>
             <fieldset>
@@ -168,19 +173,20 @@ class LocationForm extends React.Component {
           <button
             type="button"
             name="submit"
+            
             onClick={e => {
               e.preventDefault();
+              const data = new FormData();
+              data.append('title', this.title.value);
+              data.append('address', this.addressLine.value);
+              data.append('city', this.city.value);
+              data.append('state', this.stateName.value);
+              data.append('zipCode', this.zipCode.value);
+              data.append('description', this.description.value);
+              data.append('specialInstructions', this.specialInstructions.value);
+              data.append('image', this.uploadImage.files[0]);
               this.props.dispatch(
-                createLocation({
-                  title: this.title.value,
-                  address: this.addressLine.value,
-                  city: this.city.value,
-                  state: this.state.value,
-                  zipCode: this.zipCode.value,
-                  description: this.description.value,
-                  specialInstructions: this.specialInstructions.value
-                  // amenities:
-                })
+                createLocation(data)
               );
             }}
           >
