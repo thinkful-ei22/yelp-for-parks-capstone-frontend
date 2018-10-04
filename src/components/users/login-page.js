@@ -3,6 +3,7 @@ import LoginForm from "./login-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
+import './styles/login-page.css';
 
 class LoginPage extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class LoginPage extends React.Component {
       );
     }
     return (
-      <div>
+      <div class="login-page">
         <h2>Login</h2>
         <LoginForm />
         <Link to="/register">Create Account</Link>

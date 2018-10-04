@@ -4,6 +4,7 @@ import { logout } from "../../actions/login";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
 import { Link } from 'react-router-dom';
+import './styles/dashboard.css';
 
 class Dashboard extends React.Component {
   componentDidMount() {}
