@@ -6,6 +6,8 @@ import {
 } from "../../actions/registration";
 import { Redirect } from "react-router";
 
+import "./styles/registration-form.css"
+
 class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,8 @@ class RegistrationForm extends React.Component {
       );
     }
     return (
+      <div className="form-container">
+      <h1>Sign Up</h1>
       <form>
         <label htmlFor="registration-username" className="registration-label" />
         <input
@@ -88,6 +92,7 @@ class RegistrationForm extends React.Component {
         <button
           name="register"
           type="submit"
+          className="button"
           onClick={e => {
             e.preventDefault();
             this.props.dispatch(
@@ -104,6 +109,7 @@ class RegistrationForm extends React.Component {
           Let's go!
         </button>
       </form>
+      </div>
     );
   }
 }

@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
       <div className="row">
       <div className="column">
         <LoginForm />
-        <Link to="/register">Create Account</Link>
+        <Link to="/register" className="register-link">Create Account</Link>
         </div>
         <div className="column">
           <p>some text explaining what the app does wow</p>
