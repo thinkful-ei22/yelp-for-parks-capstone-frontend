@@ -1,12 +1,4 @@
-:root {
-  --dgreen: #72963D; /* PALM LEAF */
-  --grey: #A6ADB5; /* SILVER CHALICE */
-  --blue: #9EBFCE; /* PASTEL BLUE */
-  --pink: #EED9CF; /* CHAMPAGNE PINK */
-  --lgreen: #ABC798; /* LAUREL GREEN */
-  --black: #272727; /* custom black */
-}
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -20,9 +12,9 @@
   height: 150px;
   padding: 20px;
   color: white;
-}
+} */
 
-.App-title {
+/* .App-title {
   font-size: 1.5em;
 }
 
@@ -49,9 +41,9 @@ a:link, a:visited {
     display: block;
     border-radius: 90px;
     border: 1px solid var(--black);
-}
+} */
 
-a:hover, a:active, button:hover {
+/* a:hover, a:active, button:hover {
     background-color: var(--grey);
 }
 
@@ -64,4 +56,4 @@ h2 {
 button, input {
   font: 200 18px/1.5 Trebuchet MS, sans-serif;
   background-color: var(--pink);
-}
+} */
