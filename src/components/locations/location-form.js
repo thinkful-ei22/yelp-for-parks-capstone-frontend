@@ -14,6 +14,22 @@ class LocationForm extends React.Component {
     this.props.dispatch(toggleRedirect(false));
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    const data = new FormData();
+    data.append('title', this.title.value);
+    data.append('address', this.addressLine.value);
+    data.append('city', this.city.value);
+    data.append('state', this.stateName.value);
+    data.append('zipCode', this.zipCode.value);
+    data.append('description', this.description.value);
+    data.append('specialInstructions', this.specialInstructions.value);
+    data.append('image', this.uploadImage.files[0]);
+    this.props.dispatch(
+      createLocation(data)
+    );
+  }
+
   render() {
     //if redirecting is true, we redirect to the location in state.
     if (this.props.locationState.redirecting) {
@@ -28,7 +44,7 @@ class LocationForm extends React.Component {
     //else, we present the form.
     return (
       <div className="location-form-container">
-        <form>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -122,7 +138,7 @@ class LocationForm extends React.Component {
             name="zipCode-input-box"
             placeholder="30301"
           />
-          <label htmlFor="file">Zip code</label>
+          <label htmlFor="file">Image</label>
           <input
             type="file"
             id="file"
@@ -173,24 +189,8 @@ class LocationForm extends React.Component {
           />
 
           <button
-            type="button"
+            type="submit"
             name="submit"
-            
-            onClick={e => {
-              e.preventDefault();
-              const data = new FormData();
-              data.append('title', this.title.value);
-              data.append('address', this.addressLine.value);
-              data.append('city', this.city.value);
-              data.append('state', this.stateName.value);
-              data.append('zipCode', this.zipCode.value);
-              data.append('description', this.description.value);
-              data.append('specialInstructions', this.specialInstructions.value);
-              data.append('image', this.uploadImage.files[0]);
-              this.props.dispatch(
-                createLocation(data)
-              );
-            }}
           >
             Submit
           </button>
