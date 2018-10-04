@@ -37,6 +37,23 @@ export const getAllLocationsSuccess = locationList => ({
   payload: locationList
 });
 
+export const UPDATE_IMAGE_REQUEST = 'UPDATE_IMAGE_REQUEST';
+export const updateImageRequest = () => ({
+  type: UPDATE_IMAGE_REQUEST
+});
+
+export const UPDATE_IMAGE_SUCCESS = 'UPDATE_IMAGE_SUCCESS';
+export const updateImageSuccess = updatedLocationObject => ({
+  type: UPDATE_IMAGE_SUCCESS,
+  payload: updatedLocationObject
+});
+
+export const UPDATE_IMAGE_ERROR = 'UPDATE_IMAGE_ERROR';
+export const updateImageError = err => ({
+  type: UPDATE_IMAGE_ERROR,
+  payload: err
+});
+
 export const createLocation = locationObject => dispatch => {
   console.log('request initiated');
   //grab the token from localstorage
@@ -68,6 +85,7 @@ export const createLocation = locationObject => dispatch => {
     });
 };
 
+
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const updateLocation = (id, locationObject) => dispatch => {
   console.log('Updating location');
@@ -96,6 +114,32 @@ export const updateLocation = (id, locationObject) => dispatch => {
     .catch(err => {
       dispatch(locationRequestError(err.message));
     });
+};
+
+export const updateImage = (id, formData) => dispatch => {
+  dispatch(updateImageRequest());
+  const token = loadAuthToken();
+  fetch(`${BACKEND_URL}/locations/${id}/image`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    body: formData
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log('parsed response');
+      console.log(parsedResponse);
+      dispatch(updateImageSuccess(parsedResponse));
+      dispatch(toggleRedirect());
+    })
+    .catch(err => {
+      dispatch(updateImageError(err.message));
+    });
+
 };
 
 export const getOneLocation = id => dispatch => {

@@ -2,6 +2,9 @@ import {
   CREATE_LOCATION_SUCCESS,
   GET_ONE_LOCATION_SUCCESS,
   GET_ALL_LOCATIONS_SUCCESS,
+  UPDATE_IMAGE_REQUEST,
+  UPDATE_IMAGE_SUCCESS,
+  UPDATE_IMAGE_ERROR,
   LOCATION_REQUEST_ERROR,
   MAKE_LOCATION_REQUEST,
   UPDATE_LOCATION,
@@ -27,6 +30,20 @@ export default function locationReducer(state = initialState, action) {
       loading: false,
       currentLocation: action.payload
     };
+  }
+
+  if (action.type === UPDATE_IMAGE_REQUEST) {
+    return { ...state, loading: true };
+  }
+  if (action.type === UPDATE_IMAGE_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      currentLocation: action.payload
+    };
+  }
+  if (action.type === UPDATE_IMAGE_ERROR) {
+    return { ...state, loading: false, error: action.payload };
   }
 
   if (action.type === GET_ONE_LOCATION_SUCCESS) {
