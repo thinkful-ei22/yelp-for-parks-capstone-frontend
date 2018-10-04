@@ -2,7 +2,12 @@
 
 
 .landing-img {
-
+  background-image: url(../../../resources/landing-img.jpg) no-repeat center center fixed;
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover; 
+  -o-background-size: cover;
+  background-size: cover; */
+ 
 }
 
 .subtitle-box {
@@ -11,7 +16,7 @@
  padding: 30px;
  width: 200px;
  height: 100px
-}
+}x
 
 .log-in-link {
   font-family: 'Roboto', sans-serif;

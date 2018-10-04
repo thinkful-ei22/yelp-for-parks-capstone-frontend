@@ -18,9 +18,15 @@ class LoginPage extends React.Component {
     }
     return (
       <div class="login-page">
-        <h2>Login</h2>
+      <div className="row">
+      <div className="column">
         <LoginForm />
         <Link to="/register">Create Account</Link>
+        </div>
+        <div className="column">
+          <p>some text explaining what the app does wow</p>
+        </div>
+      </div>
       </div>
     );
   }

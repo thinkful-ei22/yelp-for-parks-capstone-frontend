@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+label {
+color: black;
+font-family: 'Roboto', sans-serif;
+
+}
+
+input {
+background-color:white;
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+box-sizing: border-box;
+border: 2px solid #E7E7E5;
+-webkit-transition: 0.5s;
+transition: 0.5s;
+outline: none;
+
+}
+
+input[type=text]:focus {
+  border: 3px solid #666666;
+}
+
+.form-container {
+  border: 10px solid #87A0AA;
+  text-align: center;
+  padding: 30px;
+  width: 200px;
+  height: 300px
+}
+
+.login-form {
+
+}
+
+.login-label {
+ background-color: blue
+}
+
+
+.remember-me-container {
+  background-color:white;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #E7E7E5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.button {
+
+    background-color: #686c38;
+    color:#a8a8a8;
+    border: 2px solid #E7E7E5
+
+}

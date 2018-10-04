@@ -14,7 +14,8 @@ export function LandingPage(props) {
     <div className="home">
       <h1>Get Outside</h1>
       <main className="landing-img-section">
-        <img src={require('../../resources/landing-img.jpg')} alt="Image of a park in Honolulu, Hawaii" className="landing-img" />
+        {/* <img src={require('../../resources/landing-img.jpg')} alt="Image of a park in Honolulu, Hawaii" className="landing-img" /> */}
+        <div className="landing-img">background img here please</div>
         <div className="subtitle-box">
           <h2>Start Here</h2>
           <p>What's in your neighborhood?</p>
