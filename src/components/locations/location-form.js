@@ -15,6 +15,12 @@ class LocationForm extends React.Component {
     this.props.dispatch(toggleRedirect(false));
   }
 
+  handleImageUpload(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('file', this.uploadImage.files[0]);
+  }
+
   render() {
     //if redirecting is true, we redirect to the location in state.
     if (this.props.locationState.redirecting) {
@@ -123,6 +129,14 @@ class LocationForm extends React.Component {
             name="zipCode-input-box"
             placeholder="30301"
           />
+          <label htmlFor="file">Zip code</label>
+          <input
+            type="file"
+            id="file"
+            ref={(ref) => { this.uploadImage = ref; }}
+            name="file"
+            placeholder="upload an image"
+          />
 
           <div>
             <fieldset>
@@ -168,19 +182,21 @@ class LocationForm extends React.Component {
           <button
             type="button"
             name="submit"
+            
             onClick={e => {
               e.preventDefault();
+              const data = new FormData();
+              data.append('title', this.title.value);
+              data.append('address', this.addressLine.value);
+              data.append('city', this.city.value);
+              data.append('state', this.state.value);
+              data.append('zipCode', this.zipCode.value);
+              data.append('description', this.description.value);
+              data.append('specialInstructions', this.specialInstructions.value);
+              data.append('image', this.uploadImage.files[0]);
+              console.log(data.get('image'))
               this.props.dispatch(
-                createLocation({
-                  title: this.title.value,
-                  address: this.addressLine.value,
-                  city: this.city.value,
-                  state: this.state.value,
-                  zipCode: this.zipCode.value,
-                  description: this.description.value,
-                  specialInstructions: this.specialInstructions.value
-                  // amenities:
-                })
+                createLocation(data)
               );
             }}
           >

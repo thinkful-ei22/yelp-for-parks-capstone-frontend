@@ -47,7 +47,6 @@ export const createLocation = locationObject => dispatch => {
   fetch(`${BACKEND_URL}/locations`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify(locationObject)
