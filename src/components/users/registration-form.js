@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 import {
   fetchRegistration,
   toggleRedirecting
 } from "../../actions/registration";
 import { Redirect } from "react-router";
+=======
+import { fetchRegistration, createRequest } from "../../actions/registration";
+>>>>>>> 340b7681d9a3e382604c9e0be585353ed93de882
 
 class RegistrationForm extends React.Component {
   constructor(props) {
