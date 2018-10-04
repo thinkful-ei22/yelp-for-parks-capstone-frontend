@@ -8,31 +8,9 @@
 }
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  background-color: var(--lgreen);
+  margin: 100px;
+  width: 80%;
 }
 
 a:link, a:visited {
@@ -51,7 +29,7 @@ a:link, a:visited {
     border: 1px solid var(--black);
 }
 
-a:hover, a:active, button:hover {
+a:hover, a:active {
     background-color: var(--grey);
 }
 
@@ -61,7 +39,34 @@ h2 {
   padding: 0;
 }
 
-button, input {
-  font: 200 18px/1.5 Trebuchet MS, sans-serif;
-  background-color: var(--pink);
-}
+button {
+   border-top: 1px solid var(--black);
+   background: var(--lgreen);
+   background: -webkit-gradient(linear, left top, left bottom, from(var(--dgreen)), to(var(--lgreen)));
+   background: -webkit-linear-gradient(top, var(--dgreen), var(--lgreen));
+   background: -moz-linear-gradient(top, var(--dgreen), var(--lgreen));
+   background: -ms-linear-gradient(top, var(--dgreen), var(--lgreen));
+   background: -o-linear-gradient(top, var(--dgreen), var(--lgreen));
+   padding: 10.5px 10.5px;
+   -webkit-border-radius: 13px;
+   -moz-border-radius: 13px;
+   border-radius: 13px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: var(--black);
+   font-size: 16px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: var(--pink);
+   background: var(--pink);
+   color: var(--black);
+   }
+button:active {
+   border-top-color: var(--blue);
+   background: var(--blue);
+   }

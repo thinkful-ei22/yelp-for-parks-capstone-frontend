@@ -5,6 +5,7 @@ import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
+import './styles/location-individual.css';
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -89,14 +90,14 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
-        <h1>{this.props.locationState.currentLocation.title}</h1>
 
+        <h1>{this.props.locationState.currentLocation.title}</h1>
+                <img class="location-image" src={this.props.locationState.currentLocation.image} />
         <p>{this.props.locationState.currentLocation.description}</p>
-        <p>{this.props.locationState.currentLocation.address}</p>
-        <p>{this.props.locationState.currentLocation.city}</p>
-        <p>{this.props.locationState.currentLocation.state}</p>
-        <p>{this.props.locationState.currentLocation.zipCode}</p>
-        <img src={this.props.locationState.currentLocation.image} />
+        <p>{this.props.locationState.currentLocation.address}
+           &nbsp;{this.props.locationState.currentLocation.city}
+           &nbsp;{this.props.locationState.currentLocation.state}
+           &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
 
         {/*comments*/}
         {<CommentForm />}
