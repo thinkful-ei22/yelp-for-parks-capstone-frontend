@@ -148,7 +148,6 @@ export const geocodeSuccess = (latlng) => ({
 })
 
 export const geocode = locationObject => dispatch => {
-  console.log("Request to geocode initiated", locationObject)
   const token = loadAuthToken();
   let locationMapObject = {
     adminDistrict: locationObject.currentLocation.state,
@@ -156,7 +155,7 @@ export const geocode = locationObject => dispatch => {
     locality: locationObject.currentLocation.city,
     addressLine: locationObject.currentLocation.address,
   }
-  console.log('This is the object before it goes to fetch!', locationMapObject)
+
   fetch(`${BACKEND_URL}/locationmap/`, {
     method: "POST",
     headers: {
@@ -166,12 +165,10 @@ export const geocode = locationObject => dispatch => {
     body: JSON.stringify(locationMapObject)
   })
   .then(res => {
-    console.log("obtained response", res);
     normalizeResponseErrors(res);
     return res.json();
   })
   .then(latlng => {
-    console.log("Right before dispatching geocodeSuccess function", latlng);
     dispatch(geocodeSuccess(latlng))
   })
   .catch(err => console.log(err))
