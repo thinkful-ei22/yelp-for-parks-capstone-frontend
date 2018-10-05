@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
-class RedirectButton {
+class RedirectButton extends React.Component {
   //this is a generic redirect button for basic redirection purposes
   constructor(props) {
     super(props);
@@ -41,7 +41,7 @@ class RedirectButton {
       return (
         <Redirect
           to={{
-            pathname: route
+            pathname: this.props.route
           }}
         />
       );
@@ -54,7 +54,7 @@ class RedirectButton {
           if (this.props.onClick) {
             this.props.onClick();
           }
-          toggleRedirect(true);
+          this.toggleRedirect(true);
         }}
       >
         {this.props.text ? this.props.text : null}

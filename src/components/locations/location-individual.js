@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { toggleRedirect } from "../../actions/location";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
+import CommentList from "../comments/comment-list";
 
 import { Redirect } from "react-router";
+import commentList from "../comments/comment-list";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -97,7 +99,7 @@ class LocationIndividual extends React.Component {
         <p>{this.props.locationState.currentLocation.state}</p>
         <p>{this.props.locationState.currentLocation.zipCode}</p>
 
-        {/*comments*/}
+        {/* <CommentList /> */}
         {<CommentForm />}
       </div>
     );

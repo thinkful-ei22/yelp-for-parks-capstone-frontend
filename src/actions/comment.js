@@ -36,7 +36,7 @@ export const commentRequestError = err => ({
 });
 
 export const createComment = commentObject => dispatch => {
-  console.log("request initiated");
+  console.log(" create comment request initiated");
   //grab the token from localstorage
   const token = loadAuthToken();
   //start loading screen
@@ -66,7 +66,7 @@ export const createComment = commentObject => dispatch => {
 };
 
 export const updateComment = (commentObject, id) => dispatch => {
-  console.log("Updating location");
+  console.log("Updating comment");
   dispatch(makeCommentRequest());
   const token = loadAuthToken();
   console.log(id);
@@ -93,7 +93,21 @@ export const updateComment = (commentObject, id) => dispatch => {
     });
 };
 
-export const deleteComment = id => ({
-  // type: DELETE_COMMENT
-  // id
-});
+export const deleteComment = id => dispatch => {
+  console.log("initializing delete comment request");
+  dispatch(makeCommentRequest());
+  const token = loadAuthToken();
+  return fetch(`${BACKEND_URL}/comments/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      console.log("obtained response");
+      normalizeResponseErrors(res);
+      dispatch(deleteCommentSuccess());
+    })
+    .catch(err => dispatch(commentRequestError(err)));
+};

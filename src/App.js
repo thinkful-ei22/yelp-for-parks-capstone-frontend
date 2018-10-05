@@ -8,6 +8,7 @@ import LandingPage from "./components/main/landing-page";
 import Dashboard from "./components/main/dashboard";
 import LocationForm from "./components/locations/location-form";
 import LocationIndividual from "./components/locations/location-individual";
+import CommentScratchComponent from "./components/comments/comment-scratch-file";
 import { refreshAuthToken } from "./actions/login";
 
 export class App extends React.Component {
