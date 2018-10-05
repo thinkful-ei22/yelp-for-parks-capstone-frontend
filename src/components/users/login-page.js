@@ -17,17 +17,21 @@ class LoginPage extends React.Component {
       );
     }
     return (
-      <div class="login-page">
+      <main>
+      <h1>GO helps you explore the great outdoors -
+    right in your own neighborhood</h1>
       <div className="row">
       <div className="column">
         <LoginForm />
         <Link to="/register" className="register-link">Create Account</Link>
         </div>
         <div className="column">
-          <p>some text explaining what the app does wow</p>
+          <p>Recommend your favorite nature sites: hiking trails, parks, ponds, mountains, stargazing, campgrounds.. the sky is the limit! </p>
+          <p>See what places other users can't stop talking about.</p>
+          <p>Join the discussion. Make community. Get Outside.</p>
         </div>
       </div>
-      </div>
+      </main>
     );
   }
 }

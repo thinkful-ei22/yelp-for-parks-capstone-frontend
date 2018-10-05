@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
             Sign in
         </button>
 
-          <button
+          {/* <button
             type="button"
             name="BUTTON-TO-TEST-AUTHTOKEN-REFRESH"
             className="button"
@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
             }}
           >
             refresher
-        </button>
+        </button> */}
         </form>
       </div>
     );

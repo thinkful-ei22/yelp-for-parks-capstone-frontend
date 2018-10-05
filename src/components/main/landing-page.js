@@ -11,21 +11,22 @@ export function LandingPage(props) {
   }
 
   return (
-    <div className="home">
-      <h1>Get Outside</h1>
-      <main className="landing-img-section">
-        {/* <img src={require('../../resources/landing-img.jpg')} alt="Image of a park in Honolulu, Hawaii" className="landing-img" /> */}
-        <div className="landing-img">background img here please</div>
-        <div className="subtitle-box">
-          <h2>Start Here</h2>
-          <p>What's in your neighborhood?</p>
+    <body >
+      <h1>Get</h1>
+      <div className="home">
+        <h1>Outside</h1>
+        <div className="subtitle-container">
+          <div className="subtitle-box">
+            <h2>Start Here</h2>
+            <p>[ What's in your neighborhood? ]</p>
+          </div>
         </div>
-      </main>
-      <div>
+        <div className="link-container">
         <Link to="/login" className="log-in-link">Log In</Link>
         <Link to="/register" className="sign-up-link">Sign Up</Link>
       </div>
-    </div>
+      </div>
+    </body>
   );
 }
 
