@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleRedirect, updateImage } from "../../actions/location";
+import { toggleRedirect, geocode, updateImage } from "../../actions/location";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
+import LocationMap from "./location-map";
 import './styles/location-individual.css';
+
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -22,8 +24,11 @@ class LocationIndividual extends React.Component {
     this.setState({
       redirectingToDashboard: false
     });
-    console.log(this.state);
+    //console.log(this.state);
+    console.log("This is line 25", this.props.locationState)
+    this.props.dispatch(geocode(this.props.locationState))
   }
+
   componentWillUnmount() {
     this.setState({
       redirectingToDashboard: false
@@ -104,6 +109,12 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
+
+        <div id="maproot">
+          <LocationMap />
+        </div>
+        <h1>{this.props.locationState.currentLocation.title}</h1>
+
 
         <h1>{this.props.locationState.currentLocation.title}</h1>
                 <img class="location-image" src={this.props.locationState.currentLocation.image} />

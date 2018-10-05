@@ -9,7 +9,8 @@ import {
   MAKE_LOCATION_REQUEST,
   UPDATE_LOCATION,
   DELETE_LOCATION,
-  TOGGLE_REDIRECT
+  TOGGLE_REDIRECT,
+  GEOCODE_SUCCESS
 } from "../actions/location";
 
 const initialState = {
@@ -17,7 +18,11 @@ const initialState = {
   loading: false,
   error: "",
   redirecting: false,
-  locationList: null
+  locationList: null,
+  currentLatLng: {
+    lat: 51.505,
+    lng: -0.09
+  }
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -75,6 +80,10 @@ export default function locationReducer(state = initialState, action) {
 
   if (action.type === LOCATION_REQUEST_ERROR) {
     return { ...state, loading: false, error: action.payload };
+  }
+
+  if(action.type === GEOCODE_SUCCESS) {
+    return { ...state, loading: false, currentLatLng: action.payload };
   }
   return state;
 }

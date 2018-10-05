@@ -13,7 +13,7 @@
   width: 80%;
 }
 
-a:link, a:visited {
+/*a:link, a:visited {
     max-width: 100px;
     background-color: var(--pink);
     color: var(--black);
@@ -31,7 +31,7 @@ a:link, a:visited {
 
 a:hover, a:active {
     background-color: var(--grey);
-}
+}*/
 
 h2 {
   font: 400 40px/1.5 Trebuchet MS;

@@ -1,0 +1,8 @@
+#maproot {
+  height: 100%;
+}
+
+.map {
+  width: 60vw;
+  height: 60vh;
+}
