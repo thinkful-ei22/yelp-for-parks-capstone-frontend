@@ -33,10 +33,11 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
+        {console.log(this.props.userState.currentUser.id)}
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
         <button type="button" onClick={() => {
           this.props.dispatch(createUser());
-          this.props.dispatch(createUserLocation());
+          this.props.dispatch(createUserLocation(this.props.loggedIn.currentUser.id));
         }}>My Profile</button>
         <h2>Parks!</h2>
         <LocationList />

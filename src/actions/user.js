@@ -62,10 +62,11 @@ export const userLocationRequestError = err => ({
   payload: err
 });
 
+
 export const CREATE_USER_LOCATION = "CREATE_USER_LOCATION";
 export const createUserLocation = userId => dispatch => {
-  const id = userId;
-  console.log("user profile locations request initiated");
+  let id = userId;
+  console.log("user profile locations request initiated and this is the id", id);
   dispatch(userLocationRequest());
     return fetch(`${BACKEND_URL}/locations/?ownerId=${id}`, {
       method: 'GET'

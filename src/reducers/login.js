@@ -9,7 +9,8 @@ import {
 const initialState = {
   currentUser: null,
   loading: false,
-  error: null
+  error: null,
+
 };
 
 export default function loginReducer(state = initialState, action) {
