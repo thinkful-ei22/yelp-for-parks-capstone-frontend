@@ -163,11 +163,11 @@ export const getOneLocation = id => dispatch => {
     });
 };
 
-export const getAllLocations = () => dispatch => {
+export const getAllLocations = (filter='') => dispatch => {
   const token = loadAuthToken();
   console.log('getting all locations');
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations`, {
+  fetch(`${BACKEND_URL}/locations${filter}`, {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` }
   })

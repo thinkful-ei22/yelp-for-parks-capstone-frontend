@@ -14,7 +14,8 @@ class LocationList extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getAllLocations());
+    console.log(this.props.locationState)
+    this.props.dispatch(getAllLocations(`?ownerId=${this.props.currentUser.id}`));
   }
 
   toggleRedirecting(bool) {
@@ -56,6 +57,7 @@ class LocationList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  locationState: state.location
+  locationState: state.location,
+  currentUser: state.user.currentUser
 });
 export default connect(mapStateToProps)(LocationList);
