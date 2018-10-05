@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout } from "../../actions/login";
-import { createUser, createUserLocation } from "../../actions/user";
+import { logout, createUser, createUserLocation } from "../../actions/login";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
 import { Link } from 'react-router-dom';
@@ -11,7 +10,7 @@ class Dashboard extends React.Component {
   componentDidMount() {}
 
   render() {
-    if (this.props.userState.redirecting) {
+    if (this.props.loggedIn.redirecting) {
       return (
         <Redirect
           to={{
@@ -33,7 +32,6 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        {console.log(this.props.userState.currentUser.id)}
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
         <button type="button" onClick={() => {
           this.props.dispatch(createUser());
@@ -49,7 +47,6 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.user,
-  userState: state.userProfile
 });
 
 export default connect(mapStateToProps)(Dashboard);
