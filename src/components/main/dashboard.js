@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout } from "../../actions/login";
-import { createUser } from "../../actions/user";
+import { createUser, createUserLocation } from "../../actions/user";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
 import { Link } from 'react-router-dom';
@@ -34,7 +34,10 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
-        <button type="button" onClick={() => this.props.dispatch(createUser())}>My Profile</button>
+        <button type="button" onClick={() => {
+          this.props.dispatch(createUser());
+          this.props.dispatch(createUserLocation());
+        }}>My Profile</button>
         <h2>Parks!</h2>
         <LocationList />
         <Link to="/location/add">Add A New Location!</Link>
