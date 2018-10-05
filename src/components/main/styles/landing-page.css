@@ -16,6 +16,8 @@ h1 {
   font-size: 100px;
 }
 
+
+
 .home {
   background-image: url(../../../resources/landing-img.jpg);
   -webkit-background-size: cover;
@@ -37,8 +39,8 @@ h1 {
  border: 5px solid #87A0AA;
  text-align: center;
  padding: 30px;
- width: 300px;
- height: 200px;
+ width: 600px;
+ height: 400px;
  background-color: white;
  position: absolute
 }
@@ -46,19 +48,29 @@ h1 {
 .subtitle-container {
   text-align: center;
   padding: 30px;
-  width: 365px;
-  height: 265px;
+  width: 665px;
+  height: 465px;
   background-color: white;
   font-family: 'Roboto', sans-serif;
-  position: relative
+  position: relative;
+  top: 600px;
+  left: 650px;
+}
+
+.link-container {
+
 }
 
 .log-in-link {
   font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  margin: 10px
 }
 
 .sign-up-link {
   font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  margin: 10px
 }
 
 .sign-up-link:link, .sign-up-link:visited {

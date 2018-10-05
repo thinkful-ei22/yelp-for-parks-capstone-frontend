@@ -21,10 +21,10 @@ export function LandingPage(props) {
             <p>[ What's in your neighborhood? ]</p>
           </div>
         </div>
-        <div className="link-container">
+      </div>
+      <div className="link-container">
         <Link to="/login" className="log-in-link">Log In</Link>
         <Link to="/register" className="sign-up-link">Sign Up</Link>
-      </div>
       </div>
     </body>
   );
