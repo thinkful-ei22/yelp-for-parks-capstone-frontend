@@ -1,5 +1,6 @@
-import { loadAuthToken, normalizeResponseErrors } from '../utils';
-import { BACKEND_URL } from '../config';
+import { loadAuthToken, normalizeResponseErrors } from "../utils";
+import { BACKEND_URL } from "../config";
+import axios from 'axios';
 // import { browserHistory } from "react-router";
 
 export const MAKE_LOCATION_REQUEST = 'MAKE_LOCATION_REQUEST';
@@ -102,8 +103,9 @@ export const getOneLocation = id => dispatch => {
   const token = loadAuthToken();
   console.log(`getting location ${id}`);
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations/${id}`, {
-    method: 'GET',
+  return fetch(`${BACKEND_URL}/locations/${id}`, {
+    method: "GET",
+
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
@@ -139,7 +141,42 @@ export const getAllLocations = () => dispatch => {
     });
 };
 
-export const DELETE_LOCATION = 'DELETE_LOCATION';
+
+export const GEOCODE_SUCCESS = 'GEOCODE_SUCCESS'
+export const geocodeSuccess = (latlng) => ({
+  type: GEOCODE_SUCCESS,
+  payload: latlng
+})
+
+export const geocode = locationObject => dispatch => {
+  const token = loadAuthToken();
+  let locationMapObject = {
+    adminDistrict: locationObject.currentLocation.state,
+    postalCode: locationObject.currentLocation.zipCode,
+    locality: locationObject.currentLocation.city,
+    addressLine: locationObject.currentLocation.address,
+  }
+
+  fetch(`${BACKEND_URL}/locationmap/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(locationMapObject)
+  })
+  .then(res => {
+    normalizeResponseErrors(res);
+    return res.json();
+  })
+  .then(latlng => {
+    dispatch(geocodeSuccess(latlng))
+  })
+  .catch(err => console.log(err))
+}
+
+export const DELETE_LOCATION = "DELETE_LOCATION";
+
 export const deleteLocation = id => dispatch => {
   console.log('Deleted a location');
   // dispatch(makeLocationRequest())
