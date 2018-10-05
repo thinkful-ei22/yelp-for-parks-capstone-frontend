@@ -128,7 +128,7 @@ export const CREATE_USER_LOCATION = "CREATE_USER_LOCATION";
 export const createUserLocation = userId => dispatch => {
   let id = userId;
   console.log("user profile locations request initiated and this is the id", id);
-  dispatch(makeLoginRequest());
+  dispatch(userLocationRequest());
     return fetch(`${BACKEND_URL}/locations/?ownerId=${id}`, {
       method: 'GET'
     })
@@ -139,10 +139,10 @@ export const createUserLocation = userId => dispatch => {
     })
     .then(parsedResponse => {
       console.log('Parsed User Locations Response', parsedResponse)
-      dispatch(loginRequestSuccess(parsedResponse));
+      dispatch(userLocationRequestSuccess(parsedResponse));
       //dispatch(toggleRedirect());
     })
     .catch(err => {
-      dispatch(loginRequestError(err.message));
+      dispatch(userLocationRequestError(err.message));
     });
 }
