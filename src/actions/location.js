@@ -102,7 +102,7 @@ export const getOneLocation = id => dispatch => {
   const token = loadAuthToken();
   console.log(`getting location ${id}`);
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations/${id}`, {
+  return fetch(`${BACKEND_URL}/locations/${id}`, {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` }
   })

@@ -1,12 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleRedirect } from "../../actions/location";
 import LocationEditor from "./location-editor";
-import CommentForm from "../comments/comment-form";
-import CommentList from "../comments/comment-list";
-
+import CommentContainer from "../comments/comment-container";
 import { Redirect } from "react-router";
-import commentList from "../comments/comment-list";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -41,23 +37,7 @@ class LocationIndividual extends React.Component {
     console.log(this.state);
   };
 
-  //===========================for working with redirects========
-  // componentWillMount() {
-  //   this.props.dispatch(toggleRedirect(false));
-  // }
-
   render() {
-    //===========================for working with redirects========
-    // if (this.props.locationState.redirecting) {
-    //   return (
-    //     <Redirect
-    //       to={{
-    //         pathname: "/location/edit"
-    //       }}
-    //     />
-    //   );
-    // }
-    //============================================================
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
     } else if (this.state.redirectingToDashboard === true) {
@@ -99,8 +79,7 @@ class LocationIndividual extends React.Component {
         <p>{this.props.locationState.currentLocation.state}</p>
         <p>{this.props.locationState.currentLocation.zipCode}</p>
 
-        {/* <CommentList /> */}
-        {<CommentForm />}
+        {<CommentContainer />}
       </div>
     );
   }

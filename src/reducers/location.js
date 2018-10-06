@@ -9,6 +9,11 @@ import {
   TOGGLE_REDIRECT
 } from "../actions/location";
 
+import {
+  CREATE_COMMENT_SUCCESS,
+  DELETE_COMMENT_SUCCESS
+} from "../actions/comment";
+
 const initialState = {
   currentLocation: {},
   loading: false,
@@ -59,5 +64,32 @@ export default function locationReducer(state = initialState, action) {
   if (action.type === LOCATION_REQUEST_ERROR) {
     return { ...state, loading: false, error: action.payload };
   }
+
+  //COMMENT ACTION HANDLERS//====================================================
+
+  if (action.type === CREATE_COMMENT_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      currentLocation: {
+        ...state.currentLocation,
+        comments: state.currentLocation.comments.concat([action.payload])
+      }
+    };
+  }
+
+  if (action.type === DELETE_COMMENT_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      currentLocation: {
+        ...state.currentLocation,
+        comments: state.currentLocation.comments.filter(
+          comment => comment.id !== action.payload
+        )
+      }
+    };
+  }
+
   return state;
 }

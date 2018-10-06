@@ -42,7 +42,7 @@ export const createComment = commentObject => dispatch => {
   //start loading screen
   dispatch(makeCommentRequest());
   //dispatch a fetch request
-  fetch(`${BACKEND_URL}/comments`, {
+  return fetch(`${BACKEND_URL}/comments`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export const updateComment = (commentObject, id) => dispatch => {
   dispatch(makeCommentRequest());
   const token = loadAuthToken();
   console.log(id);
-  fetch(`${BACKEND_URL}/comments/${id}`, {
+  return fetch(`${BACKEND_URL}/comments/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export const deleteComment = id => dispatch => {
     .then(res => {
       console.log("obtained response");
       normalizeResponseErrors(res);
-      dispatch(deleteCommentSuccess());
+      dispatch(deleteCommentSuccess(id));
     })
     .catch(err => dispatch(commentRequestError(err)));
 };

@@ -4,22 +4,22 @@ import IndividualComment from "./individual-comment";
 
 class CommentList extends React.Component {
   render() {
-    if (this.props.locationState.currentLocation.comments === []) {
+    if (!this.props.locationState.currentLocation.comments) {
       return (
         <div>
-          <strong>No Comment</strong>
-          <small>(...does that count as a pun?)</small>
+          <strong>No Comments</strong>
+          <br />
+          <small>...does that count as a pun?</small>
         </div>
       );
     }
-    return <div />;
-    // return (
-    //   // <div>
-    //   //   {this.props.locationState.currentLocation.comments.map(comment => {
-    //   //     return <IndividualComment comment={comment} />;
-    //   //   })}
-    //   // </div>
-    // );
+    return (
+      <div>
+        {this.props.locationState.currentLocation.comments.map(comment => {
+          return <IndividualComment comment={comment} />;
+        })}
+      </div>
+    );
   }
 }
 
