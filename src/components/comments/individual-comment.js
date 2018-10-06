@@ -54,7 +54,9 @@ class IndividualComment extends React.Component {
 
     return (
       <div className="individual-comment" id={this.props.comment.ownerId}>
-        {editModeToggler}
+        {this.props.comment.ownerId === this.props.userState.currentUser.id
+          ? editModeToggler
+          : null}
         <big>User:</big>
         <p>{this.props.comment.ownerId}</p>
         <br />
@@ -71,4 +73,7 @@ class IndividualComment extends React.Component {
   }
 }
 
-export default connect()(IndividualComment);
+const mapStateToProps = state => ({
+  userState: state.user
+});
+export default connect(mapStateToProps)(IndividualComment);
