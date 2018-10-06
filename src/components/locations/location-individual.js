@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+import { createAuthor } from "../../actions/author";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
@@ -129,6 +130,9 @@ class LocationIndividual extends React.Component {
            &nbsp;{this.props.locationState.currentLocation.city}
            &nbsp;{this.props.locationState.currentLocation.state}
            &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
+
+        //Link to redirect to author's profile page
+        <p>author</p><Link to="/authorprofile" onClick={() => this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId))} >Author Profile</Link>
 
         {/*comments*/}
         {<CommentForm />}

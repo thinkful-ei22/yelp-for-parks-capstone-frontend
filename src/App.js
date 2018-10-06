@@ -9,6 +9,7 @@ import Dashboard from "./components/main/dashboard";
 import LocationForm from "./components/locations/location-form";
 import LocationIndividual from "./components/locations/location-individual";
 import UserProfile from "./components/user-profiles/user-profile";
+import AuthorProfile from "./components/author-profiles/author-profile";
 import { refreshAuthToken } from "./actions/login";
 
 export class App extends React.Component {
@@ -51,6 +52,7 @@ export class App extends React.Component {
         <Route path="/location/add" component={LocationForm} exact />
         <Route path="/location" component={LocationIndividual} exact />
         <Route path="/user" component={UserProfile} exact />
+        <Route path="/authorprofile" component={AuthorProfile} exact />
       </main>
     );
   }
