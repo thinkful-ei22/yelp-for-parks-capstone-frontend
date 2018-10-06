@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleRedirect } from "../../actions/location";
-import { createAuthor } from "../../actions/author";
+import { createAuthor, createAuthorLocation, toggleRedirectAuthor } from "../../actions/author";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
@@ -70,6 +70,17 @@ class LocationIndividual extends React.Component {
       );
     }
 
+    //For redirecting to author profile page
+    if (this.props.authorState.redirectingAuthor) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/authorprofile"
+          }}
+        />
+      );
+    }
+
     return (
       //later add a ternary in the classname to hide this unless owner id valid
       <div>
@@ -101,7 +112,10 @@ class LocationIndividual extends React.Component {
            &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
 
         //Link to redirect to author's profile page
-        <p>author</p><Link to="/authorprofile" onClick={() => this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId))} >Author Profile</Link>
+        <p>author</p><button type="button" onClick={() => {
+          this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId));
+          this.props.dispatch(createAuthorLocation(this.props.locationState.currentLocation.ownerId));
+        }} >Author Profile</button>
 
         {/*comments*/}
         {<CommentForm />}
@@ -114,6 +128,7 @@ class LocationIndividual extends React.Component {
 //connect this to state with mapstatetoprops
 //individual location obj passed as state
 const mapStateToProps = state => ({
-  locationState: state.location
+  locationState: state.location,
+  authorState: state.authorProfile
 });
 export default connect(mapStateToProps)(LocationIndividual);
