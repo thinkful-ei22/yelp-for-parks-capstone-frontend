@@ -13,7 +13,7 @@ import {
   loading: false,
   error: "",
   redirectingAuthor: false,
-  currentAuthorLocations: null,
+  currentAuthorLocations: [],
   loadingLocation: false,
   errorLocation: false,
 };
