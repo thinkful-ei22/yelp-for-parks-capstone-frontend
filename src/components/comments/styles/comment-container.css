@@ -1,0 +1,19 @@
+.comment-container {
+  background-color: gainsboro;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: relative;
+  height: inherit;
+  width: inherit;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  z-index: 300;
+}
