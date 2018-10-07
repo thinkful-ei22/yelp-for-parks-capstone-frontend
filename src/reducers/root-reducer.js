@@ -4,7 +4,6 @@ import registrationReducer from "./registration";
 import locationReducer from "./location";
 import commentReducer from "./comment";
 import authorReducer from "./author";
-import userReducer from "./user";
 
 const rootReducer = combineReducers({
   user: loginReducer,
