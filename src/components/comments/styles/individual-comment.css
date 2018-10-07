@@ -1,0 +1,12 @@
+.individual-comment p,
+.individual-comment strong {
+  margin: 0;
+}
+
+.individual-comment {
+  border: 1px, black;
+}
+
+.confirm-delete {
+  display: inline;
+}

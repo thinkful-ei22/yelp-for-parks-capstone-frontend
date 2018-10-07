@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleRedirect, updateImage, geocode } from "../../actions/location";
 import LocationEditor from "./location-editor";
-import CommentForm from "../comments/comment-form";
+import CommentContainer from "../comments/comment-container";
+import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+import { createAuthor } from "../../actions/author";
+//import CommentForm from "../comments/comment-form";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
@@ -66,17 +68,6 @@ class LocationIndividual extends React.Component {
   // }
 
   render() {
-    //===========================for working with redirects========
-    // if (this.props.locationState.redirecting) {
-    //   return (
-    //     <Redirect
-    //       to={{
-    //         pathname: "/location/edit"
-    //       }}
-    //     />
-    //   );
-    // }
-    //============================================================
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
     } else if (this.state.redirectingToDashboard === true) {
@@ -110,12 +101,10 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
-
         <div id="maproot">
           <LocationMap />
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
-
         <h1>{this.props.locationState.currentLocation.title}</h1>
         <img
           class="location-image"
@@ -149,9 +138,20 @@ class LocationIndividual extends React.Component {
           &nbsp;
           {this.props.locationState.currentLocation.zipCode}
         </p>
-
+        //Link to redirect to author's profile page
+        <p>author</p>
+        <Link
+          to="/authorprofile"
+          onClick={() =>
+            this.props.dispatch(
+              createAuthor(this.props.locationState.currentLocation.ownerId)
+            )
+          }
+        >
+          Author Profile
+        </Link>
+        {<CommentContainer />}
         {/*comments*/}
-        {<CommentForm />}
         <Link to="/dashboard">Dashboard</Link>
       </div>
     );

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getAllLocations } from "../../actions/location";
 import { Redirect } from "react-router";
 import LocationListItem from "./location-list-item";
-import './styles/location.css';
+import "./styles/location.css";
 
 class LocationList extends React.Component {
   constructor(props) {
@@ -14,8 +14,10 @@ class LocationList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.locationState)
-    this.props.dispatch(getAllLocations(`?ownerId=${this.props.currentUser.id}`));
+    console.log(this.props.locationState);
+    this.props.dispatch(
+      getAllLocations(/*`?ownerId=${this.props.currentUser.id}`*/)
+    );
   }
 
   toggleRedirecting(bool) {
@@ -44,7 +46,8 @@ class LocationList extends React.Component {
         ) : (
           this.props.locationState.locationList.map(location => {
             return (
-              <LocationListItem class="location-item"
+              <LocationListItem
+                class="location-item"
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />
