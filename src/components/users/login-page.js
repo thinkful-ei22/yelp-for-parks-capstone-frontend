@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
       );
     }
     return (
-      <div class="login-page">
+      <div className="login-page">
         <h2>Login</h2>
         <LoginForm />
         <Link to="/register">Create Account</Link>

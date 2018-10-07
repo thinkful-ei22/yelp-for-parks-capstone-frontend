@@ -1,8 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 import LocationEditor from "./location-editor";
 import CommentContainer from "../comments/comment-container";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+=======
+import { geocode, updateImage } from "../../actions/location";
+>>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
 import { createAuthor } from "../../actions/author";
 //import CommentForm from "../comments/comment-form";
 import { Link } from "react-router-dom";
@@ -57,10 +61,15 @@ class LocationIndividual extends React.Component {
       formData.append(i, file);
     });
 
+<<<<<<< HEAD
     this.props.dispatch(
       updateImage(this.props.locationState.currentLocation.id, formData)
     );
   };
+=======
+    this.props.dispatch(updateImage(this.props.locationState.currentLocation._id, formData))
+  }
+>>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
 
   //===========================for working with redirects========
   // componentWillMount() {
@@ -106,6 +115,7 @@ class LocationIndividual extends React.Component {
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
         <h1>{this.props.locationState.currentLocation.title}</h1>
+<<<<<<< HEAD
         <img
           class="location-image"
           src={this.props.locationState.currentLocation.image}
@@ -120,6 +130,12 @@ class LocationIndividual extends React.Component {
             }}
           >
             Change image
+=======
+        <img className="location-image" alt='location' src={this.props.locationState.currentLocation.image} />
+        <div className='button'>
+          <label htmlFor='single' style={{ fontWeight: "bold", color: 'blue', textDecoration: 'underline'}}>
+              Change image
+>>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
           </label>
           <input
             type="file"
@@ -129,6 +145,7 @@ class LocationIndividual extends React.Component {
           />
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
+<<<<<<< HEAD
         <p>
           {this.props.locationState.currentLocation.address}
           &nbsp;
@@ -151,6 +168,16 @@ class LocationIndividual extends React.Component {
           Author Profile
         </Link>
         {<CommentContainer />}
+=======
+        <p>{this.props.locationState.currentLocation.address}
+           &nbsp;{this.props.locationState.currentLocation.city}
+           &nbsp;{this.props.locationState.currentLocation.state}
+           &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
+
+        {'Link to redirect to author\'s profile page'}
+        <p>author</p><Link to="/authorprofile" onClick={() => this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId))} >Author Profile</Link>
+
+>>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>
       </div>

@@ -169,7 +169,7 @@ class LocationEditor extends React.Component {
             onClick={e => {
               e.preventDefault();
               this.props.dispatch(
-                updateLocation(this.props.locationState.currentLocation.id, {
+                updateLocation(this.props.locationState.currentLocation._id, {
                   title: this.title.value,
                   address: this.addressLine.value,
                   city: this.city.value,

@@ -5,6 +5,7 @@ import {
   UPDATE_IMAGE_REQUEST,
   UPDATE_IMAGE_SUCCESS,
   UPDATE_IMAGE_ERROR,
+  SET_PAGE,
   LOCATION_REQUEST_ERROR,
   MAKE_LOCATION_REQUEST,
   UPDATE_LOCATION,
@@ -24,6 +25,7 @@ const initialState = {
   error: "",
   redirecting: false,
   locationList: null,
+  page: 0,
   currentLatLng: {
     lat: 51.505,
     lng: -0.09
@@ -72,7 +74,10 @@ export default function locationReducer(state = initialState, action) {
     const locationToUpdate = state.locations.find(
       location => location.id === action.id
     );
-    return state;
+    return {
+      ...state,
+      locations: [...state.locations, locationToUpdate]
+    };
   }
   if (action.type === DELETE_LOCATION) {
     return {
@@ -87,6 +92,7 @@ export default function locationReducer(state = initialState, action) {
     return { ...state, loading: false, error: action.payload };
   }
 
+<<<<<<< HEAD
   //COMMENT ACTION HANDLERS//====================================================
 
   if (action.type === CREATE_COMMENT_SUCCESS) {
@@ -112,6 +118,12 @@ export default function locationReducer(state = initialState, action) {
       }
     };
   }
+=======
+  if (action.type === SET_PAGE) {
+    return Object.assign({}, state, { page: action.page });
+  }
+
+>>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
   if(action.type === GEOCODE_SUCCESS) {
     return { ...state, loading: false, currentLatLng: action.payload };
   }
