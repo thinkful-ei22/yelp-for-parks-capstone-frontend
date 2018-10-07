@@ -28,7 +28,6 @@ import { connect } from "react-redux";
             {locationsMap}
           </div>
         )
-
     }
 
     return (
