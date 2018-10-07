@@ -17,7 +17,7 @@ class LocationListItem extends React.Component {
       >
         <p>{this.props.locationObject.title}</p>
         <p>{this.props.locationObject.description}</p>
-        <img class="thumbnail" src={this.props.locationObject.image}></img>
+        <img className="thumbnail" src={this.props.locationObject.image}></img>
       </button>
     );
   }

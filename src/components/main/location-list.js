@@ -41,9 +41,9 @@ class LocationList extends React.Component {
             <p>There's nothing here! Do you live in Iowa?</p>{" "}
           </div>
         ) : (
-          this.props.locationState.locationList.map(location => {
+          this.props.locationState.locationList.map((location, i) => {
             return (
-              <LocationListItem class="location-item"
+              <LocationListItem className="location-item" key={i}
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />
