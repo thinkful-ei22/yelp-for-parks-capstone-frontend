@@ -5,11 +5,10 @@ import CommentContainer from "../comments/comment-container";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
 import { createAuthor } from "../../actions/author";
 //import CommentForm from "../comments/comment-form";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
-import './styles/location-individual.css';
-
+import "./styles/location-individual.css";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -27,8 +26,8 @@ class LocationIndividual extends React.Component {
       redirectingToDashboard: false
     });
     //console.log(this.state);
-    console.log("This is line 25", this.props.locationState)
-    this.props.dispatch(geocode(this.props.locationState))
+    console.log("This is line 25", this.props.locationState);
+    this.props.dispatch(geocode(this.props.locationState));
   }
 
   componentWillUnmount() {
@@ -49,17 +48,19 @@ class LocationIndividual extends React.Component {
   };
 
   onChange = e => {
-    const files = Array.from(e.target.files)
-    this.setState({ uploading: true })
+    const files = Array.from(e.target.files);
+    this.setState({ uploading: true });
 
-    const formData = new FormData()
+    const formData = new FormData();
 
     files.forEach((file, i) => {
-      formData.append(i, file)
-    })
+      formData.append(i, file);
+    });
 
-    this.props.dispatch(updateImage(this.props.locationState.currentLocation.id, formData))
-  }
+    this.props.dispatch(
+      updateImage(this.props.locationState.currentLocation.id, formData)
+    );
+  };
 
   //===========================for working with redirects========
   // componentWillMount() {
@@ -100,30 +101,55 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
-
         <div id="maproot">
           <LocationMap />
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
-
-
         <h1>{this.props.locationState.currentLocation.title}</h1>
-                <img class="location-image" src={this.props.locationState.currentLocation.image} />
-        <div className='button'>
-          <label htmlFor='single' style={{ fontWeight: "bold", color: 'blue', textDecoration: 'underline'}}>
-              Change image
+        <img
+          class="location-image"
+          src={this.props.locationState.currentLocation.image}
+        />
+        <div className="button">
+          <label
+            htmlFor="single"
+            style={{
+              fontWeight: "bold",
+              color: "blue",
+              textDecoration: "underline"
+            }}
+          >
+            Change image
           </label>
-          <input type='file' id='single' onChange={e => this.onChange(e)} style={{ visibility: "hidden" }}/>
+          <input
+            type="file"
+            id="single"
+            onChange={e => this.onChange(e)}
+            style={{ visibility: "hidden" }}
+          />
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
-        <p>{this.props.locationState.currentLocation.address}
-           &nbsp;{this.props.locationState.currentLocation.city}
-           &nbsp;{this.props.locationState.currentLocation.state}
-           &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
-
+        <p>
+          {this.props.locationState.currentLocation.address}
+          &nbsp;
+          {this.props.locationState.currentLocation.city}
+          &nbsp;
+          {this.props.locationState.currentLocation.state}
+          &nbsp;
+          {this.props.locationState.currentLocation.zipCode}
+        </p>
         //Link to redirect to author's profile page
-        <p>author</p><Link to="/authorprofile" onClick={() => this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId))} >Author Profile</Link>
-
+        <p>author</p>
+        <Link
+          to="/authorprofile"
+          onClick={() =>
+            this.props.dispatch(
+              createAuthor(this.props.locationState.currentLocation.ownerId)
+            )
+          }
+        >
+          Author Profile
+        </Link>
         {<CommentContainer />}
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>
