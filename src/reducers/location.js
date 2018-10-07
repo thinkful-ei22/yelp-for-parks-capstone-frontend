@@ -32,8 +32,8 @@ const initialState = {
     lat: 51.505,
     lng: -0.09
   },
-  currentLocationByCity: {},
-  currentLocationByKeyword: {}
+  currentLocationByCity: [],
+  currentLocationByKeyword: []
 };
 
 export default function locationReducer(state = initialState, action) {
