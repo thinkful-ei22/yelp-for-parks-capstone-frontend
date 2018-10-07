@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { getAllLocations } from "../../actions/location";
 import { Redirect } from "react-router";
-
 import LocationListItem from "./location-list-item";
+import './styles/location.css';
 
 class LocationList extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class LocationList extends React.Component {
         ) : (
           this.props.locationState.locationList.map(location => {
             return (
-              <LocationListItem
+              <LocationListItem class="location-item"
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />

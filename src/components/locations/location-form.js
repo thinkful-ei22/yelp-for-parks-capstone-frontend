@@ -2,17 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import { createLocation, toggleRedirect } from "../../actions/location";
 import { Redirect } from "react-router";
+import { Link } from 'react-router-dom';
+import './styles/location-form.css';
 
 class LocationForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     this.props.dispatch(toggleRedirect(false));
   }
   componentWillUnmount() {
     this.props.dispatch(toggleRedirect(false));
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    const data = new FormData();
+    data.append('title', this.title.value);
+    data.append('address', this.addressLine.value);
+    data.append('city', this.city.value);
+    data.append('state', this.stateName.value);
+    data.append('zipCode', this.zipCode.value);
+    data.append('description', this.description.value);
+    data.append('specialInstructions', this.specialInstructions.value);
+    data.append('image', this.uploadImage.files[0]);
+    this.props.dispatch(
+      createLocation(data)
+    );
   }
 
   render() {
@@ -29,7 +44,7 @@ class LocationForm extends React.Component {
     //else, we present the form.
     return (
       <div className="location-form-container">
-        <form>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -62,7 +77,7 @@ class LocationForm extends React.Component {
           />
 
           <label htmlFor="state">State</label>
-          <select id="state" ref={input => (this.state = input)}>
+          <select id="state" ref={input => (this.stateName = input)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -123,6 +138,14 @@ class LocationForm extends React.Component {
             name="zipCode-input-box"
             placeholder="30301"
           />
+          <label htmlFor="file">Image</label>
+          <input
+            type="file"
+            id="file"
+            ref={(ref) => { this.uploadImage = ref; }}
+            name="file"
+            placeholder="upload an image"
+          />
 
           <div>
             <fieldset>
@@ -166,27 +189,13 @@ class LocationForm extends React.Component {
           />
 
           <button
-            type="button"
+            type="submit"
             name="submit"
-            onClick={e => {
-              e.preventDefault();
-              this.props.dispatch(
-                createLocation({
-                  title: this.title.value,
-                  address: this.addressLine.value,
-                  city: this.city.value,
-                  state: this.state.value,
-                  zipCode: this.zipCode.value,
-                  description: this.description.value,
-                  specialInstructions: this.specialInstructions.value
-                  // amenities:
-                })
-              );
-            }}
           >
             Submit
           </button>
         </form>
+        <Link to="/dashboard">Back to Dashboard</Link>
       </div>
     );
   }
