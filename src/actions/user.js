@@ -1,4 +1,4 @@
-import { loadAuthToken, loadUser, normalizeResponseErrors } from "../utils";
+import { loadUser, normalizeResponseErrors } from "../utils";
 import { BACKEND_URL } from "../config";
  export const USER_REQUEST = "USER_REQUEST";
 export const userRequest = () => ({

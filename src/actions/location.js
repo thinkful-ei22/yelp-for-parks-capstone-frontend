@@ -1,6 +1,5 @@
 import { loadAuthToken, normalizeResponseErrors } from "../utils";
 import { BACKEND_URL } from "../config";
-import axios from 'axios';
 // import { browserHistory } from "react-router";
 
 export const MAKE_LOCATION_REQUEST = 'MAKE_LOCATION_REQUEST';
@@ -53,6 +52,12 @@ export const UPDATE_IMAGE_ERROR = 'UPDATE_IMAGE_ERROR';
 export const updateImageError = err => ({
   type: UPDATE_IMAGE_ERROR,
   payload: err
+});
+
+export const SET_PAGE = 'SET_PAGE';
+export const setPage = page => ({
+  type: SET_PAGE,
+  page
 });
 
 export const createLocation = locationObject => dispatch => {
@@ -163,11 +168,11 @@ export const getOneLocation = id => dispatch => {
     });
 };
 
-export const getAllLocations = () => dispatch => {
+export const getAllLocations = (page = 0) => dispatch => {
   const token = loadAuthToken();
   console.log('getting all locations');
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations`, {
+  fetch(`${BACKEND_URL}/locations?page=${page}`, {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` }
   })

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+import { geocode, updateImage } from "../../actions/location";
 import { createAuthor } from "../../actions/author";
 import LocationEditor from "./location-editor";
 import CommentForm from "../comments/comment-form";
@@ -57,7 +57,7 @@ class LocationIndividual extends React.Component {
       formData.append(i, file)
     })
 
-    this.props.dispatch(updateImage(this.props.locationState.currentLocation.id, formData))
+    this.props.dispatch(updateImage(this.props.locationState.currentLocation._id, formData))
   }
 
   //===========================for working with redirects========
@@ -118,7 +118,7 @@ class LocationIndividual extends React.Component {
 
 
         <h1>{this.props.locationState.currentLocation.title}</h1>
-                <img class="location-image" src={this.props.locationState.currentLocation.image} />
+        <img className="location-image" alt='location' src={this.props.locationState.currentLocation.image} />
         <div className='button'>
           <label htmlFor='single' style={{ fontWeight: "bold", color: 'blue', textDecoration: 'underline'}}>
               Change image
@@ -131,7 +131,7 @@ class LocationIndividual extends React.Component {
            &nbsp;{this.props.locationState.currentLocation.state}
            &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
 
-        //Link to redirect to author's profile page
+        {'Link to redirect to author\'s profile page'}
         <p>author</p><Link to="/authorprofile" onClick={() => this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId))} >Author Profile</Link>
 
         {/*comments*/}
