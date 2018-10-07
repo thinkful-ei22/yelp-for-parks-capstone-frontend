@@ -12,7 +12,9 @@ import {
   TOGGLE_REDIRECT,
   GEOCODE_SUCCESS,
   GET_LOCATIONS_CITY_SUCCESS,
-  LOCATION_CITY_REQUEST_ERROR
+  LOCATION_CITY_REQUEST_ERROR,
+  GET_LOCATIONS_KEYWORD_SUCCESS,
+  LOCATION_KEYWORD_REQUEST_ERROR
 } from "../actions/location";
 
 import {
@@ -30,7 +32,8 @@ const initialState = {
     lat: 51.505,
     lng: -0.09
   },
-  currentLocationByCity: {}
+  currentLocationByCity: {},
+  currentLocationByKeyword: {}
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -132,6 +135,20 @@ if(action.type === GET_LOCATIONS_CITY_SUCCESS) {
 }
 
 if(action.type === LOCATION_CITY_REQUEST_ERROR) {
+  return { ...state, loading: false, error: action.payload };
+}
+
+//FILTER KEYWORD ACTIONHANDLER//=================================================
+
+if(action.type === GET_LOCATIONS_KEYWORD_SUCCESS) {
+  return {
+    ...state,
+    loading: false,
+    currentLocationByKeyword: action.payload
+  }
+}
+
+if(action.type === LOCATION_KEYWORD_REQUEST_ERROR) {
   return { ...state, loading: false, error: action.payload };
 }
 

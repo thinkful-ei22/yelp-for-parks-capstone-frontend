@@ -264,3 +264,39 @@ export const filterCity = cityInput => dispatch => {
       dispatch(locationCityRequestError(err.message));
     });
 }
+
+export const GET_LOCATIONS_KEYWORD_SUCCESS = "GET_LOCATIONS_KEYWORD_SUCCESS";
+export const getLocationsKeywordSuccess = locationKeywordList => ({
+  type: GET_LOCATIONS_KEYWORD_SUCCESS,
+  payload: locationKeywordList
+})
+
+export const LOCATION_KEYWORD_REQUEST_ERROR = 'LOCATION_KEYWORD_REQUEST_ERROR';
+export const locationKeywordRequestError = err => ({
+  type: LOCATION_KEYWORD_REQUEST_ERROR,
+  payload: err
+});
+
+export const FILTER_KEYWORD = "FILTER_KEYWORD";
+export const filterKeyword = keywordInput => dispatch => {
+  const token = loadAuthToken();
+  let keyword = keywordInput;
+  console.log('Keyword made it into the filterKeyword function', keyword);
+
+  fetch(`${BACKEND_URL}/locations/?searchTerm=${keyword}`, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log('parsed response');
+      console.log(parsedResponse);
+      dispatch(getLocationsKeywordSuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(locationKeywordRequestError(err.message));
+    });
+}
