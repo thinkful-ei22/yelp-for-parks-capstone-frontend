@@ -10,7 +10,6 @@ const rootReducer = combineReducers({
   registration: registrationReducer,
   location: locationReducer,
   comments: commentReducer,
-  userProfile: userReducer,
   authorProfile: authorReducer
 });
 
