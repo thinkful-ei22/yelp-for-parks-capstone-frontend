@@ -49,11 +49,23 @@ class LocationList extends React.Component {
     let nextBtn;
     let prevBtn;
     if (this.props.locationState.page > 0) {
-      prevBtn = <button className='prevBtn' onClick={() => this.previous()}>Previous</button>;
+      prevBtn = (
+        <button className="prevBtn" onClick={() => this.previous()}>
+          Previous
+        </button>
+      );
     }
     if (this.props.locationState.locationList) {
-      if (this.props.locationState.locationList.length > 2){
-        nextBtn = <button className='nextBtn' id='nextButton' onClick={this.next.bind(this)}>Next</button>;
+      if (this.props.locationState.locationList.length > 2) {
+        nextBtn = (
+          <button
+            className="nextBtn"
+            id="nextButton"
+            onClick={this.next.bind(this)}
+          >
+            Next
+          </button>
+        );
       }
     }
 
@@ -67,12 +79,9 @@ class LocationList extends React.Component {
         ) : (
           this.props.locationState.locationList.map((location, i) => {
             return (
-<<<<<<< HEAD
               <LocationListItem
-                class="location-item"
-=======
-              <LocationListItem className="location-item" key={i}
->>>>>>> 5e84f0cdea002a1d8c2f628c4f7a57184d04fcc3
+                className="location-item"
+                key={i}
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />
