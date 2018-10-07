@@ -10,6 +10,7 @@ class FilterCity extends React.Component {
     e.preventDefault();
     console.log(this.city.value)
     this.props.dispatch(filterCity(this.city.value))
+    this.city.value = '';
   }
 
     render() {

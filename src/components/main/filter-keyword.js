@@ -10,6 +10,7 @@ class FilterKeyword extends React.Component {
     e.preventDefault();
     console.log(this.keyword.value)
     this.props.dispatch(filterKeyword(this.keyword.value))
+    this.keyword.value = '';
   }
 
     render() {
