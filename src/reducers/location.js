@@ -10,7 +10,9 @@ import {
   UPDATE_LOCATION,
   DELETE_LOCATION,
   TOGGLE_REDIRECT,
-  GEOCODE_SUCCESS
+  GEOCODE_SUCCESS,
+  GET_LOCATIONS_CITY_SUCCESS,
+  LOCATION_CITY_REQUEST_ERROR
 } from "../actions/location";
 
 import {
@@ -27,7 +29,8 @@ const initialState = {
   currentLatLng: {
     lat: 51.505,
     lng: -0.09
-  }
+  },
+  currentLocationByCity: {}
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -112,8 +115,25 @@ export default function locationReducer(state = initialState, action) {
       }
     };
   }
+
+  //LOCATION MAP ACTION HANDLER//================================================
   if(action.type === GEOCODE_SUCCESS) {
     return { ...state, loading: false, currentLatLng: action.payload };
   }
-  return state;
+
+//FILTER CITY ACTION HANDLER//===================================================
+
+if(action.type === GET_LOCATIONS_CITY_SUCCESS) {
+  return {
+    ...state,
+    loading: false,
+    currentLocationByCity: action.payload
+  }
+}
+
+if(action.type === LOCATION_CITY_REQUEST_ERROR) {
+  return { ...state, loading: false, error: action.payload };
+}
+
+return state;
 }

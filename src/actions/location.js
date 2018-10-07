@@ -228,3 +228,39 @@ export const deleteLocation = id => dispatch => {
 
   // })
 };
+
+export const GET_LOCATIONS_CITY_SUCCESS = "GET_LOCATIONS_CITY_SUCCESS";
+export const getLocationsCitySuccess = locationCityList => ({
+  type: GET_LOCATIONS_CITY_SUCCESS,
+  payload: locationCityList
+})
+
+export const LOCATION_CITY_REQUEST_ERROR = 'LOCATION_CITY_REQUEST_ERROR';
+export const locationCityRequestError = err => ({
+  type: LOCATION_CITY_REQUEST_ERROR,
+  payload: err
+});
+
+export const FILTER_CITY = "FILTER_CITY";
+export const filterCity = cityInput => dispatch => {
+  const token = loadAuthToken();
+  let city = cityInput;
+  console.log('City made it into the filterCity function', city);
+
+  fetch(`${BACKEND_URL}/locations/?city=${city}`, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log('parsed response');
+      console.log(parsedResponse);
+      dispatch(getLocationsCitySuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(locationCityRequestError(err.message));
+    });
+}
