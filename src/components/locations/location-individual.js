@@ -4,8 +4,7 @@ import LocationEditor from "./location-editor";
 import CommentContainer from "../comments/comment-container";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
 import { createAuthor } from "../../actions/author";
-import LocationEditor from "./location-editor";
-import CommentForm from "../comments/comment-form";
+//import CommentForm from "../comments/comment-form";
 import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
@@ -127,7 +126,6 @@ class LocationIndividual extends React.Component {
 
         {<CommentContainer />}
         {/*comments*/}
-        {<CommentForm />}
         <Link to="/dashboard">Dashboard</Link>
       </div>
     );
