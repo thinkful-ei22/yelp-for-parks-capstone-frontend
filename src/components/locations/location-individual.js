@@ -20,13 +20,15 @@ class LocationIndividual extends React.Component {
       editing: false,
       editButtonVisible: false,
       redirectingToDashboard: false,
+      redirectingToAuthorProfile: false,
       uploading: false
     };
   }
 
   componentWillMount() {
     this.setState({
-      redirectingToDashboard: false
+      redirectingToDashboard: false,
+      redirectingToAuthorProfile: false
     });
     //console.log(this.state);
     console.log("This is line 25", this.props.locationState);
@@ -35,7 +37,8 @@ class LocationIndividual extends React.Component {
 
   componentWillUnmount() {
     this.setState({
-      redirectingToDashboard: false
+      redirectingToDashboard: false,
+      redirectingToAuthorProfile: false
     });
     console.log(this.state);
   }
@@ -46,8 +49,18 @@ class LocationIndividual extends React.Component {
   };
 
   redirectToDashboard = bool => {
-    this.setState({ redirectingToDashboard: bool });
+    this.setState({
+      redirectingToDashboard: bool,
+      redirectingToAuthorProfile: false
+    });
     console.log(this.state);
+  };
+
+  redirectToAuthorProfile = bool => {
+    this.setState({
+      redirectingToAuthorProfile: bool,
+      redirectingToDashboard: false
+    });
   };
 
   onChange = e => {
@@ -78,6 +91,14 @@ class LocationIndividual extends React.Component {
         <Redirect
           to={{
             pathname: "/dashboard"
+          }}
+        />
+      );
+    } else if (this.state.redirectingToAuthorProfile === true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/authorprofile"
           }}
         />
       );
