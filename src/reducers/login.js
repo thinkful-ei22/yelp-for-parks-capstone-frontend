@@ -14,8 +14,8 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
-  redirecting: false, 
-  currentUserLocations: null,
+  redirecting: false,
+  currentUserLocations: [],
   loadingLocation: false,
   errorLocation: false,
   redirectingLocation: false

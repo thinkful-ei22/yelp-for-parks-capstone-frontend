@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { geocode, updateImage } from "../../actions/location";
-import { createAuthor } from "../../actions/author";
-import { Link } from "react-router-dom";
+import LocationEditor from "./location-editor";
+import { createAuthor, createAuthorLocation, toggleRedirectAuthor } from "../../actions/author";
+import CommentContainer from "../comments/comment-container";
+import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
-import LocationEditor from "./location-editor";
-import "./styles/location-individual.css";
+import './styles/location-individual.css';
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class LocationIndividual extends React.Component {
       redirectingToDashboard: false
     });
     //console.log(this.state);
-    console.log("This is line 25", this.props.locationState);
-    this.props.dispatch(geocode(this.props.locationState));
+    console.log("This is line 25", this.props.locationState)
+    this.props.dispatch(geocode(this.props.locationState))
   }
 
   componentWillUnmount() {
@@ -46,14 +47,14 @@ class LocationIndividual extends React.Component {
   };
 
   onChange = e => {
-    const files = Array.from(e.target.files);
-    this.setState({ uploading: true });
+    const files = Array.from(e.target.files)
+    this.setState({ uploading: true })
 
-    const formData = new FormData();
+    const formData = new FormData()
 
     files.forEach((file, i) => {
-      formData.append(i, file);
-    });
+      formData.append(i, file)
+    })
 
     this.props.dispatch(
       updateImage(this.props.locationState.currentLocation.id, formData)
@@ -73,6 +74,17 @@ class LocationIndividual extends React.Component {
         <Redirect
           to={{
             pathname: "/dashboard"
+          }}
+        />
+      );
+    }
+
+    //For redirecting to author profile page
+    if (this.props.authorState.redirectingAuthor) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/authorprofile"
           }}
         />
       );
@@ -99,58 +111,34 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
+
         <div id="maproot">
           <LocationMap />
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
+
+
         <h1>{this.props.locationState.currentLocation.title}</h1>
-        <img
-          className="location-image"
-          alt="location"
-          src={this.props.locationState.currentLocation.image}
-        />
-        <div className="button">
-          <label
-            htmlFor="single"
-            style={{
-              fontWeight: "bold",
-              color: "blue",
-              textDecoration: "underline"
-            }}
-          >
-            Change image
+        <img className="location-image" alt='location' src={this.props.locationState.currentLocation.image} />
+        <div className='button'>
+          <label htmlFor='single' style={{ fontWeight: "bold", color: 'blue', textDecoration: 'underline'}}>
+              Change image
           </label>
-          <input
-            type="file"
-            id="single"
-            onChange={e => this.onChange(e)}
-            style={{ visibility: "hidden" }}
-          />
+          <input type='file' id='single' onChange={e => this.onChange(e)} style={{ visibility: "hidden" }}/>
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
-        <p>
-          {this.props.locationState.currentLocation.address}
-          &nbsp;
-          {this.props.locationState.currentLocation.city}
-          &nbsp;
-          {this.props.locationState.currentLocation.state}
-          &nbsp;
-          {this.props.locationState.currentLocation.zipCode}
-        </p>
 
-        {"Link to redirect to author's profile page"}
-        <p>author</p>
-        <Link
-          to="/authorprofile"
-          onClick={() =>
-            this.props.dispatch(
-              createAuthor(this.props.locationState.currentLocation.ownerId)
-            )
-          }
-        >
-          Author Profile
-        </Link>
+        <p>{this.props.locationState.currentLocation.address}
+           &nbsp;{this.props.locationState.currentLocation.city}
+           &nbsp;{this.props.locationState.currentLocation.state}
+           &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
 
+        {'Link to redirect to author\'s profile page'}
+        <p>author</p><button type="button" onClick={() => {
+          this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId));
+          this.props.dispatch(createAuthorLocation(this.props.locationState.currentLocation.ownerId));
+        }} >Author Profile</button>
+        {<CommentContainer />}
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>
       </div>
@@ -161,6 +149,7 @@ class LocationIndividual extends React.Component {
 //connect this to state with mapstatetoprops
 //individual location obj passed as state
 const mapStateToProps = state => ({
-  locationState: state.location
+  locationState: state.location,
+  authorState: state.authorProfile
 });
 export default connect(mapStateToProps)(LocationIndividual);

@@ -92,6 +92,9 @@ export default function locationReducer(state = initialState, action) {
     return { ...state, loading: false, error: action.payload };
   }
 
+  if (action.type === SET_PAGE) {
+    return Object.assign({}, state, { page: action.page });
+  }
   //COMMENT ACTION HANDLERS//====================================================
 
   if (action.type === CREATE_COMMENT_SUCCESS) {
@@ -117,11 +120,12 @@ export default function locationReducer(state = initialState, action) {
       }
     };
   }
+
   if (action.type === SET_PAGE) {
     return Object.assign({}, state, { page: action.page });
   }
 
-  if (action.type === GEOCODE_SUCCESS) {
+  if(action.type === GEOCODE_SUCCESS) {
     return { ...state, loading: false, currentLatLng: action.payload };
   }
   return state;
