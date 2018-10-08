@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getOneLocation } from "../../actions/location";
-import './styles/location-list-item.css';
+import "./styles/location-list-item.css";
 
 class LocationListItem extends React.Component {
   render() {
@@ -17,7 +17,11 @@ class LocationListItem extends React.Component {
       >
         <p>{this.props.locationObject.title}</p>
         <p>{this.props.locationObject.description}</p>
-        <img className="thumbnail" alt='location' src={this.props.locationObject.image}></img>
+        <img
+          className="thumbnail"
+          alt="location"
+          src={this.props.locationObject.image}
+        />
       </button>
     );
   }

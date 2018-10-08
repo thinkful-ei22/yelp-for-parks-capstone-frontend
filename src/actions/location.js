@@ -2,85 +2,85 @@ import { loadAuthToken, normalizeResponseErrors } from "../utils";
 import { BACKEND_URL } from "../config";
 // import { browserHistory } from "react-router";
 
-export const MAKE_LOCATION_REQUEST = 'MAKE_LOCATION_REQUEST';
+export const MAKE_LOCATION_REQUEST = "MAKE_LOCATION_REQUEST";
 export const makeLocationRequest = () => ({
   type: MAKE_LOCATION_REQUEST
 });
 
-export const TOGGLE_REDIRECT = 'TOGGLE_REDIRECT';
+export const TOGGLE_REDIRECT = "TOGGLE_REDIRECT";
 export const toggleRedirect = bool => ({
   type: TOGGLE_REDIRECT,
   payload: bool
 });
 
-export const CREATE_LOCATION_SUCCESS = 'CREATE_LOCATION_SUCCESS';
+export const CREATE_LOCATION_SUCCESS = "CREATE_LOCATION_SUCCESS";
 export const createLocationSuccess = locationObject => ({
   type: CREATE_LOCATION_SUCCESS,
   payload: locationObject
 });
 
-export const LOCATION_REQUEST_ERROR = 'LOCATION_REQUEST_ERROR';
+export const LOCATION_REQUEST_ERROR = "LOCATION_REQUEST_ERROR";
 export const locationRequestError = err => ({
   type: LOCATION_REQUEST_ERROR,
   payload: err
 });
 
-export const GET_ONE_LOCATION_SUCCESS = 'GET_ONE_LOCATION_SUCCESS';
+export const GET_ONE_LOCATION_SUCCESS = "GET_ONE_LOCATION_SUCCESS";
 export const getOneLocationSuccess = locationObject => ({
   type: GET_ONE_LOCATION_SUCCESS,
   payload: locationObject
 });
 
-export const GET_ALL_LOCATIONS_SUCCESS = 'GET_ALL_LOCATIONS_SUCCESS';
+export const GET_ALL_LOCATIONS_SUCCESS = "GET_ALL_LOCATIONS_SUCCESS";
 export const getAllLocationsSuccess = locationList => ({
   type: GET_ALL_LOCATIONS_SUCCESS,
   payload: locationList
 });
 
-export const UPDATE_IMAGE_REQUEST = 'UPDATE_IMAGE_REQUEST';
+export const UPDATE_IMAGE_REQUEST = "UPDATE_IMAGE_REQUEST";
 export const updateImageRequest = () => ({
   type: UPDATE_IMAGE_REQUEST
 });
 
-export const UPDATE_IMAGE_SUCCESS = 'UPDATE_IMAGE_SUCCESS';
+export const UPDATE_IMAGE_SUCCESS = "UPDATE_IMAGE_SUCCESS";
 export const updateImageSuccess = updatedLocationObject => ({
   type: UPDATE_IMAGE_SUCCESS,
   payload: updatedLocationObject
 });
 
-export const UPDATE_IMAGE_ERROR = 'UPDATE_IMAGE_ERROR';
+export const UPDATE_IMAGE_ERROR = "UPDATE_IMAGE_ERROR";
 export const updateImageError = err => ({
   type: UPDATE_IMAGE_ERROR,
   payload: err
 });
 
-export const SET_PAGE = 'SET_PAGE';
+export const SET_PAGE = "SET_PAGE";
 export const setPage = page => ({
   type: SET_PAGE,
   page
 });
 
 export const createLocation = locationObject => dispatch => {
-  console.log('request initiated');
+  console.log("request initiated");
   //grab the token from localstorage
   const token = loadAuthToken();
   //start loading screen
   dispatch(makeLocationRequest());
   //dispatch a fetch request
   fetch(`${BACKEND_URL}/locations`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     },
-    body: locationObject,
+    body: locationObject
   })
     .then(res => {
-      console.log('obtained response');
+      console.log("obtained response");
       normalizeResponseErrors(res);
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('parsed response');
+      console.log("parsed response");
       // browserHistory.push(`${parsedResponse.location}`);
       console.log(parsedResponse);
       dispatch(createLocationSuccess(parsedResponse));
@@ -91,28 +91,27 @@ export const createLocation = locationObject => dispatch => {
     });
 };
 
-
-export const UPDATE_LOCATION = 'UPDATE_LOCATION';
+export const UPDATE_LOCATION = "UPDATE_LOCATION";
 export const updateLocation = (id, locationObject) => dispatch => {
-  console.log('Updating location');
+  console.log("Updating location");
   dispatch(makeLocationRequest());
   const token = loadAuthToken();
   console.log(id);
   fetch(`${BACKEND_URL}/locations/${id}`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify(locationObject)
   })
     .then(res => {
-      console.log('obtained response');
+      console.log("obtained response");
       normalizeResponseErrors(res);
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('parsed response');
+      console.log("parsed response");
       console.log(parsedResponse);
       dispatch(createLocationSuccess(parsedResponse));
       dispatch(toggleRedirect());
@@ -126,7 +125,7 @@ export const updateImage = (id, formData) => dispatch => {
   dispatch(updateImageRequest());
   const token = loadAuthToken();
   fetch(`${BACKEND_URL}/locations/${id}/image`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`
     },
@@ -137,7 +136,7 @@ export const updateImage = (id, formData) => dispatch => {
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('parsed response');
+      console.log("parsed response");
       console.log(parsedResponse);
       dispatch(updateImageSuccess(parsedResponse));
       dispatch(toggleRedirect());
@@ -145,7 +144,6 @@ export const updateImage = (id, formData) => dispatch => {
     .catch(err => {
       dispatch(updateImageError(err.message));
     });
-
 };
 
 export const getOneLocation = id => dispatch => {
@@ -162,7 +160,7 @@ export const getOneLocation = id => dispatch => {
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('stored new location');
+      console.log("stored new location");
       console.log(parsedResponse);
       dispatch(getOneLocationSuccess(parsedResponse));
     });
@@ -170,7 +168,7 @@ export const getOneLocation = id => dispatch => {
 
 export const getAllLocations = (page = 0) => dispatch => {
   const token = loadAuthToken();
-  console.log('getting all locations');
+  console.log("getting all locations");
   dispatch(makeLocationRequest());
   fetch(`${BACKEND_URL}/locations?page=${page}`, {
     method: 'GET',
@@ -181,7 +179,7 @@ export const getAllLocations = (page = 0) => dispatch => {
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('parsed response');
+      console.log("parsed response");
       console.log(parsedResponse);
       dispatch(getAllLocationsSuccess(parsedResponse));
     })
@@ -190,12 +188,11 @@ export const getAllLocations = (page = 0) => dispatch => {
     });
 };
 
-
-export const GEOCODE_SUCCESS = 'GEOCODE_SUCCESS'
-export const geocodeSuccess = (latlng) => ({
+export const GEOCODE_SUCCESS = "GEOCODE_SUCCESS";
+export const geocodeSuccess = latlng => ({
   type: GEOCODE_SUCCESS,
   payload: latlng
-})
+});
 
 export const geocode = locationObject => dispatch => {
   const token = loadAuthToken();
@@ -203,8 +200,8 @@ export const geocode = locationObject => dispatch => {
     adminDistrict: locationObject.currentLocation.state,
     postalCode: locationObject.currentLocation.zipCode,
     locality: locationObject.currentLocation.city,
-    addressLine: locationObject.currentLocation.address,
-  }
+    addressLine: locationObject.currentLocation.address
+  };
 
   fetch(`${BACKEND_URL}/locationmap/`, {
     method: "POST",
@@ -214,20 +211,20 @@ export const geocode = locationObject => dispatch => {
     },
     body: JSON.stringify(locationMapObject)
   })
-  .then(res => {
-    normalizeResponseErrors(res);
-    return res.json();
-  })
-  .then(latlng => {
-    dispatch(geocodeSuccess(latlng))
-  })
-  .catch(err => console.log(err))
-}
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(latlng => {
+      dispatch(geocodeSuccess(latlng));
+    })
+    .catch(err => console.log(err));
+};
 
 export const DELETE_LOCATION = "DELETE_LOCATION";
 
 export const deleteLocation = id => dispatch => {
-  console.log('Deleted a location');
+  console.log("Deleted a location");
   // dispatch(makeLocationRequest())
   // fetch(`${BACKEND_URL}/${id}`, {
 

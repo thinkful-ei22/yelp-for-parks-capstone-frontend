@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createAuthor, createAuthorLocation, toggleRedirectAuthor } from "../../actions/author";
 import LocationEditor from "./location-editor";
+import { createAuthor, createAuthorLocation, toggleRedirectAuthor } from "../../actions/author";
 import CommentContainer from "../comments/comment-container";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
 import {Link} from 'react-router-dom';
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
 import './styles/location-individual.css';
-
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -57,8 +56,10 @@ class LocationIndividual extends React.Component {
       formData.append(i, file)
     })
 
-    this.props.dispatch(updateImage(this.props.locationState.currentLocation.id, formData))
-  }
+    this.props.dispatch(
+      updateImage(this.props.locationState.currentLocation.id, formData)
+    );
+  };
 
   //===========================for working with redirects========
   // componentWillMount() {
@@ -126,12 +127,13 @@ class LocationIndividual extends React.Component {
           <input type='file' id='single' onChange={e => this.onChange(e)} style={{ visibility: "hidden" }}/>
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
+
         <p>{this.props.locationState.currentLocation.address}
            &nbsp;{this.props.locationState.currentLocation.city}
            &nbsp;{this.props.locationState.currentLocation.state}
            &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
 
-        //Link to redirect to author's profile page
+        {'Link to redirect to author\'s profile page'}
         <p>author</p><button type="button" onClick={() => {
           this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId));
           this.props.dispatch(createAuthorLocation(this.props.locationState.currentLocation.ownerId));
