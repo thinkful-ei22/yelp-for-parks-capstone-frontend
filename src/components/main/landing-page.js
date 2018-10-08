@@ -13,24 +13,26 @@ export function LandingPage(props) {
 
   return (
     <div>
-      <div className="intro-text">
+      <div className="intro-topper">
         <h1>GO helps you explore the great outdoors - <br/>
           right in your own neighborhood</h1>
+      </div>
 
-          <h5>Recommend your favorite nature sites: hiking <br/>
+      <div className="intro-text">
+          <h3>Recommend your favorite nature sites: hiking <br/>
           trails, parks, ponds, mountains, stargazing, <br/>
-          campgrounds...the sky is the limit!</h5>
-
+          campgrounds...the sky is the limit!</h3><br/>
           <img className="backpack" src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png" />
-
-          <h5>See what places other users cannot<br/>
-          talking about</h5>
+          <br/>
+          <br/>
+          <h3>See what places other users cannot<br/>
+          talking about</h3>
 
           <img className="tent" src="https://i.postimg.cc/mDSPCvmX/kisspng-camping-tent-campsite-campfire-clip-art-sick-dog-cartoon.png" />
-
-          <h4>Join the discussion.<br/>
+          <br/>
+          <h2>Join the discussion.<br/>
           Make community.<br/>
-          Get Outside.</h4>
+          Get Outside.</h2>
       </div>
       <div className="login-form-placement">
         <LoginForm />

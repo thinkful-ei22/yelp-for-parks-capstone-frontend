@@ -1,3 +1,7 @@
+* {
+  font-family: 'Varela Round', sans-serif;
+}
+
 /* :root {
   --dgreen: #72963D; /* PALM LEAF */
   --grey: #A6ADB5; /* SILVER CHALICE */
@@ -11,7 +15,7 @@
   background-color: var(--lgreen);
   margin: 100px;
   width: 80%;
-} */ 
+} */
 
 /*a:link, a:visited {
     max-width: 100px;
