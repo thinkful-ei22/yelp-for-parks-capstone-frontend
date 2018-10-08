@@ -1,0 +1,10 @@
+.thumbnail {
+  height: 100px;
+  width: 125px;
+}
+
+.location-list-item {
+  display: inline-block;
+  height: 200px;
+  width: 75%;
+}

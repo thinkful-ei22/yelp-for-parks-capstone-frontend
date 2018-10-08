@@ -1,44 +1,33 @@
 import {
-  CREATE_COMMENT,
-  UPDATE_COMMENT,
-  DELETE_COMMENT
+  MAKE_COMMENT_REQUEST,
+  CREATE_COMMENT_SUCCESS,
+  UPDATE_COMMENT_SUCCESS,
+  DELETE_COMMENT_SUCCESS,
+  COMMENT_REQUEST_ERROR
 } from "../actions/comment";
 
 const initialState = {
-  comments: []
+  currentComment: null,
+  commentList: null,
+  loading: false,
+  error: null
 };
 
 export default function commentReducer(state = initialState, action) {
-  if (action.type === CREATE_COMMENT) {
-    return {
-      ...state,
-      comments: [
-        ...state.comments,
-        {
-          text: action.text,
-          rating: action.rating
-        }
-      ]
-    };
-  } else if (action.type === UPDATE_COMMENT) {
-    const commentToUpdate = state.comments.find(
-      comment => comment.id === action.id
-    );
-    return {
-      ...state,
-      comments: [
-        ...state.comments,
-        Object.assign({}, commentToUpdate, {
-          text: action.text,
-          rating: action.rating
-        })
-      ]
-    };
-  } else if (action.type === DELETE_COMMENT) {
-    return {
-      ...state,
-      comments: [...state.comments.filter(comment => comment.id !== action.id)]
-    };
+  if (action.type === MAKE_COMMENT_REQUEST) {
+    return { ...state, loading: true };
+  }
+  if (action.type === CREATE_COMMENT_SUCCESS) {
+    return { ...state, loading: false, currentComment: action.payload };
+  }
+  if (action.type === UPDATE_COMMENT_SUCCESS) {
+    return { ...state, loading: false, currentComment: action.payload };
+  }
+  if (action.type === DELETE_COMMENT_SUCCESS) {
+    return { ...state, loading: false, currentComment: null };
+  }
+  if (action.type === COMMENT_REQUEST_ERROR) {
+    return { ...state, loading: false, error: action.payload };
   }
   return state;
 }
