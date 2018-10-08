@@ -1,0 +1,26 @@
+.intro-text {
+  margin-top: 12%;
+  margin-left: 5%;
+  width: 50%;
+  position: absolute;
+  background-color: pink;
+}
+
+.backpack {
+  height: 7%;
+  width: 7%;
+  position: relative;
+}
+
+.tent {
+  height: 10%;
+  width: 10%;
+  position: relative;
+}
+
+.login-form-placement {
+  position: absolute;
+  background-color: yellow;
+  left: 60%;
+  bottom: 50%;
+}
