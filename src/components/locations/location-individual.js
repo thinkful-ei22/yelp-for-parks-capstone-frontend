@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
 import LocationEditor from "./location-editor";
+import CommentContainer from "../comments/comment-container";
 import "./styles/location-individual.css";
 
 class LocationIndividual extends React.Component {
@@ -151,7 +152,7 @@ class LocationIndividual extends React.Component {
           Author Profile
         </Link>
 
-        {/*comments*/}
+        <CommentContainer />
         <Link to="/dashboard">Dashboard</Link>
       </div>
     );
