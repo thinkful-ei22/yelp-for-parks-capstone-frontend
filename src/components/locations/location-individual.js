@@ -1,12 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { geocode, updateImage } from "../../actions/location";
-import { createAuthor } from "../../actions/author";
+import LocationEditor from "./location-editor";
+import {
+  createAuthor,
+  createAuthorLocation,
+  toggleRedirectAuthor
+} from "../../actions/author";
+import CommentContainer from "../comments/comment-container";
+import { toggleRedirect, geocode, updateImage } from "../../actions/location";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
-import LocationEditor from "./location-editor";
-import CommentContainer from "../comments/comment-container";
 import "./styles/location-individual.css";
 
 class LocationIndividual extends React.Component {
@@ -79,6 +83,17 @@ class LocationIndividual extends React.Component {
       );
     }
 
+    //For redirecting to author profile page
+    if (this.props.authorState.redirectingAuthor) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/authorprofile"
+          }}
+        />
+      );
+    }
+
     return (
       //later add a ternary in the classname to hide this unless owner id valid
       <div>
@@ -100,10 +115,12 @@ class LocationIndividual extends React.Component {
           Back to Dashboard{" "}
         </button>
         {/*We pull the information from the state.*/}
+
         <div id="maproot">
           <LocationMap />
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
+
         <h1>{this.props.locationState.currentLocation.title}</h1>
         <img
           className="location-image"
@@ -129,6 +146,7 @@ class LocationIndividual extends React.Component {
           />
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
+
         <p>
           {this.props.locationState.currentLocation.address}
           &nbsp;
@@ -141,18 +159,23 @@ class LocationIndividual extends React.Component {
 
         {"Link to redirect to author's profile page"}
         <p>author</p>
-        <Link
-          to="/authorprofile"
-          onClick={() =>
+        <button
+          type="button"
+          onClick={() => {
             this.props.dispatch(
               createAuthor(this.props.locationState.currentLocation.ownerId)
-            )
-          }
+            );
+            this.props.dispatch(
+              createAuthorLocation(
+                this.props.locationState.currentLocation.ownerId
+              )
+            );
+          }}
         >
           Author Profile
-        </Link>
-
-        <CommentContainer />
+        </button>
+        {<CommentContainer />}
+        {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>
       </div>
     );
@@ -162,6 +185,7 @@ class LocationIndividual extends React.Component {
 //connect this to state with mapstatetoprops
 //individual location obj passed as state
 const mapStateToProps = state => ({
-  locationState: state.location
+  locationState: state.location,
+  authorState: state.authorProfile
 });
 export default connect(mapStateToProps)(LocationIndividual);

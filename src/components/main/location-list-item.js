@@ -11,9 +11,8 @@ class LocationListItem extends React.Component {
         className="location-list-item"
         type="button"
         onClick={() => {
-          this.props
-            .dispatch(getOneLocation(this.props.locationObject.id))
-            .then(() => this.props.onClick());
+          this.props.dispatch(getOneLocation(this.props.locationObject.id))
+          .then(() => this.props.onClick());
         }}
       >
         <p>{this.props.locationObject.title}</p>

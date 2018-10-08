@@ -171,7 +171,7 @@ export const getAllLocations = (page = 0) => dispatch => {
   console.log("getting all locations");
   dispatch(makeLocationRequest());
   fetch(`${BACKEND_URL}/locations?page=${page}`, {
-    method: "GET",
+    method: 'GET',
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(res => {
