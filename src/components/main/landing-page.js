@@ -24,7 +24,6 @@ export function LandingPage(props) {
           campgrounds...the sky is the limit!</h3><br/>
           <img className="backpack" src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png" />
           <br/>
-          <br/>
           <h3>See what places other users cannot<br/>
           talking about</h3>
 

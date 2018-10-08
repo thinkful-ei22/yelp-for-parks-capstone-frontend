@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
             className="login-input"
             type="text"
             ref={input => (this.username = input)}
-            placeholder="username"
+            placeholder="happytrails"
           />
           <br/>
           <label htmlFor="password" className="login-label">Password</label>
@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
             className="login-input"
             type="password"
             ref={input => (this.password = input)}
-            placeholder="password"
+            placeholder="password123"
           />
 
 

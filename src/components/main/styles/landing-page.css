@@ -1,5 +1,4 @@
 .intro-topper {
-  margin: 5%;
   width: 100%;
   /* background-color: green; */
   text-align: center;
@@ -9,14 +8,14 @@
 .intro-text {
   margin-left: 10%;
   width: 50%;
-  height: 65%;
+  height: 50%;
   position: absolute;
   /* background-color: pink; */
 }
 
 .backpack {
-  height: 20%;
-  width: 17%;
+  height: 25%;
+  width: 15%;
   margin-left: 5%;
   transform: rotate(-15deg);
   position: relative;
@@ -32,7 +31,7 @@
 
 .login-form-placement {
   position: absolute;
-  height: 65%;
+  height: 60%;
   width: 30%;
   /* background-color: yellow; */
   left: 62%;
