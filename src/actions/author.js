@@ -18,6 +18,11 @@ export const authorRequestError = err => ({
   payload: err
 });
 
+export const TOGGLE_REDIRECT_AUTHOR = "TOGGLE_REDIRECT_AUTHOR";
+export const toggleRedirectAuthor = () => ({
+  type: TOGGLE_REDIRECT_AUTHOR
+});
+
  export const CREATE_AUTHOR = "CREATE_AUTHOR";
  export const createAuthor = authorId => dispatch => {
   let id = authorId;
@@ -35,8 +40,48 @@ export const authorRequestError = err => ({
    .then(parsedResponse => {
      console.log('Parsed Response', parsedResponse)
      dispatch(authorRequestSuccess(parsedResponse));
+     dispatch(toggleRedirectAuthor());
    })
    .catch(err => {
      dispatch(authorRequestError(err.message));
    });
+}
+
+export const AUTHOR_LOCATION_REQUEST = "AUTHOR_LOCATION_REQUEST";
+export const authorLocationRequest = () => ({
+  type: AUTHOR_LOCATION_REQUEST
+});
+
+export const AUTHOR_LOCATION_REQUEST_SUCCESS = "AUTHOR_LOCATION_REQUEST_SUCCESS";
+export const authorLocationRequestSuccess = authorLocationObject => ({
+  type: AUTHOR_LOCATION_REQUEST_SUCCESS,
+  payload: authorLocationObject
+});
+
+export const AUTHOR_LOCATION_REQUEST_ERROR = "AUTHOR_LOCATION_REQUEST_ERROR";
+export const authorLocationRequestError = err => ({
+  type: AUTHOR_LOCATION_REQUEST_ERROR,
+  payload: err
+});
+
+export const CREATE_AUTHOR_LOCATION = "CREATE_AUTHOR_LOCATION";
+export const createAuthorLocation = authorId => dispatch => {
+  let id = authorId;
+  console.log("author profile locations request initiated and this is the id", id);
+  dispatch(authorLocationRequest());
+    return fetch(`${BACKEND_URL}/locations/?ownerId=${id}`, {
+      method: 'GET'
+    })
+    .then(res => {
+      console.log('Raw Response', res)
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      console.log('Parsed Author Locations Response', parsedResponse)
+      dispatch(authorLocationRequestSuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(authorLocationRequestError(err.message));
+    });
 }

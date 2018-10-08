@@ -3,8 +3,18 @@ import { connect } from "react-redux";
 
  class UserProfile extends React.Component {
   render() {
-    if(this.props.userState.currentUserLocations.length !== 0) {
-      for(let i = 0; i < this.props.userState.currentUserLocations.length; i++) {
+    let userLocations = this.props.userState.currentUserLocations;
+    let locationsMap = userLocations.map(location => {
+      return <div className="user-locations-container">
+        <p>{location.title}</p>
+        <p>{location.description}</p>
+        <p>{location.address}</p>
+        <p>{location.city}</p>
+        <p>{location.state}</p>
+        <p>{location.zipCode}</p>
+      </div>
+    })
+    if(userLocations.length !== 0) {
         return (
           <div className="user-profile-container">
             <div className="user-info-container">
@@ -15,17 +25,9 @@ import { connect } from "react-redux";
               <p>Last Name</p>
               <p>{this.props.userState.currentUser.lastName}</p>
             </div>
-            <div className="user-locations-container">
-              <p>{this.props.userState.currentUserLocations[i].title}</p>
-              <p>{this.props.userState.currentUserLocations[i].description}</p>
-              <p>{this.props.userState.currentUserLocations[i].address}</p>
-              <p>{this.props.userState.currentUserLocations[i].city}</p>
-              <p>{this.props.userState.currentUserLocations[i].state}</p>
-              <p>{this.props.userState.currentUserLocations[i].zipCode}</p>
-            </div>
+            {locationsMap}
           </div>
         )
-      }
     }
     return (
       <div className="user-info-container">
