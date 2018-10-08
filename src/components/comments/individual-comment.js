@@ -36,8 +36,9 @@ class IndividualComment extends React.Component {
           <p>are you sure?</p>
           <button
             name="confirm-delete"
-            onClick={() =>
+            onClick={() => {
               this.props.dispatch(deleteComment(this.props.comment.id))
+              .then(() => this.toggleEditMode(false));}
             }
           >
             Yes
