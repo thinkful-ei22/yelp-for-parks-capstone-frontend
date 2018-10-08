@@ -1,16 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout, createUser, createUserLocation } from "../../actions/login";
+import { logout, createUser, createUserLocation, toggleRedirect } from "../../actions/login";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
 import { Link } from 'react-router-dom';
 import './styles/dashboard.css';
 
 class Dashboard extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.dispatch(toggleRedirect(false));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(toggleRedirect(false));
+  }
 
   render() {
     if (this.props.loggedIn.redirecting) {
+      console.log('what is this');
       return (
         <Redirect
           to={{

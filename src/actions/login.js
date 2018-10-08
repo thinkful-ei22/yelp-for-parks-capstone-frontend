@@ -28,8 +28,9 @@ export const loginRequestError = err => ({
 });
 
 export const TOGGLE_REDIRECT = "TOGGLE_REDIRECT";
-export const toggleRedirect = () => ({
-  type: TOGGLE_REDIRECT
+export const toggleRedirect = bool => ({
+  type: TOGGLE_REDIRECT,
+  payload: bool
 });
 
 export const fetchLogin = credentials => dispatch => {
@@ -100,7 +101,7 @@ export const createUser = userObject => dispatch => {
    .then(parsedResponse => {
      console.log('Parsed Response', parsedResponse)
      dispatch(loginRequestSuccess(parsedResponse));
-     dispatch(toggleRedirect());
+     dispatch(toggleRedirect(true));
    })
    .catch(err => {
      dispatch(loginRequestError(err.message));
@@ -140,7 +141,7 @@ export const createUserLocation = userId => dispatch => {
     .then(parsedResponse => {
       console.log('Parsed User Locations Response', parsedResponse)
       dispatch(userLocationRequestSuccess(parsedResponse));
-      //dispatch(toggleRedirect());
+      dispatch(toggleRedirect(true));
     })
     .catch(err => {
       dispatch(userLocationRequestError(err.message));

@@ -35,7 +35,7 @@ export default function loginReducer(state = initialState, action) {
     clearAuthToken();
     return { ...state, currentUser: null };
   } else if (action.type === TOGGLE_REDIRECT) {
-    return { ...state, redirecting: !state.redirecting };
+    return { ...state, redirecting: action.payload };
   } else if (action.type === USER_LOCATION_REQUEST) {
     return {
       ...state,
