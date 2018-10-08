@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   fetchRegistration,
-  toggleRedirecting,
-  createRequest
+  toggleRedirecting
 } from "../../actions/registration";
 import { Redirect } from "react-router";
 

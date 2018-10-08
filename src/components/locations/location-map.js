@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import axios from 'axios';
 import "./location-map.css";
 
 var myIcon = L.icon({
