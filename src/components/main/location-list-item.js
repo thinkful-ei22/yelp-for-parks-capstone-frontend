@@ -7,11 +7,11 @@ class LocationListItem extends React.Component {
   render() {
     return (
       <button
-        id={this.props.locationObject._id}
+        id={this.props.locationObject.id}
         className="location-list-item"
         type="button"
         onClick={() => {
-          this.props.dispatch(getOneLocation(this.props.locationObject._id))
+          this.props.dispatch(getOneLocation(this.props.locationObject.id))
           .then(() => this.props.onClick());
         }}
       >

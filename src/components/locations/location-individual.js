@@ -57,7 +57,7 @@ class LocationIndividual extends React.Component {
       formData.append(i, file)
     })
 
-    this.props.dispatch(updateImage(this.props.locationState.currentLocation._id, formData))
+    this.props.dispatch(updateImage(this.props.locationState.currentLocation.id, formData))
   }
 
   //===========================for working with redirects========
