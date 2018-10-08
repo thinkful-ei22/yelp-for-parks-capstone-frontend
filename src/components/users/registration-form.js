@@ -5,6 +5,7 @@ import {
   toggleRedirecting
 } from "../../actions/registration";
 import { Redirect } from "react-router";
+import './styles/registration-form.css';
 
 class RegistrationForm extends React.Component {
   constructor(props) {
@@ -33,77 +34,82 @@ class RegistrationForm extends React.Component {
       );
     }
     return (
-      <form>
-        <label htmlFor="registration-username" className="registration-label" />
-        <input
-          id="registration-username"
-          className="registration-input"
-          type="text"
-          ref={input => (this.username = input)}
-          placeholder="username"
-        />
+      <div className="registration-container">
+        <br/>
+        <h1>Sign Up </h1>
+        <form>
+          <label htmlFor="registration-username" className="registration-label" />
+          <input
+            id="registration-username"
+            className="registration-input"
+            type="text"
+            ref={input => (this.username = input)}
+            placeholder="username"
+          />
 
-        <label
-          htmlFor="registration-first-name"
-          className="registration-label"
-        />
-        <input
-          id="registration-first-name"
-          className="registration-input"
-          type="text"
-          ref={input => (this.firstName = input)}
-          placeholder="first name"
-        />
+          <label
+            htmlFor="registration-first-name"
+            className="registration-label"
+          />
+          <input
+            id="registration-first-name"
+            className="registration-input"
+            type="text"
+            ref={input => (this.firstName = input)}
+            placeholder="first name"
+          />
 
-        <label
-          htmlFor="registration-last-name"
-          className="registration-label"
-        />
-        <input
-          id="registration-last-name"
-          className="registration-input"
-          type="text"
-          ref={input => (this.lastName = input)}
-          placeholder="last name"
-        />
+          <label
+            htmlFor="registration-last-name"
+            className="registration-label"
+          />
+          <input
+            id="registration-last-name"
+            className="registration-input"
+            type="text"
+            ref={input => (this.lastName = input)}
+            placeholder="last name"
+          />
 
-        <label htmlFor="registration-password" className="registration-label" />
-        <input
-          id="registration-password"
-          className="registration-input"
-          type="password"
-          ref={input => (this.password = input)}
-          placeholder="password"
-        />
+          <label htmlFor="registration-password" className="registration-label" />
+          <input
+            id="registration-password"
+            className="registration-input"
+            type="password"
+            ref={input => (this.password = input)}
+            placeholder="password"
+          />
 
-        <label htmlFor="confirm-password" className="registration-label" />
-        <input
-          id="registration-confirm-password"
-          className="registration-input"
-          type="password"
-          ref={input => (this.confirmPassword = input)}
-          placeholder="confirm password"
-        />
+          <label htmlFor="confirm-password" className="registration-label" />
+          <input
+            id="registration-confirm-password"
+            className="registration-input"
+            type="password"
+            ref={input => (this.confirmPassword = input)}
+            placeholder="confirm password"
+          />
 
-        <button
-          name="register"
-          type="submit"
-          onClick={e => {
-            e.preventDefault();
-            this.props.dispatch(
-              fetchRegistration({
-                username: this.username.value,
-                firstName: this.firstName.value,
-                lastName: this.lastName.value,
-                password: this.password.value,
-                confirmPassword: this.confirmPassword.value
-              })
-            );
-          }}
-        >
-          Let's go!
-        </button>
-      </form>
+          <button
+            className="registration-button"
+            name="register"
+            type="submit"
+            onClick={e => {
+              e.preventDefault();
+              this.props.dispatch(
+                fetchRegistration({
+                  username: this.username.value,
+                  firstName: this.firstName.value,
+                  lastName: this.lastName.value,
+                  password: this.password.value,
+                  confirmPassword: this.confirmPassword.value
+                })
+              );
+            }}
+          >
+            Let's go!
+          </button>
+        </form>
+      </div>
     );
   }
 }
