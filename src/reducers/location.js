@@ -11,11 +11,11 @@ import {
   UPDATE_LOCATION,
   DELETE_LOCATION,
   TOGGLE_REDIRECT,
-  GEOCODE_SUCCESS,
-  GET_LOCATIONS_CITY_SUCCESS,
-  LOCATION_CITY_REQUEST_ERROR,
-  GET_LOCATIONS_KEYWORD_SUCCESS,
-  LOCATION_KEYWORD_REQUEST_ERROR
+  GEOCODE_SUCCESS
+  // GET_LOCATIONS_CITY_SUCCESS,
+  // LOCATION_CITY_REQUEST_ERROR,
+  // GET_LOCATIONS_KEYWORD_SUCCESS,
+  // LOCATION_KEYWORD_REQUEST_ERROR
 } from "../actions/location";
 
 import {
@@ -138,31 +138,31 @@ export default function locationReducer(state = initialState, action) {
 
   //FILTER CITY ACTION HANDLER//===================================================
 
-  if (action.type === GET_LOCATIONS_CITY_SUCCESS) {
-    return {
-      ...state,
-      loading: false,
-      currentLocationByCity: action.payload
-    };
-  }
+  // if (action.type === GET_LOCATIONS_CITY_SUCCESS) {
+  //   return {
+  //     ...state,
+  //     loading: false,
+  //     currentLocationByCity: action.payload
+  //   };
+  // }
 
-  if (action.type === LOCATION_CITY_REQUEST_ERROR) {
-    return { ...state, loading: false, error: action.payload };
-  }
+  // if (action.type === LOCATION_CITY_REQUEST_ERROR) {
+  //   return { ...state, loading: false, error: action.payload };
+  // }
 
-  //FILTER KEYWORD ACTIONHANDLER//=================================================
+  // //FILTER KEYWORD ACTIONHANDLER//=================================================
 
-  if (action.type === GET_LOCATIONS_KEYWORD_SUCCESS) {
-    return {
-      ...state,
-      loading: false,
-      currentLocationByKeyword: action.payload
-    };
-  }
+  // if (action.type === GET_LOCATIONS_KEYWORD_SUCCESS) {
+  //   return {
+  //     ...state,
+  //     loading: false,
+  //     currentLocationByKeyword: action.payload
+  //   };
+  // }
 
-  if (action.type === LOCATION_KEYWORD_REQUEST_ERROR) {
-    return { ...state, loading: false, error: action.payload };
-  }
+  // if (action.type === LOCATION_KEYWORD_REQUEST_ERROR) {
+  //   return { ...state, loading: false, error: action.payload };
+  // }
 
   return state;
 }

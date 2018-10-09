@@ -33,6 +33,25 @@ class LocationList extends React.Component {
   }
 
   render() {
+    let filteredLocations = this.props.locationState.locationList
+      .filter(location => {
+        return location.city
+          .toLowerCase()
+          .includes(this.props.filter.city.toLowerCase());
+      })
+      .filter(location => {
+        console.log(location);
+        console.log(this.props.filter);
+        return (
+          location.title
+            .toLowerCase()
+            .includes(this.props.filter.keyword.toLowerCase()) ||
+          location.description
+            .toLowerCase()
+            .includes(this.props.filter.keyword.toLowerCase())
+        );
+      });
+    // console.log(filteredLocations);
     if (this.state.redirecting === true) {
       return (
         <Redirect
@@ -72,7 +91,7 @@ class LocationList extends React.Component {
               <p>There's nothing here! Do you live in Wyoming?</p>
             </div>
           ) : (
-            this.props.locationState.locationList.map((location, i) => {
+            filteredLocations.map((location, i) => {
               return (
                 <LocationListItem
                   className="location-item"
