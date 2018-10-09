@@ -184,11 +184,11 @@ class LocationIndividual extends React.Component {
           type="button"
           onClick={() => {
             this.props.dispatch(
-              createAuthor(this.props.locationState.currentLocation.ownerId)
+              createAuthor(this.props.locationState.currentLocation.ownerId.id)
             );
             this.props.dispatch(
               createAuthorLocation(
-                this.props.locationState.currentLocation.ownerId
+                this.props.locationState.currentLocation.ownerId.id
               )
             );
           }}
