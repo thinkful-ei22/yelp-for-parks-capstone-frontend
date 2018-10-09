@@ -1,17 +1,9 @@
-:root {
-  --dgreen: #72963D; /* PALM LEAF */
-  --grey: #A6ADB5; /* SILVER CHALICE */
-  --blue: #9EBFCE; /* PASTEL BLUE */
-  --pink: #EED9CF; /* CHAMPAGNE PINK */
-  --lgreen: #ABC798; /* LAUREL GREEN */
-  --black: #272727; /* custom black */
-}
-.App {
+/* .App {
   text-align: center;
   background-color: var(--lgreen);
   margin: 100px;
   width: 80%;
-}
+} */
 
 /*a:link, a:visited {
     max-width: 100px;
@@ -22,7 +14,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    text-align: center; 
+    text-align: center;
     text-decoration: none;
     display: block;
     border-radius: 90px;
@@ -32,14 +24,14 @@
 a:hover, a:active {
     background-color: var(--grey);
 }*/
-
+/*
 h2 {
   font: 400 40px/1.5 Trebuchet MS;
   margin: 0;
   padding: 0;
-}
+} */
 
-button {
+/* button {
    border-top: 1px solid var(--black);
    background: var(--lgreen);
    background: -webkit-gradient(linear, left top, left bottom, from(var(--dgreen)), to(var(--lgreen)));
@@ -69,4 +61,4 @@ button:hover {
 button:active {
    border-top-color: var(--blue);
    background: var(--blue);
-   }
+   } */

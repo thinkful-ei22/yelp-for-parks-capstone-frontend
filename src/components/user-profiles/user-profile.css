@@ -1,0 +1,25 @@
+.user-profile-container {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border: 8px solid #cdcfd3;
+  position: relative;
+}
+
+.placeholder {
+  background-color: green;
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.circle {
+  background-color: pink;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  border: 8px solid #cdcfd3;
+  border-radius: 50%;
+  top: 30%;
+}

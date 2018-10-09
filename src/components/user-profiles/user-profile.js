@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "./user-profile.css"
 
  class UserProfile extends React.Component {
   render() {
@@ -17,6 +18,8 @@ import { connect } from "react-redux";
     if(userLocations.length !== 0) {
         return (
           <div className="user-profile-container">
+            <div className="placeholder"></div>
+            <div className="circle"></div>
             <div className="user-info-container">
               <p>Username</p>
               <p>{this.props.userState.currentUser.username}</p>
