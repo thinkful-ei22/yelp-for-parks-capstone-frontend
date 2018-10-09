@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getAllLocations, setPage } from "../../actions/location";
 import { Redirect } from "react-router";
 import LocationListItem from "./location-list-item";
-import './styles/location.css';
+import "./styles/location.css";
 
 class LocationList extends React.Component {
   constructor(props) {
@@ -71,12 +71,14 @@ class LocationList extends React.Component {
         {this.props.locationState.locationList === null ? (
           <div>
             {" "}
-            <p>There's nothing here! Do you live in Iowa?</p>{" "}
+            <p>There's nothing here! Do you live in Wyoming?</p>{" "}
           </div>
         ) : (
           this.props.locationState.locationList.map((location, i) => {
             return (
-              <LocationListItem className="location-item" key={i}
+              <LocationListItem
+                className="location-item"
+                key={i}
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />
