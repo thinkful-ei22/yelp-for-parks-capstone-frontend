@@ -8,6 +8,8 @@ import {
 } from "../../actions/login";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
+import FilterCity from "./filter-city";
+import FilterKeyword from "./filter-keyword";
 import { Link } from "react-router-dom";
 import "./styles/dashboard.css";
 
@@ -71,6 +73,8 @@ class Dashboard extends React.Component {
           My Profile
         </button>
         <h2>Parks!</h2>
+        <FilterCity dispatch={this.props.dispatch} />
+        <FilterKeyword dispatch={this.props.dispatch} />
         <LocationList />
         <Link to="/location/add">Add A New Location!</Link>
       </div>

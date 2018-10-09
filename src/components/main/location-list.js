@@ -64,37 +64,65 @@ class LocationList extends React.Component {
           </button>
         );
       }
-    }
 
-    return (
-      <div className="location-list-items">
-        {this.props.locationState.locationList === null ? (
+      return (
+        <div className="location-list-items">
+          {this.props.locationState.locationList === null ? (
+            <div>
+              <p>There's nothing here! Do you live in Wyoming?</p>
+            </div>
+          ) : (
+            this.props.locationState.locationList.map((location, i) => {
+              return (
+                <LocationListItem
+                  className="location-item"
+                  key={i}
+                  locationObject={location}
+                  onClick={() => this.toggleRedirecting(true)}
+                />
+              );
+            })
+          )}
           <div>
-            {" "}
-            <p>There's nothing here! Do you live in Wyoming?</p>{" "}
+            {prevBtn}
+            {nextBtn}
           </div>
-        ) : (
-          this.props.locationState.locationList.map((location, i) => {
-            return (
-              <LocationListItem
-                className="location-item"
-                key={i}
-                locationObject={location}
-                onClick={() => this.toggleRedirecting(true)}
-              />
-            );
-          })
-        )}
-        <div>
-          {prevBtn}
-          {nextBtn}
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
-
 const mapStateToProps = state => ({
   locationState: state.location
 });
 export default connect(mapStateToProps)(LocationList);
+
+// if (this.props.locationState.currentLocationByCity.length !== 0) {
+//   let cityLocations = this.props.locationState.currentLocationByCity;
+//   let cityMap = cityLocations.map(location => {
+//     return (
+//       <LocationListItem
+//         class="location-item"
+//         locationObject={location}
+//         onClick={() => this.toggleRedirecting(true)}
+//       />
+//     );
+//   });
+
+//   return <div>{cityMap}</div>;
+// }
+// if (this.props.locationState.currentLocationByKeyword.length !== 0) {
+//   let keywordLocations = this.props.locationState
+//     .currentLocationByKeyword;
+//     let keywordMap = keywordLocations.map(location => {
+//     return (
+//       <LocationListItem
+//         class="location-item"
+//         locationObject={location}
+//         onClick={() => this.toggleRedirecting(true)}
+//       />
+//       );
+//   });
+
+//   return <div>{keywordMap}</div>;
+// }

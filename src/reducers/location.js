@@ -11,7 +11,11 @@ import {
   UPDATE_LOCATION,
   DELETE_LOCATION,
   TOGGLE_REDIRECT,
-  GEOCODE_SUCCESS
+  GEOCODE_SUCCESS,
+  GET_LOCATIONS_CITY_SUCCESS,
+  LOCATION_CITY_REQUEST_ERROR,
+  GET_LOCATIONS_KEYWORD_SUCCESS,
+  LOCATION_KEYWORD_REQUEST_ERROR
 } from "../actions/location";
 
 import {
@@ -29,7 +33,9 @@ const initialState = {
   currentLatLng: {
     lat: 51.505,
     lng: -0.09
-  }
+  },
+  currentLocationByCity: [],
+  currentLocationByKeyword: []
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -125,8 +131,38 @@ export default function locationReducer(state = initialState, action) {
     return Object.assign({}, state, { page: action.page });
   }
 
-  if(action.type === GEOCODE_SUCCESS) {
+  //LOCATION MAP ACTION HANDLER//================================================
+  if (action.type === GEOCODE_SUCCESS) {
     return { ...state, loading: false, currentLatLng: action.payload };
   }
+
+  //FILTER CITY ACTION HANDLER//===================================================
+
+  if (action.type === GET_LOCATIONS_CITY_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      currentLocationByCity: action.payload
+    };
+  }
+
+  if (action.type === LOCATION_CITY_REQUEST_ERROR) {
+    return { ...state, loading: false, error: action.payload };
+  }
+
+  //FILTER KEYWORD ACTIONHANDLER//=================================================
+
+  if (action.type === GET_LOCATIONS_KEYWORD_SUCCESS) {
+    return {
+      ...state,
+      loading: false,
+      currentLocationByKeyword: action.payload
+    };
+  }
+
+  if (action.type === LOCATION_KEYWORD_REQUEST_ERROR) {
+    return { ...state, loading: false, error: action.payload };
+  }
+
   return state;
 }
