@@ -1,3 +1,64 @@
-.location-form-container {
+.main-header {
+  font-size: 40px;
+  margin-top: 8%;
+  margin-left: 5%;
+  margin-bottom: .5%;
+}
+
+.form-container {
+  border: 5px solid #e5e5e0;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  padding: 5%;
+}
+
+.title-desc-address {
+  background-color: yellow;
+  width: 50%;
+  display: inline-block;
+}
+
+label {
+  font-size: 14px;
+}
+
+.image-container {
+  background-color: green;
+  width: 40%;
+  display: inline-block;
+  position: absolute;
+}
+
+input {
+  display: block;
+  border: 5px solid #e5e5e0;
+  padding: 2%;
+  width: 80%;
+  margin-top: 1%;
+}
+
+#city {
+  width: 20%;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+#zipCode {
+  width: 8%;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+#state {
+  width: 15%;
+}
+
+textarea {
+  display: block;
+  border: 5px solid #e5e5e0;
+  padding: 2%;
+  width: 60%;
+  margin-top: 1%;
 
 }
