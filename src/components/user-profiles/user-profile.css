@@ -21,5 +21,26 @@
   width: 200px;
   border: 8px solid #cdcfd3;
   border-radius: 50%;
-  top: 30%;
+  top: 32%;
+  left: 34%;
+}
+
+.user-info-container {
+  margin-top: 13%;
+}
+
+.username, .name {
+  text-align: center;
+  margin: 0px;
+}
+
+.user-locations-container {
+  margin: 5%;
+}
+
+.locations-box {
+  background-color: #cdcfd3;
+  padding-top: .5%;
+  padding-bottom: .5%;
+  padding-left: 5%;
 }
