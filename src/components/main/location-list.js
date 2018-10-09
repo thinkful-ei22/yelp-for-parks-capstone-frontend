@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getAllLocations, setPage } from "../../actions/location";
 import { Redirect } from "react-router";
 import LocationListItem from "./location-list-item";
-import './styles/location.css';
+import './styles/location-list.css';
 
 class LocationList extends React.Component {
   constructor(props) {
@@ -47,21 +47,25 @@ class LocationList extends React.Component {
     let prevBtn;
     if (this.props.locationState.page > 0) {
       prevBtn = (
-        <button className="prevBtn" onClick={() => this.previous()}>
-          Previous
-        </button>
+        <div className="buttons-container">
+          <button className="prevBtn" onClick={() => this.previous()}>
+            Previous
+          </button>
+        </div>
       );
     }
     if (this.props.locationState.locationList) {
       if (this.props.locationState.locationList.length > 2) {
         nextBtn = (
-          <button
-            className="nextBtn"
-            id="nextButton"
-            onClick={this.next.bind(this)}
-          >
-            Next
-          </button>
+          <div className="buttons-container">
+            <button
+              className="nextBtn"
+              id="nextButton"
+              onClick={this.next.bind(this)}
+            >
+              Next
+            </button>
+          </div>
         );
       }
     }
@@ -76,7 +80,7 @@ class LocationList extends React.Component {
         ) : (
           this.props.locationState.locationList.map((location, i) => {
             return (
-              <LocationListItem className="location-item" key={i}
+              <LocationListItem key={i}
                 locationObject={location}
                 onClick={() => this.toggleRedirecting(true)}
               />

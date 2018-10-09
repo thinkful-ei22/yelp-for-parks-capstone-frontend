@@ -1,0 +1,14 @@
+.buttons-container {
+  width: 100%;
+  text-align: center;
+}
+
+.prevBtn, .nextBtn {
+  color: white;
+  font-size: 17px;
+  margin: .5%;
+  padding: 1%;
+  width: 10%;
+  border: 5px solid #bbbcbf;
+  background-color: #6f7723;
+}
