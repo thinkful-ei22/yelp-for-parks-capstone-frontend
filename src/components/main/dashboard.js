@@ -32,14 +32,20 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
-        <button type="button" onClick={() => {
-          this.props.dispatch(createUser());
-          this.props.dispatch(createUserLocation(this.props.loggedIn.currentUser.id));
-        }}>My Profile</button>
-        <h2>Parks!</h2>
+        <div className="buttons-container">
+          <button className="logout-button" onClick={() => this.props.dispatch(logout())}>Log Out</button>
+          <button className="user-profile-button" type="button" onClick={() => {
+            this.props.dispatch(createUser());
+            this.props.dispatch(createUserLocation(this.props.loggedIn.currentUser.id));
+          }}>My Profile</button>
+        </div>
+        <h1 className="headline">GO Explore!</h1>
         <LocationList />
-        <Link to="/location/add">Add A New Location!</Link>
+        <div className="add-location-container">
+          <h2>Know a good place? Add a new location!</h2>
+          <br/>
+          <Link className="add-location-button" to="/location/add">Add Location</Link>
+        </div>
       </div>
     );
   }
