@@ -16,13 +16,19 @@ class LocationListItem extends React.Component {
             .then(() => this.props.onClick());
           }}
         >
-          <h2 className="title">{this.props.locationObject.title}</h2>
-          <h3 className="description">{this.props.locationObject.description}</h3>
-          <img
-            className="thumbnail"
-            alt="location"
-            src={this.props.locationObject.image}
-          />
+        <div className="text-thumbnail-container">
+          <div className="thumbnail-container">
+            <img
+              className="thumbnail"
+              alt="location"
+              src={this.props.locationObject.image}
+            />
+          </div>
+          <div className="text-container">
+            <h2 className="title">{this.props.locationObject.title}</h2>
+            <h3 className="description">{this.props.locationObject.description}</h3>
+          </div>
+        </div>
         </button>
       </div>
     );

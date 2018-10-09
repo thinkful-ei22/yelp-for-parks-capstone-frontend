@@ -47,7 +47,7 @@ class LocationList extends React.Component {
     let prevBtn;
     if (this.props.locationState.page > 0) {
       prevBtn = (
-        <div className="buttons-container">
+        <div className="pagination-buttons-container">
           <button className="prevBtn" onClick={() => this.previous()}>
             Previous
           </button>
@@ -57,7 +57,7 @@ class LocationList extends React.Component {
     if (this.props.locationState.locationList) {
       if (this.props.locationState.locationList.length > 2) {
         nextBtn = (
-          <div className="buttons-container">
+          <div className="pagination-buttons-container">
             <button
               className="nextBtn"
               id="nextButton"
@@ -75,7 +75,9 @@ class LocationList extends React.Component {
         {this.props.locationState.locationList === null ? (
           <div>
             {" "}
-            <p>There's nothing here! Do you live in Iowa?</p>{" "}
+            <div className="nothing-here-container">
+              <h1 className="nothing-here-text">There's nothing here! Do you live in Iowa?</h1>{" "}
+            </div>
           </div>
         ) : (
           this.props.locationState.locationList.map((location, i) => {
@@ -87,6 +89,8 @@ class LocationList extends React.Component {
             );
           })
         )}
+        <br/>
+        <br/>
         <div>
           {prevBtn}
           {nextBtn}
