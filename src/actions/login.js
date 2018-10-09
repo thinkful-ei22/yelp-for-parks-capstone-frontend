@@ -28,8 +28,9 @@ export const loginRequestError = err => ({
 });
 
 export const TOGGLE_REDIRECT = "TOGGLE_REDIRECT";
-export const toggleRedirect = () => ({
-  type: TOGGLE_REDIRECT
+export const toggleRedirect = bool => ({
+  type: TOGGLE_REDIRECT,
+  payload: bool
 });
 
 export const fetchLogin = credentials => dispatch => {
@@ -89,23 +90,23 @@ export const CREATE_USER = "CREATE_USER";
 export const createUser = userObject => dispatch => {
   console.log("user profile request initiated");
   dispatch(makeLoginRequest());
-    return fetch(`${BACKEND_URL}/users/${loadUser().id}`, {
-      method: 'GET'
+  return fetch(`${BACKEND_URL}/users/${loadUser().id}`, {
+    method: "GET"
+  })
+    .then(res => {
+      console.log("Raw Response", res);
+      normalizeResponseErrors(res);
+      return res.json();
     })
-   .then(res => {
-     console.log('Raw Response', res)
-     normalizeResponseErrors(res);
-     return res.json();
-   })
-   .then(parsedResponse => {
-     console.log('Parsed Response', parsedResponse)
-     dispatch(loginRequestSuccess(parsedResponse));
-     dispatch(toggleRedirect());
-   })
-   .catch(err => {
-     dispatch(loginRequestError(err.message));
-   });
-}
+    .then(parsedResponse => {
+      console.log("Parsed Response", parsedResponse);
+      dispatch(loginRequestSuccess(parsedResponse));
+      dispatch(toggleRedirect(true));
+    })
+    .catch(err => {
+      dispatch(loginRequestError(err.message));
+    });
+};
 
 export const USER_LOCATION_REQUEST = "USER_LOCATION_REQUEST";
 export const userLocationRequest = () => ({
@@ -127,22 +128,25 @@ export const userLocationRequestError = err => ({
 export const CREATE_USER_LOCATION = "CREATE_USER_LOCATION";
 export const createUserLocation = userId => dispatch => {
   let id = userId;
-  console.log("user profile locations request initiated and this is the id", id);
+  console.log(
+    "user profile locations request initiated and this is the id",
+    id
+  );
   dispatch(userLocationRequest());
-    return fetch(`${BACKEND_URL}/locations/?ownerId=${id}`, {
-      method: 'GET'
-    })
+  return fetch(`${BACKEND_URL}/locations/?ownerId=${id}`, {
+    method: "GET"
+  })
     .then(res => {
-      console.log('Raw Response', res)
+      console.log("Raw Response", res);
       normalizeResponseErrors(res);
       return res.json();
     })
     .then(parsedResponse => {
-      console.log('Parsed User Locations Response', parsedResponse)
+      console.log("Parsed User Locations Response", parsedResponse);
       dispatch(userLocationRequestSuccess(parsedResponse));
-      //dispatch(toggleRedirect());
+      dispatch(toggleRedirect(true));
     })
     .catch(err => {
       dispatch(userLocationRequestError(err.message));
     });
-}
+};

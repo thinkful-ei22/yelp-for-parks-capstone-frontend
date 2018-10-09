@@ -1,16 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout, createUser, createUserLocation } from "../../actions/login";
+import {
+  logout,
+  createUser,
+  createUserLocation,
+  toggleRedirect
+} from "../../actions/login";
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
-import { Link } from 'react-router-dom';
-import './styles/dashboard.css';
+import { Link } from "react-router-dom";
+import "./styles/dashboard.css";
 
 class Dashboard extends React.Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToUserProfile: false
+    };
+  }
+
+  toggleRedirectToUserProfile(bool) {
+    this.setState({
+      redirectToUserProfile: bool
+    });
+  }
+  componentWillMount() {
+    this.toggleRedirectToUserProfile(false);
+  }
+
+  componentWillUnmount() {
+    this.toggleRedirectToUserProfile(false);
+  }
 
   render() {
-    if (this.props.loggedIn.redirecting) {
+    if (this.state.redirectToUserProfile === true) {
+      console.log("what is this");
       return (
         <Redirect
           to={{
@@ -33,10 +57,19 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
-        <button type="button" onClick={() => {
-          this.props.dispatch(createUser());
-          this.props.dispatch(createUserLocation(this.props.loggedIn.currentUser.id));
-        }}>My Profile</button>
+        <button
+          type="button"
+          onClick={() => {
+            this.props.dispatch(createUser());
+            this.props
+              .dispatch(createUserLocation(this.props.loggedIn.currentUser.id))
+              .then(() => {
+                this.toggleRedirectToUserProfile(true);
+              });
+          }}
+        >
+          My Profile
+        </button>
         <h2>Parks!</h2>
         <LocationList />
         <Link to="/location/add">Add A New Location!</Link>
@@ -46,7 +79,7 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.user,
+  loggedIn: state.user
 });
 
 export default connect(mapStateToProps)(Dashboard);
