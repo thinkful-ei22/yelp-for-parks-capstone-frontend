@@ -129,6 +129,34 @@
   top: 56%;
 }
 
+.special-instructions-container {
+  width: 74%;
+  height: 300px;
+  margin-left: 8%;
+  background-color: green;
+  display: inline-block;
+}
+
+.special-instructions-gray-box {
+  height: 200px;
+  background-color: #e0e2e5;
+  position: relative;
+  top: 20%;
+  padding-top: 2%;
+  text-align: center;
+}
+
+.special-instructions-label {
+  font-size: 18px;
+  position: relative;
+  margin: 0%;
+  top: 20%;
+}
+
+.location-special-instructions {
+  margin: 3%;
+}
+
 #maproot {
   width: 40%;
   height: 300px;

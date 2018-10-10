@@ -20,7 +20,7 @@ class CommentContainer extends React.Component {
       <div className="comment-container">
         <h1>Have you been here?</h1>
         <button type="button" onClick={this.showModal}>
-          Write a review
+          Write a review!
         </button>
         <Overlay show={this.state.show} onClick={() => this.hideModal} />
         <CommentModal show={this.state.show} handleClose={this.hideModal} />

@@ -221,6 +221,16 @@ class LocationIndividual extends React.Component {
           <div className="map-placeholder">Map Placeholder</div>
         </div>
 
+        <div className="special-instructions-container">
+          <h2 className="special-instructions-label">Things to Note</h2>
+          <div className="special-instructions-gray-box">
+            <p className="location-special-instructions">Special Instructions Text Placeholder. Here are Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p className="location-special-instructions">{this.props.locationState.currentLocation.specialInstructions}</p>
+          </div>
+
+        </div>
+
+
         <CommentContainer />
 
         {/*Do we need this? We already have a dashboard button above*/}
