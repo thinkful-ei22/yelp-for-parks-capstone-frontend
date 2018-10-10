@@ -183,7 +183,6 @@ class LocationIndividual extends React.Component {
             onClick={() => {
               this.toggleEditState(true);
             }}
-            // className={}
           >
             Edit Location
           </button>
@@ -191,24 +190,38 @@ class LocationIndividual extends React.Component {
         </div>
 
         <div className="description-container">
-          <label className="description-label" htmlFor="location-description">Description</label>
-          <h2 className="location-description">This is where the description would be</h2>
+          <h2 className="description-label">Description</h2>
+          <div className="description-gray-box">
+            <p className="location-description">This is where the description would be. I am going to add more text here so that we can simulate an actual text description.  Here is some Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          </div>
           <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
+        </div>
+
+        <div className="address-container">
+          <h2 className="address-label">Address</h2>
+          <div className="address-gray-box">
+          <p>
+            2810 Gypsum Circle
+            <br/>
+            Naperville, IL 60564
+          </p>
+          <p>
+            {this.props.locationState.currentLocation.address}
+            &nbsp;
+            {this.props.locationState.currentLocation.city}
+            &nbsp;
+            {this.props.locationState.currentLocation.state}
+            &nbsp;
+            {this.props.locationState.currentLocation.zipCode}
+          </p>
+          </div>
         </div>
 
         <div id="maproot">
 
         </div>
 
-        <p>
-          {this.props.locationState.currentLocation.address}
-          &nbsp;
-          {this.props.locationState.currentLocation.city}
-          &nbsp;
-          {this.props.locationState.currentLocation.state}
-          &nbsp;
-          {this.props.locationState.currentLocation.zipCode}
-        </p>
+
 
         {<CommentContainer />}
         {/*comments*/}
