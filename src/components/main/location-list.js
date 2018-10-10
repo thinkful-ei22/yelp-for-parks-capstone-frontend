@@ -1,9 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getAllLocations } from '../../actions/location';
-import { Redirect } from 'react-router';
-import LocationListItem from './location-list-item';
-import './styles/location.css';
+import React from "react";
+import { connect } from "react-redux";
+import { getAllLocations, setPage } from "../../actions/location";
+import { Redirect } from "react-router";
+import LocationListItem from "./location-list-item";
+import './styles/location-list.css';
+
 
 class LocationList extends React.Component {
   constructor(props) {
@@ -72,21 +73,25 @@ class LocationList extends React.Component {
     let prevBtn;
     if (this.state.currentPage > 1) {
       prevBtn = (
-        <button className="prevBtn" onClick={() => this.previous()}>
-          Previous
-        </button>
+        <div className="pagination-buttons-container">
+          <button className="prevBtn" onClick={() => this.previous()}>
+            Previous
+          </button>
+        </div>
       );
     }
     if (this.props.locationState.locationList) {
       if (this.props.locationState.locationList.length > this.state.locationsPerPage) {
         nextBtn = (
-          <button
-            className="nextBtn"
-            id="nextButton"
-            onClick={() => this.next()}
-          >
-            Next
-          </button>
+          <div className="pagination-buttons-container">
+            <button
+              className="nextBtn"
+              id="nextButton"
+              onClick={this.next.bind(this)}
+            >
+              Next
+            </button>
+          </div>
         );
       }
 
