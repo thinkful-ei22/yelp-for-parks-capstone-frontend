@@ -46,7 +46,7 @@ export const fetchLogin = credentials => dispatch => {
       return res.json();
     })
     .then(parsedResponse => {
-      console.log(parsedResponse);
+      // console.log(parsedResponse.authToken.locations);
       saveAuthToken(parsedResponse.authToken);
       return jwtDecode(parsedResponse.authToken);
     })

@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  logout,
-  createUser,
-  createUserLocation,
-  toggleRedirect
-} from "../../actions/login";
+import { logout, createUser, createUserLocation } from "../../actions/login";
+import { getAllLocations } from "../../actions/location";
+
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
+import FilterCity from "./filter-city";
+import FilterKeyword from "./filter-keyword";
 import { Link } from "react-router-dom";
 import "./styles/dashboard.css";
 
@@ -15,7 +14,8 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToUserProfile: false
+      redirectToUserProfile: false,
+      filter: { city: "", keyword: "" }
     };
   }
 
@@ -30,6 +30,24 @@ class Dashboard extends React.Component {
 
   componentWillUnmount() {
     this.toggleRedirectToUserProfile(false);
+  }
+
+  filterByCity(city) {
+    this.setState({
+      filter: {
+        ...this.state.filter,
+        city: city
+      }
+    });
+  }
+
+  filterByKeyword(keyword) {
+    this.setState({
+      filter: {
+        ...this.state.filter,
+        keyword: keyword
+      }
+    });
   }
 
   render() {
@@ -71,7 +89,11 @@ class Dashboard extends React.Component {
           My Profile
         </button>
         <h2>Parks!</h2>
-        <LocationList />
+        <FilterCity handleCityFilter={city => this.filterByCity(city)} />
+        <FilterKeyword
+          handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
+        />
+        <LocationList filter={this.state.filter} />
         <Link to="/location/add">Add A New Location!</Link>
       </div>
     );
