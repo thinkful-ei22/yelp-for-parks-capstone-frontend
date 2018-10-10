@@ -1,16 +1,58 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout, createUser, createUserLocation } from "../../actions/login";
+import { getAllLocations } from "../../actions/location";
+
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
-import { Link } from 'react-router-dom';
-import './styles/dashboard.css';
+import FilterCity from "./filter-city";
+import FilterKeyword from "./filter-keyword";
+import { Link } from "react-router-dom";
+import "./styles/dashboard.css";
 
 class Dashboard extends React.Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToUserProfile: false,
+      filter: { city: "", keyword: "" }
+    };
+  }
+
+  toggleRedirectToUserProfile(bool) {
+    this.setState({
+      redirectToUserProfile: bool
+    });
+  }
+  componentWillMount() {
+    this.toggleRedirectToUserProfile(false);
+  }
+
+  componentWillUnmount() {
+    this.toggleRedirectToUserProfile(false);
+  }
+
+  filterByCity(city) {
+    this.setState({
+      filter: {
+        ...this.state.filter,
+        city: city
+      }
+    });
+  }
+
+  filterByKeyword(keyword) {
+    this.setState({
+      filter: {
+        ...this.state.filter,
+        keyword: keyword
+      }
+    });
+  }
 
   render() {
-    if (this.props.loggedIn.redirecting) {
+    if (this.state.redirectToUserProfile === true) {
+      console.log("what is this");
       return (
         <Redirect
           to={{
@@ -32,27 +74,34 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <div className="buttons-container">
-          <button className="logout-button" onClick={() => this.props.dispatch(logout())}>Log Out</button>
-          <button className="user-profile-button" type="button" onClick={() => {
+        <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
+        <button
+          type="button"
+          onClick={() => {
             this.props.dispatch(createUser());
-            this.props.dispatch(createUserLocation(this.props.loggedIn.currentUser.id));
-          }}>My Profile</button>
-        </div>
-        <h1 className="headline">GO Explore!</h1>
-        <LocationList />
-        <div className="add-location-container">
-          <h2>Know a good place? Add a new location!</h2>
-          <br/>
-          <Link className="add-location-button" to="/location/add">Add Location</Link>
-        </div>
+            this.props
+              .dispatch(createUserLocation(this.props.loggedIn.currentUser.id))
+              .then(() => {
+                this.toggleRedirectToUserProfile(true);
+              });
+          }}
+        >
+          My Profile
+        </button>
+        <h2>Parks!</h2>
+        <FilterCity handleCityFilter={city => this.filterByCity(city)} />
+        <FilterKeyword
+          handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
+        />
+        <LocationList filter={this.state.filter} />
+        <Link to="/location/add">Add A New Location!</Link>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.user,
+  loggedIn: state.user
 });
 
 export default connect(mapStateToProps)(Dashboard);

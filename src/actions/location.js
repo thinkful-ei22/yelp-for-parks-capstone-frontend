@@ -54,12 +54,6 @@ export const updateImageError = err => ({
   payload: err
 });
 
-export const SET_PAGE = "SET_PAGE";
-export const setPage = page => ({
-  type: SET_PAGE,
-  page
-});
-
 export const createLocation = locationObject => dispatch => {
   console.log("request initiated");
   //grab the token from localstorage
@@ -166,14 +160,18 @@ export const getOneLocation = id => dispatch => {
     });
 };
 
-export const getAllLocations = (page = 0) => dispatch => {
+export const getAllLocations = (filters = {}) => dispatch => {
   const token = loadAuthToken();
   console.log("getting all locations");
+  let ownerIdFilter = filters.ownerId ? `&ownerId=${filters.ownerId}` : "";
   dispatch(makeLocationRequest());
-  fetch(`${BACKEND_URL}/locations?page=${page}`, {
-    method: 'GET',
-    headers: { Authorization: `Bearer ${token}` }
-  })
+  fetch(
+    `${BACKEND_URL}/locations?${ownerIdFilter}`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  )
     .then(res => {
       normalizeResponseErrors(res);
       return res.json();
