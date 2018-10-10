@@ -44,6 +44,7 @@ class LocationForm extends React.Component {
     //else, we present the form.
     return (
       <div className="location-form-container">
+        <div className="sticky"></div>
         <h1 className="main-header">Add A Location</h1>
         <div className="form-container">
           <form onSubmit={e => this.handleSubmit(e)}>
@@ -66,8 +67,9 @@ class LocationForm extends React.Component {
                 ref={input => (this.description = input)}
               />
               <br/>
-              <label htmlFor="addressLine">Whats the Address?</label>
+              <label htmlFor="addressLine">Where is it?</label>
               <br/>
+              <label htmlFor="addressLine">Address</label>
               <input
                 type="text"
                 id="addressLine"
@@ -75,6 +77,7 @@ class LocationForm extends React.Component {
                 placeholder="1763 Quail Run Drive"
                 ref={input => (this.addressLine = input)}
               />
+              <br/>
               <label htmlFor="city">City</label>
               <input
                 type="text"
@@ -149,6 +152,7 @@ class LocationForm extends React.Component {
             </div>
             <div className="image-container">
               <label htmlFor="file">Upload A Photo</label>
+              <div className="stock-photo"></div>
               <input
                 type="file"
                 id="file"
@@ -157,56 +161,58 @@ class LocationForm extends React.Component {
                 placeholder="upload an image"
               />
             </div>
-            <div>
-              <fieldset>
-                <legend> Amenities</legend>
-                <label htmlFor="amenities1">Grill</label>
-                <input
-                  type="checkbox"
-                  name="amenities1"
-                  value="Grill"
-                  id="amenities1"
-                  ref={input => (this.grill = input)}
-                />
-                <br />
-                <label htmlFor="amenities2">Playground</label>
-                <input
-                  type="checkbox"
-                  name="amenities2"
-                  value="Playground"
-                  id="amenities2"
-                  ref={input => (this.playground = input)}
-                />
-                <br />
-                <label htmlFor="amenities2">Bathrooms</label>
-                <input
-                  type="checkbox"
-                  name="amenities3"
-                  value="Bathrooms"
-                  id="amenities3"
-                  ref={input => (this.bathroom = input)}
-                  defaultChecked
-                />
-                <br />
-              </fieldset>
-            </div>
-
+            <br/>
+            <br/>
+            <fieldset>
+              <legend> Amenities</legend>
+              <input
+                type="checkbox"
+                id="amenities1"
+                name="amenities1"
+                value="Grill"
+                ref={input => (this.grill = input)}
+              />
+              <label for="amenities1">Grill</label>
+              <input
+                type="checkbox"
+                id="amenities2"
+                name="amenities2"
+                value="Playground"
+                ref={input => (this.playground = input)}
+              />
+              <label for="amenities2">Playground</label>
+              <input
+                type="checkbox"
+                id="fruit3"
+                name="fruit-3"
+                value="Bathrooms"
+                ref={input => (this.bathroom = input)}
+              />
+              <label for="fruit3">Bathrooms</label>
+            </fieldset>
+            <br/>
             <label htmlFor="special-instructions">Special Instructions</label>
             <textarea
+              id="special-instructions"
               name="special-instructions-text-area"
+              rows="4"
               placeholder="Clow Elementary School is 0.3 miles away and the school children are released at 3:30 PM, thus the park may get crowded at around that time."
               ref={input => (this.specialInstructions = input)}
             />
-
-            <button
-              type="submit"
-              name="submit"
-            >
-              Submit
-            </button>
+            <div className="add-location-button-container">
+              <button
+                type="submit"
+                name="submit"
+                className="add-location-submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
-        <Link to="/dashboard">Back to Dashboard</Link>
+        <div className="dashboard-button-container">
+          <Link className="dashboard-button" to="/dashboard">Back to Dashboard</Link>
+        </div>
       </div>
     );
   }
