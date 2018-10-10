@@ -1,0 +1,21 @@
+.pagination-buttons-container {
+  width: 100%;
+  text-align: center;
+}
+
+.prevBtn, .nextBtn {
+  color: white;
+  font-size: 17px;
+  margin: .5%;
+  padding: 1%;
+  width: 10%;
+  border: 5px solid #bbbcbf;
+  border-radius: 5%;
+  background-color: #6f7723;
+}
+
+.nothing-here-container {
+  border: 5px solid #bbbcbf;
+  margin: 5%;
+  text-align: center;
+}

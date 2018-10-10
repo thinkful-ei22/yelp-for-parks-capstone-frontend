@@ -45,11 +45,10 @@ const store = createStore(
     userProfile: userReducer,
     authorProfile: authorReducer
   }),
-  persistedState,
   composeEnhancers(applyMiddleware(thunk))
 );
 
 //the store's subscribe method runs each time the state changes
-store.subscribe(() => saveToLocalStorage(store.getState()));
+// store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;

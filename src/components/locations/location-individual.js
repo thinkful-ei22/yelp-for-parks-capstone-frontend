@@ -94,15 +94,16 @@ class LocationIndividual extends React.Component {
           }}
         />
       );
-    } else if (this.state.redirectingToAuthorProfile === true) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/authorprofile"
-          }}
-        />
-      );
     }
+    // else if (this.state.redirectingToAuthorProfile === true) {
+    //   return (
+    //     <Redirect
+    //       to={{
+    //         pathname: "/authorprofile"
+    //       }}
+    //     />
+    //   );
+    // }
 
     //For redirecting to author profile page
     if (this.props.authorState.redirectingAuthor) {
