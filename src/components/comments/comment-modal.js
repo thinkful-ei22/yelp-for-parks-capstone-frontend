@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { createComment } from "../../actions/comment";
-import { getOneLocation } from "../../actions/location";
 import "./styles/comment-modal.css";
 
 class CommentModal extends React.Component {
@@ -14,9 +13,7 @@ class CommentModal extends React.Component {
   }
 
   setRatingValue(value) {
-    this.setState({
-      ratingValue: value
-    });
+    this.state = { ...this.state, ratingValue: value };
     console.log(this.state.ratingValue);
   }
 

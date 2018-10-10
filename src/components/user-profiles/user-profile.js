@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
  class UserProfile extends React.Component {
   render() {
@@ -17,6 +18,7 @@ import { connect } from "react-redux";
     if(userLocations.length !== 0) {
         return (
           <div className="user-profile-container">
+          <Link to="/dashboard">Dashboard</Link>
             <div className="user-info-container">
               <p>Username</p>
               <p>{this.props.userState.currentUser.username}</p>
