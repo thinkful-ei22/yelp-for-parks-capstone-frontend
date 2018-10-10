@@ -23,7 +23,7 @@ const initialState = {
   loading: false,
   error: "",
   redirecting: false,
-  locationList: null,
+  locationList: [],
   currentLatLng: {
     lat: 51.505,
     lng: -0.09

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllLocations } from "../../actions/location";
+import { Redirect } from "react-router-dom";
 import "./styles/landing-page.css";
 
 import LoginForm from "../users/login-form";
@@ -37,13 +36,7 @@ class LandingPage extends React.Component {
     console.log(this.props.loggedIn.currentUser);
     //if they've logged in, we allow them to redirect to dashboard
     if (this.props.loggedIn.currentUser !== null) {
-      formContainer = (
-        <div>
-          <Link to="/dashboard">
-            <button name="redirect-to-dash">Get GOing</button>
-          </Link>
-        </div>
-      );
+      return <Redirect to="/dashboard" />;
     }
     //else we present them with the login or the registration form
     else {

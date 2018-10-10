@@ -7,9 +7,8 @@ import {
   toggleRedirectAuthor
 } from "../../actions/author";
 import CommentContainer from "../comments/comment-container";
-import { toggleRedirect, geocode, updateImage } from "../../actions/location";
+import { geocode, updateImage, getOneLocation } from "../../actions/location";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router";
 import LocationMap from "./location-map";
 import "./styles/location-individual.css";
 
@@ -47,21 +46,22 @@ class LocationIndividual extends React.Component {
     );
   };
 
-  //===========================for working with redirects========
-  // componentWillMount() {
-  //   this.props.dispatch(toggleRedirect(false));
-  // }
-
   render() {
+    const currentLocation = this.props.locationState.locationList.find(
+      location => {
+        return location.id === this.props.match.params.id;
+      }
+    );
+    console.log(currentLocation);
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
     }
-    if(!this.props.locationState.currentLocation.ownerId){
-      return <div>loading...</div>
-    };
-    return (
-      //later add a ternary in the classname to hide this unless owner id valid
-      <div>
+    if (!currentLocation) {
+      return <div>loading...</div>;
+    }
+    let editButton = "";
+    if (currentLocation.ownerId.id === this.props.loggedIn.currentUser.id) {
+      editButton = (
         <button
           type="button"
           name="edit-location"
@@ -72,12 +72,17 @@ class LocationIndividual extends React.Component {
         >
           Edit Location
         </button>
-        <button
-          type="button"
-          name="back-to-dashboard"
-        >
-          Back to Dashboard{" "}
-        </button>
+      );
+    }
+    return (
+      //later add a ternary in the classname to hide this unless owner id valid
+      <div>
+        {editButton}
+        <Link to="/dashboard">
+          <button type="button" name="back-to-dashboard">
+            Back to Dashboard{" "}
+          </button>
+        </Link>
         {/*We pull the information from the state.*/}
 
         <div id="maproot">
@@ -123,12 +128,8 @@ class LocationIndividual extends React.Component {
 
         {"Link to redirect to author's profile page"}
         <p>author</p>
-        <Link to={`/profile/${this.props.locationState.currentLocation.ownerId.id}`}>
-        <button
-          type="button"
-        >
-          Author Profile
-        </button>
+        <Link to={`/profile/${currentLocation.ownerId.id}`}>
+          <button type="button">Author Profile</button>
         </Link>
         {<CommentContainer />}
         {/*comments*/}
@@ -142,6 +143,6 @@ class LocationIndividual extends React.Component {
 //individual location obj passed as state
 const mapStateToProps = state => ({
   locationState: state.location,
-  authorState: state.authorProfile
+  loggedIn: state.user
 });
 export default connect(mapStateToProps)(LocationIndividual);
