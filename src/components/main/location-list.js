@@ -20,12 +20,6 @@ class LocationList extends React.Component {
     this.props.dispatch(getAllLocations());
   }
 
-  toggleRedirecting(bool) {
-    this.setState({
-      redirecting: bool
-    });
-  }
-
   next() {
     this.setState({
       currentPage: this.state.currentPage+1
@@ -54,15 +48,6 @@ class LocationList extends React.Component {
             .includes(this.props.filter.keyword.toLowerCase())
         );
       });
-    if (this.state.redirecting === true) {
-      return (
-        <Redirect
-          to={{
-            pathname: '/location'
-          }}
-        />
-      );
-    }
 
     const indexOfLastLocation = this.state.currentPage * this.state.locationsPerPage;
     const indexOfFirstLocation = indexOfLastLocation - this.state.locationsPerPage;
@@ -108,7 +93,6 @@ class LocationList extends React.Component {
                   className="location-item"
                   key={i}
                   locationObject={location}
-                  onClick={() => this.toggleRedirecting(true)}
                 />
               );
             })

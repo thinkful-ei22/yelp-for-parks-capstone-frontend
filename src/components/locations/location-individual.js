@@ -19,48 +19,17 @@ class LocationIndividual extends React.Component {
     this.state = {
       editing: false,
       editButtonVisible: false,
-      redirectingToDashboard: false,
-      redirectingToAuthorProfile: false,
       uploading: false
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      redirectingToDashboard: false,
-      redirectingToAuthorProfile: false
-    });
-    //console.log(this.state);
-    console.log("This is line 25", this.props.locationState);
+  componentDidMount() {
     this.props.dispatch(geocode(this.props.locationState));
-  }
-
-  componentWillUnmount() {
-    this.setState({
-      redirectingToDashboard: false,
-      redirectingToAuthorProfile: false
-    });
-    console.log(this.state);
   }
 
   toggleEditState = bool => {
     this.setState({ editing: bool });
     console.log(this.state);
-  };
-
-  redirectToDashboard = bool => {
-    this.setState({
-      redirectingToDashboard: bool,
-      redirectingToAuthorProfile: false
-    });
-    console.log(this.state);
-  };
-
-  redirectToAuthorProfile = bool => {
-    this.setState({
-      redirectingToAuthorProfile: bool,
-      redirectingToDashboard: false
-    });
   };
 
   onChange = e => {
@@ -86,36 +55,10 @@ class LocationIndividual extends React.Component {
   render() {
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
-    } else if (this.state.redirectingToDashboard === true) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/dashboard"
-          }}
-        />
-      );
     }
-    // else if (this.state.redirectingToAuthorProfile === true) {
-    //   return (
-    //     <Redirect
-    //       to={{
-    //         pathname: "/authorprofile"
-    //       }}
-    //     />
-    //   );
-    // }
-
-    //For redirecting to author profile page
-    if (this.props.authorState.redirectingAuthor) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/authorprofile"
-          }}
-        />
-      );
-    }
-
+    if(!this.props.locationState.currentLocation.ownerId){
+      return <div>loading...</div>
+    };
     return (
       //later add a ternary in the classname to hide this unless owner id valid
       <div>
@@ -132,7 +75,6 @@ class LocationIndividual extends React.Component {
         <button
           type="button"
           name="back-to-dashboard"
-          onClick={() => this.redirectToDashboard(true)}
         >
           Back to Dashboard{" "}
         </button>
@@ -181,21 +123,13 @@ class LocationIndividual extends React.Component {
 
         {"Link to redirect to author's profile page"}
         <p>author</p>
+        <Link to={`/profile/${this.props.locationState.currentLocation.ownerId.id}`}>
         <button
           type="button"
-          onClick={() => {
-            this.props.dispatch(
-              createAuthor(this.props.locationState.currentLocation.ownerId.id)
-            );
-            this.props.dispatch(
-              createAuthorLocation(
-                this.props.locationState.currentLocation.ownerId.id
-              )
-            );
-          }}
         >
           Author Profile
         </button>
+        </Link>
         {<CommentContainer />}
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>

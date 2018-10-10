@@ -1,19 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getOneLocation } from "../../actions/location";
+import {Link} from 'react-router-dom';
 import "./styles/location-list-item.css";
 
 class LocationListItem extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <div className="list-item-container">
+        <Link to={`/location/${this.props.locationObject.id}`}>
         <button
           id={this.props.locationObject.id}
           className="location-list-item"
           type="button"
           onClick={() => {
             this.props.dispatch(getOneLocation(this.props.locationObject.id))
-            .then(() => this.props.onClick());
           }}
         >
         <div className="text-thumbnail-container">
@@ -30,6 +32,7 @@ class LocationListItem extends React.Component {
           </div>
         </div>
         </button>
+        </Link>
       </div>
     );
   }
