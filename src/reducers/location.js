@@ -5,7 +5,6 @@ import {
   UPDATE_IMAGE_REQUEST,
   UPDATE_IMAGE_SUCCESS,
   UPDATE_IMAGE_ERROR,
-  SET_PAGE,
   LOCATION_REQUEST_ERROR,
   MAKE_LOCATION_REQUEST,
   UPDATE_LOCATION,
@@ -25,11 +24,12 @@ const initialState = {
   error: "",
   redirecting: false,
   locationList: null,
-  page: 0,
   currentLatLng: {
     lat: 51.505,
     lng: -0.09
-  }
+  },
+  currentLocationByCity: [],
+  currentLocationByKeyword: []
 };
 
 export default function locationReducer(state = initialState, action) {
@@ -92,9 +92,6 @@ export default function locationReducer(state = initialState, action) {
     return { ...state, loading: false, error: action.payload };
   }
 
-  if (action.type === SET_PAGE) {
-    return Object.assign({}, state, { page: action.page });
-  }
   //COMMENT ACTION HANDLERS//====================================================
 
   if (action.type === CREATE_COMMENT_SUCCESS) {
@@ -121,12 +118,10 @@ export default function locationReducer(state = initialState, action) {
     };
   }
 
-  if (action.type === SET_PAGE) {
-    return Object.assign({}, state, { page: action.page });
-  }
-
-  if(action.type === GEOCODE_SUCCESS) {
+  //LOCATION MAP ACTION HANDLER//================================================
+  if (action.type === GEOCODE_SUCCESS) {
     return { ...state, loading: false, currentLatLng: action.payload };
   }
+
   return state;
 }

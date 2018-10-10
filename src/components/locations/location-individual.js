@@ -1,13 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import LocationEditor from "./location-editor";
-import { createAuthor, createAuthorLocation, toggleRedirectAuthor } from "../../actions/author";
+import {
+  createAuthor,
+  createAuthorLocation,
+  toggleRedirectAuthor
+} from "../../actions/author";
 import CommentContainer from "../comments/comment-container";
 import { toggleRedirect, geocode, updateImage } from "../../actions/location";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import LocationMap from "./location-map";
-import './styles/location-individual.css';
+import "./styles/location-individual.css";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -16,22 +20,25 @@ class LocationIndividual extends React.Component {
       editing: false,
       editButtonVisible: false,
       redirectingToDashboard: false,
+      redirectingToAuthorProfile: false,
       uploading: false
     };
   }
 
   componentWillMount() {
     this.setState({
-      redirectingToDashboard: false
+      redirectingToDashboard: false,
+      redirectingToAuthorProfile: false
     });
     //console.log(this.state);
-    console.log("This is line 25", this.props.locationState)
-    this.props.dispatch(geocode(this.props.locationState))
+    console.log("This is line 25", this.props.locationState);
+    this.props.dispatch(geocode(this.props.locationState));
   }
 
   componentWillUnmount() {
     this.setState({
-      redirectingToDashboard: false
+      redirectingToDashboard: false,
+      redirectingToAuthorProfile: false
     });
     console.log(this.state);
   }
@@ -42,19 +49,29 @@ class LocationIndividual extends React.Component {
   };
 
   redirectToDashboard = bool => {
-    this.setState({ redirectingToDashboard: bool });
+    this.setState({
+      redirectingToDashboard: bool,
+      redirectingToAuthorProfile: false
+    });
     console.log(this.state);
   };
 
-  onChange = e => {
-    const files = Array.from(e.target.files)
-    this.setState({ uploading: true })
+  redirectToAuthorProfile = bool => {
+    this.setState({
+      redirectingToAuthorProfile: bool,
+      redirectingToDashboard: false
+    });
+  };
 
-    const formData = new FormData()
+  onChange = e => {
+    const files = Array.from(e.target.files);
+    this.setState({ uploading: true });
+
+    const formData = new FormData();
 
     files.forEach((file, i) => {
-      formData.append(i, file)
-    })
+      formData.append(i, file);
+    });
 
     this.props.dispatch(
       updateImage(this.props.locationState.currentLocation.id, formData)
@@ -74,6 +91,14 @@ class LocationIndividual extends React.Component {
         <Redirect
           to={{
             pathname: "/dashboard"
+          }}
+        />
+      );
+    } else if (this.state.redirectingToAuthorProfile === true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/authorprofile"
           }}
         />
       );
@@ -117,27 +142,59 @@ class LocationIndividual extends React.Component {
         </div>
         <h1>{this.props.locationState.currentLocation.title}</h1>
 
-
         <h1>{this.props.locationState.currentLocation.title}</h1>
-        <img className="location-image" alt='location' src={this.props.locationState.currentLocation.image} />
-        <div className='button'>
-          <label htmlFor='single' style={{ fontWeight: "bold", color: 'blue', textDecoration: 'underline'}}>
-              Change image
+        <img
+          className="location-image"
+          alt="location"
+          src={this.props.locationState.currentLocation.image}
+        />
+        <div className="button">
+          <label
+            htmlFor="single"
+            style={{
+              fontWeight: "bold",
+              color: "blue",
+              textDecoration: "underline"
+            }}
+          >
+            Change image
           </label>
-          <input type='file' id='single' onChange={e => this.onChange(e)} style={{ visibility: "hidden" }}/>
+          <input
+            type="file"
+            id="single"
+            onChange={e => this.onChange(e)}
+            style={{ visibility: "hidden" }}
+          />
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
 
-        <p>{this.props.locationState.currentLocation.address}
-           &nbsp;{this.props.locationState.currentLocation.city}
-           &nbsp;{this.props.locationState.currentLocation.state}
-           &nbsp;{this.props.locationState.currentLocation.zipCode}</p>
+        <p>
+          {this.props.locationState.currentLocation.address}
+          &nbsp;
+          {this.props.locationState.currentLocation.city}
+          &nbsp;
+          {this.props.locationState.currentLocation.state}
+          &nbsp;
+          {this.props.locationState.currentLocation.zipCode}
+        </p>
 
-        {'Link to redirect to author\'s profile page'}
-        <p>author</p><button type="button" onClick={() => {
-          this.props.dispatch(createAuthor(this.props.locationState.currentLocation.ownerId));
-          this.props.dispatch(createAuthorLocation(this.props.locationState.currentLocation.ownerId));
-        }} >Author Profile</button>
+        {"Link to redirect to author's profile page"}
+        <p>author</p>
+        <button
+          type="button"
+          onClick={() => {
+            this.props.dispatch(
+              createAuthor(this.props.locationState.currentLocation.ownerId.id)
+            );
+            this.props.dispatch(
+              createAuthorLocation(
+                this.props.locationState.currentLocation.ownerId.id
+              )
+            );
+          }}
+        >
+          Author Profile
+        </button>
         {<CommentContainer />}
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>

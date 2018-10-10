@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./user-profile.css"
+import "./user-profile.css";
 
  class UserProfile extends React.Component {
   render() {

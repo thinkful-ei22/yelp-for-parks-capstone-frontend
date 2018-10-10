@@ -1,0 +1,25 @@
+.registration-container {
+  border: 8px solid #919ab7;
+  height: 100%;
+  text-align: center;
+}
+
+.registration-input {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border: 5px solid #e5e5e0;
+  padding: 2%;
+  width: 60%;
+  margin-top: 1%;
+}
+
+.registration-button {
+  color: white;
+  font-size: 17px;
+  margin-top: 5%;
+  padding: 3%;
+  width: 40%;
+  border: 5px solid #bbbcbf;
+  background-color: #6f7723;
+}

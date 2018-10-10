@@ -61,7 +61,7 @@ class LocationMap extends Component {
     console.log('This is the selectedLocation marker.', position2)
     return (
       <div>
-        <Map className="map" center={position} zoom={this.state.zoom}>
+        <Map className="map" bounds={[position, position2]} zoom={this.state.zoom}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
