@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllLocations } from "../../actions/location";
 import "./styles/landing-page.css";
 
@@ -11,21 +11,18 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      registering: false,
-      redirectingToDash: false
+      registering: false
     };
   }
 
   componentWillMount() {
     this.setState({
-      registering: false,
-      redirectingToDash: false
+      registering: false
     });
   }
   componentWillUnmount() {
     this.setState({
-      registering: false,
-      redirectingToDash: false
+      registering: false
     });
   }
 
@@ -35,11 +32,6 @@ class LandingPage extends React.Component {
     });
   }
 
-  toggleRedirectingToDash(bool) {
-    this.setState({
-      redirectingToDash: bool
-    });
-  }
   render() {
     let formContainer;
     console.log(this.props.loggedIn.currentUser);
@@ -47,16 +39,9 @@ class LandingPage extends React.Component {
     if (this.props.loggedIn.currentUser !== null) {
       formContainer = (
         <div>
-          <button
-            name="redirect-to-dash"
-            onClick={() => {
-              this.props
-                .dispatch(getAllLocations())
-                .then(() => this.toggleRedirectingToDash(true));
-            }}
-          >
-            Get GOing
-          </button>
+          <Link to="/dashboard">
+            <button name="redirect-to-dash">Get GOing</button>
+          </Link>
         </div>
       );
     }
@@ -83,16 +68,6 @@ class LandingPage extends React.Component {
             </button>
           )}
         </div>
-      );
-    }
-
-    if (this.state.redirectingToDash === true) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/dashboard"
-          }}
-        />
       );
     }
 
