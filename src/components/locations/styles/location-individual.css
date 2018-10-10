@@ -117,7 +117,7 @@
   height: 100px;
   background-color: #e0e2e5;
   position: relative;
-  top: 2%;
+  top: 56%;
   padding-top: 2%;
   text-align: center;
 }
@@ -126,12 +126,14 @@
   font-size: 18px;
   position: relative;
   margin: 0%;
+  top: 56%;
 }
 
 #maproot {
   width: 40%;
-  height: 400px;
-  position: relative;
+  height: 300px;
+  position: absolute;
   background-color: orange;
   display: inline-block;
+  margin-left: 9%;
 }

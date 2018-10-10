@@ -218,7 +218,7 @@ class LocationIndividual extends React.Component {
         </div>
 
         <div id="maproot">
-
+          <div className="map-placeholder">Map will Go Here</div>
         </div>
 
 
