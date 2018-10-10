@@ -18,14 +18,14 @@ class CommentContainer extends React.Component {
   render() {
     return (
       <div className="comment-container">
-        <h1>Have you been here?</h1>
-        <button type="button" onClick={this.showModal}>
-          Write a review!
-        </button>
+        <div className="review-button-container">
+          <h3>Have you been here?</h3>
+          <button className="review-button" type="button" onClick={this.showModal}>
+            Write a review!
+          </button>
+        </div>
         <Overlay show={this.state.show} onClick={() => this.hideModal} />
         <CommentModal show={this.state.show} handleClose={this.hideModal} />
-
-        <p>Check out what people are saying!</p>
         <CommentList />
       </div>
     );
