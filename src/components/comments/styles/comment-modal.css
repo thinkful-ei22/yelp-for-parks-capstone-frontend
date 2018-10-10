@@ -1,3 +1,71 @@
 .hidden {
   display:none
 }
+
+.close-modal-button-container {
+  text-align: center;
+}
+
+.close-comment-button {
+  color: white;
+  border: 3px solid #e0e2e5;
+  background-color: #6f7723;
+  border-radius: 5%;
+  width: 20%;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+.comment-submit-button-container {
+  text-align: center;
+}
+
+.submit-comment-button {
+  color: white;
+  border: 3px solid #e0e2e5;
+  background-color: #6f7723;
+  border-radius: 5%;
+  width: 20%;
+  padding: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.subject-and-comment {
+  margin-left: 10%;
+}
+
+.star-rating-container {
+  text-align: center;
+}
+
+.star-rating{
+	font-size: 0;
+}
+.star-rating__wrap{
+	display: inline-block;
+	font-size: 2rem;
+}
+.star-rating__wrap:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.star-rating__ico{
+	float: right;
+	padding-left: 10px;
+	cursor: pointer;
+	color: #FFB300;
+}
+.star-rating__ico:last-child{
+	padding-left: 0;
+}
+.star-rating__input{
+	display: none;
+}
+.star-rating__ico:hover:before,
+.star-rating__ico:hover ~ .star-rating__ico:before,
+.star-rating__input:checked ~ .star-rating__ico:before
+{
+	content: "\f005";
+}
