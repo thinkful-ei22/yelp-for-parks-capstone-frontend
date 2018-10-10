@@ -1,15 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getAllLocations, setPage } from "../../actions/location";
-import { Redirect } from "react-router";
-import LocationListItem from "./location-list-item";
-import "./styles/location.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getAllLocations } from '../../actions/location';
+import { Redirect } from 'react-router';
+import LocationListItem from './location-list-item';
+import './styles/location.css';
 
 class LocationList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirecting: false
+      redirecting: false,
+      currentPage: 1,
+      locationsPerPage: 3
     };
   }
 
@@ -24,12 +26,14 @@ class LocationList extends React.Component {
   }
 
   next() {
-    this.props.dispatch(getAllLocations(this.props.locationState.page + 1));
-    this.props.dispatch(setPage(this.props.locationState.page + 1));
+    this.setState({
+      currentPage: this.state.currentPage+1
+    });
   }
   previous() {
-    this.props.dispatch(getAllLocations(this.props.locationState.page - 1));
-    this.props.dispatch(setPage(this.props.locationState.page - 1));
+    this.setState({
+      currentPage: this.state.currentPage-1
+    });
   }
 
   render() {
@@ -40,8 +44,6 @@ class LocationList extends React.Component {
           .includes(this.props.filter.city.toLowerCase());
       })
       .filter(location => {
-        console.log(location);
-        console.log(this.props.filter);
         return (
           location.title
             .toLowerCase()
@@ -51,20 +53,24 @@ class LocationList extends React.Component {
             .includes(this.props.filter.keyword.toLowerCase())
         );
       });
-    // console.log(filteredLocations);
     if (this.state.redirecting === true) {
       return (
         <Redirect
           to={{
-            pathname: "/location"
+            pathname: '/location'
           }}
         />
       );
     }
 
+    const indexOfLastLocation = this.state.currentPage * this.state.locationsPerPage;
+    const indexOfFirstLocation = indexOfLastLocation - this.state.locationsPerPage;
+    const currentLocations = filteredLocations.slice(indexOfFirstLocation, indexOfLastLocation);
+
+
     let nextBtn;
     let prevBtn;
-    if (this.props.locationState.page > 0) {
+    if (this.state.currentPage > 1) {
       prevBtn = (
         <button className="prevBtn" onClick={() => this.previous()}>
           Previous
@@ -72,12 +78,12 @@ class LocationList extends React.Component {
       );
     }
     if (this.props.locationState.locationList) {
-      if (this.props.locationState.locationList.length > 2) {
+      if (this.props.locationState.locationList.length > this.state.locationsPerPage) {
         nextBtn = (
           <button
             className="nextBtn"
             id="nextButton"
-            onClick={this.next.bind(this)}
+            onClick={() => this.next()}
           >
             Next
           </button>
@@ -91,7 +97,7 @@ class LocationList extends React.Component {
               <p>There's nothing here! Do you live in Wyoming?</p>
             </div>
           ) : (
-            filteredLocations.map((location, i) => {
+            currentLocations.map((location, i) => {
               return (
                 <LocationListItem
                   className="location-item"
@@ -115,33 +121,3 @@ const mapStateToProps = state => ({
   locationState: state.location
 });
 export default connect(mapStateToProps)(LocationList);
-
-// if (this.props.locationState.currentLocationByCity.length !== 0) {
-//   let cityLocations = this.props.locationState.currentLocationByCity;
-//   let cityMap = cityLocations.map(location => {
-//     return (
-//       <LocationListItem
-//         class="location-item"
-//         locationObject={location}
-//         onClick={() => this.toggleRedirecting(true)}
-//       />
-//     );
-//   });
-
-//   return <div>{cityMap}</div>;
-// }
-// if (this.props.locationState.currentLocationByKeyword.length !== 0) {
-//   let keywordLocations = this.props.locationState
-//     .currentLocationByKeyword;
-//     let keywordMap = keywordLocations.map(location => {
-//     return (
-//       <LocationListItem
-//         class="location-item"
-//         locationObject={location}
-//         onClick={() => this.toggleRedirecting(true)}
-//       />
-//       );
-//   });
-
-//   return <div>{keywordMap}</div>;
-// }

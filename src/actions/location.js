@@ -54,12 +54,6 @@ export const updateImageError = err => ({
   payload: err
 });
 
-export const SET_PAGE = "SET_PAGE";
-export const setPage = page => ({
-  type: SET_PAGE,
-  page
-});
-
 export const createLocation = locationObject => dispatch => {
   console.log("request initiated");
   //grab the token from localstorage
@@ -166,15 +160,13 @@ export const getOneLocation = id => dispatch => {
     });
 };
 
-export const getAllLocations = (page = 0, filters = {}) => dispatch => {
+export const getAllLocations = (filters = {}) => dispatch => {
   const token = loadAuthToken();
   console.log("getting all locations");
-  let cityFilter = filters.city ? `&city=${filters.city}` : "";
-  let keywordFilter = filters.keyword ? `&keyword=${filters.keyword}` : "";
   let ownerIdFilter = filters.ownerId ? `&ownerId=${filters.ownerId}` : "";
   dispatch(makeLocationRequest());
   fetch(
-    `${BACKEND_URL}/locations?page=${page}${cityFilter}${keywordFilter}${ownerIdFilter}`,
+    `${BACKEND_URL}/locations?${ownerIdFilter}`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` }
@@ -236,75 +228,3 @@ export const deleteLocation = id => dispatch => {
 
   // })
 };
-
-// export const GET_LOCATIONS_CITY_SUCCESS = "GET_LOCATIONS_CITY_SUCCESS";
-// export const getLocationsCitySuccess = locationCityList => ({
-//   type: GET_LOCATIONS_CITY_SUCCESS,
-//   payload: locationCityList
-// });
-
-// export const LOCATION_CITY_REQUEST_ERROR = "LOCATION_CITY_REQUEST_ERROR";
-// export const locationCityRequestError = err => ({
-//   type: LOCATION_CITY_REQUEST_ERROR,
-//   payload: err
-// });
-
-// export const FILTER_CITY = "FILTER_CITY";
-// export const filterCity = cityInput => dispatch => {
-//   const token = loadAuthToken();
-//   let city = cityInput;
-//   console.log("City made it into the filterCity function", city);
-
-//   fetch(`${BACKEND_URL}/locations/?city=${city}`, {
-//     method: "GET",
-//     headers: { Authorization: `Bearer ${token}` }
-//   })
-//     .then(res => {
-//       normalizeResponseErrors(res);
-//       return res.json();
-//     })
-//     .then(parsedResponse => {
-//       console.log("parsed response");
-//       console.log(parsedResponse);
-//       dispatch(getLocationsCitySuccess(parsedResponse));
-//     })
-//     .catch(err => {
-//       dispatch(locationCityRequestError(err.message));
-//     });
-// };
-
-// export const GET_LOCATIONS_KEYWORD_SUCCESS = "GET_LOCATIONS_KEYWORD_SUCCESS";
-// export const getLocationsKeywordSuccess = locationKeywordList => ({
-//   type: GET_LOCATIONS_KEYWORD_SUCCESS,
-//   payload: locationKeywordList
-// });
-
-// export const LOCATION_KEYWORD_REQUEST_ERROR = "LOCATION_KEYWORD_REQUEST_ERROR";
-// export const locationKeywordRequestError = err => ({
-//   type: LOCATION_KEYWORD_REQUEST_ERROR,
-//   payload: err
-// });
-
-// export const FILTER_KEYWORD = "FILTER_KEYWORD";
-// export const filterKeyword = keywordInput => dispatch => {
-//   const token = loadAuthToken();
-//   let keyword = keywordInput;
-//   console.log("Keyword made it into the filterKeyword function", keyword);
-
-//   fetch(`${BACKEND_URL}/locations/?searchTerm=${keyword}`, {
-//     method: "GET",
-//     headers: { Authorization: `Bearer ${token}` }
-//   })
-//     .then(res => {
-//       normalizeResponseErrors(res);
-//       return res.json();
-//     })
-//     .then(parsedResponse => {
-//       console.log("parsed response");
-//       console.log(parsedResponse);
-//       dispatch(getLocationsKeywordSuccess(parsedResponse));
-//     })
-//     .catch(err => {
-//       dispatch(locationKeywordRequestError(err.message));
-//     });
-// };
