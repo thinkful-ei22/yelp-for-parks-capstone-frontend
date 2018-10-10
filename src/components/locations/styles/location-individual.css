@@ -55,7 +55,7 @@
   position: absolute;
   bottom: 38%;
   left: 31%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .change-image-button {
@@ -82,7 +82,7 @@
   height: 300px;
   margin-left: 8%;
   /* padding-left: 8%; */
-  background-color: pink;
+  /* background-color: pink; */
   position: relative;
 }
 
@@ -109,7 +109,7 @@
   width: 25%;
   height: 300px;
   margin-left: 8%;
-  background-color: purple;
+  /* background-color: purple; */
   display: inline-block;
 }
 
@@ -133,7 +133,7 @@
   width: 74%;
   height: 300px;
   margin-left: 8%;
-  background-color: green;
+  /* background-color: green; */
   display: inline-block;
 }
 
