@@ -118,55 +118,84 @@ class LocationIndividual extends React.Component {
     return (
       //later add a ternary in the classname to hide this unless owner id valid
       <div>
-        <button
-          type="button"
-          name="edit-location"
-          onClick={() => {
-            this.toggleEditState(true);
-          }}
-          // className={}
-        >
-          Edit Location
-        </button>
-        <button
-          type="button"
-          name="back-to-dashboard"
-          onClick={() => this.redirectToDashboard(true)}
-        >
-          Back to Dashboard{" "}
-        </button>
-        {/*We pull the information from the state.*/}
-
-        <div id="maproot">
-          <LocationMap />
-        </div>
-        <h1>{this.props.locationState.currentLocation.title}</h1>
-
-        <h1>{this.props.locationState.currentLocation.title}</h1>
-        <img
-          className="location-image"
-          alt="location"
-          src={this.props.locationState.currentLocation.image}
-        />
-        <div className="button">
-          <label
-            htmlFor="single"
-            style={{
-              fontWeight: "bold",
-              color: "blue",
-              textDecoration: "underline"
+        <div className="sticky"></div>
+        <div className="back-to-dashboard-container">
+          <button
+            type="button"
+            className="author-profile-button"
+            onClick={() => {
+              this.props.dispatch(
+                createAuthor(this.props.locationState.currentLocation.ownerId.id)
+              );
+              this.props.dispatch(
+                createAuthorLocation(
+                  this.props.locationState.currentLocation.ownerId.id
+                )
+              );
             }}
           >
-            Change image
-          </label>
-          <input
-            type="file"
-            id="single"
-            onChange={e => this.onChange(e)}
-            style={{ visibility: "hidden" }}
-          />
+            Author Profile
+          </button>
+          <button
+            type="button"
+            name="back-to-dashboard"
+            className="back-to-dashboard"
+            onClick={() => this.redirectToDashboard(true)}
+          >
+            Back to Dashboard{" "}
+          </button>
         </div>
-        <p>{this.props.locationState.currentLocation.description}</p>
+
+        <div className="image-and-title">
+          <div className="location-image-container">
+            <img
+              className="location-image"
+              alt="location"
+              src={this.props.locationState.currentLocation.image}
+            />
+          </div>
+
+          <div className="change-image-button">
+            <label
+              htmlFor="single"
+              style={{
+                fontWeight: "bold",
+                color: "blue",
+                textDecoration: "underline"
+              }}
+            >
+              Change image
+            </label>
+            <input
+              type="file"
+              id="single"
+              onChange={e => this.onChange(e)}
+              style={{ visibility: "hidden" }}
+            />
+          </div>
+
+          <h1 className="location-title">This is where the title would have been</h1>
+          <div className="star-ratings">This is where the star ratings would be</div>
+          <button
+            type="button"
+            className="edit-location-button"
+            name="edit-location"
+            onClick={() => {
+              this.toggleEditState(true);
+            }}
+            // className={}
+          >
+            Edit Location
+          </button>
+          <h1>{this.props.locationState.currentLocation.title}</h1>
+        </div>
+
+
+        <div id="maproot">
+
+        </div>
+
+        <p>{this.props.locationState.currentLocation.ption}</p>
 
         <p>
           {this.props.locationState.currentLocation.address}
@@ -178,23 +207,6 @@ class LocationIndividual extends React.Component {
           {this.props.locationState.currentLocation.zipCode}
         </p>
 
-        {"Link to redirect to author's profile page"}
-        <p>author</p>
-        <button
-          type="button"
-          onClick={() => {
-            this.props.dispatch(
-              createAuthor(this.props.locationState.currentLocation.ownerId.id)
-            );
-            this.props.dispatch(
-              createAuthorLocation(
-                this.props.locationState.currentLocation.ownerId.id
-              )
-            );
-          }}
-        >
-          Author Profile
-        </button>
         {<CommentContainer />}
         {/*comments*/}
         <Link to="/dashboard">Dashboard</Link>
