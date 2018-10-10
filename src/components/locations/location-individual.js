@@ -190,12 +190,15 @@ class LocationIndividual extends React.Component {
           <h1>{this.props.locationState.currentLocation.title}</h1>
         </div>
 
+        <div className="description-container">
+          <label className="description-label" htmlFor="location-description">Description</label>
+          <h2 className="location-description">This is where the description would be</h2>
+          <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
+        </div>
 
         <div id="maproot">
 
         </div>
-
-        <p>{this.props.locationState.currentLocation.ption}</p>
 
         <p>
           {this.props.locationState.currentLocation.address}
