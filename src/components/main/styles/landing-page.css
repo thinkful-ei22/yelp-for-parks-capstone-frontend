@@ -1,0 +1,38 @@
+.intro-topper {
+  width: 100%;
+  /* background-color: green; */
+  text-align: center;
+  font-size: 20px;
+}
+
+.intro-text {
+  margin-left: 10%;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  /* background-color: pink; */
+}
+
+.backpack {
+  height: 25%;
+  width: 15%;
+  margin-left: 5%;
+  transform: rotate(-15deg);
+  position: relative;
+}
+
+.tent {
+  height: 35;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  transform: rotate(10deg);
+}
+
+.login-form-placement {
+  position: absolute;
+  height: 60%;
+  width: 30%;
+  /* background-color: yellow; */
+  left: 62%;
+}
