@@ -150,7 +150,7 @@ class LocationIndividual extends React.Component {
           <div className="location-image-container">
             <img
               className="location-image"
-              alt="location"
+              alt="location-image"
               src={this.props.locationState.currentLocation.image}
             />
           </div>
@@ -174,58 +174,57 @@ class LocationIndividual extends React.Component {
             />
           </div>
 
-          <h1 className="location-title">This is where the title would have been</h1>
-          <div className="star-ratings">This is where the star ratings would be</div>
-          <button
-            type="button"
-            className="edit-location-button"
-            name="edit-location"
-            onClick={() => {
-              this.toggleEditState(true);
-            }}
-          >
-            Edit Location
-          </button>
-          <h1>{this.props.locationState.currentLocation.title}</h1>
-        </div>
-
-        <div className="description-container">
-          <h2 className="description-label">Description</h2>
-          <div className="description-gray-box">
-            <p className="location-description">This is where the description would be. I am going to add more text here so that we can simulate an actual text description.  Here is some Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <h1 className="location-title">Title Placeholder</h1>
+          <div className="star-ratings">Star Ratings Placeholder</div>
+            <button
+              type="button"
+              className="edit-location-button"
+              name="edit-location"
+              onClick={() => {
+                this.toggleEditState(true);
+              }}
+            >
+              Edit Location
+            </button>
+            <h1>{this.props.locationState.currentLocation.title}</h1>
           </div>
-          <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
-        </div>
 
-        <div className="address-container">
-          <h2 className="address-label">Address</h2>
-          <div className="address-gray-box">
-          <p>
-            2810 Gypsum Circle
-            <br/>
-            Naperville, IL 60564
-          </p>
-          <p>
-            {this.props.locationState.currentLocation.address}
-            &nbsp;
-            {this.props.locationState.currentLocation.city}
-            &nbsp;
-            {this.props.locationState.currentLocation.state}
-            &nbsp;
-            {this.props.locationState.currentLocation.zipCode}
-          </p>
+          <div className="description-container">
+            <h2 className="description-label">Description</h2>
+            <div className="description-gray-box">
+              <p className="location-description">Description Text Placeholder. Here are Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
           </div>
-        </div>
+
+          <div className="address-container">
+            <h2 className="address-label">Address</h2>
+            <div className="address-gray-box">
+            <p>
+              Address Line Placeholder
+              <br/>
+              City, State, Zipcode
+            </p>
+            <p>
+              {this.props.locationState.currentLocation.address}
+              &nbsp;
+              {this.props.locationState.currentLocation.city}
+              &nbsp;
+              {this.props.locationState.currentLocation.state}
+              &nbsp;
+              {this.props.locationState.currentLocation.zipCode}
+            </p>
+            </div>
+          </div>
 
         <div id="maproot">
-          <div className="map-placeholder">Map will Go Here</div>
+          <div className="map-placeholder">Map Placeholder</div>
         </div>
 
+        <CommentContainer />
 
-
-        {<CommentContainer />}
-        {/*comments*/}
-        <Link to="/dashboard">Dashboard</Link>
+        {/*Do we need this? We already have a dashboard button above*/}
+        {/*<Link to="/dashboard">Dashboard</Link>*/}
       </div>
     );
   }
