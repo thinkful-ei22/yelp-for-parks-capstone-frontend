@@ -79,23 +79,20 @@ class LandingPage extends React.Component {
             trails, parks, ponds, mountains, stargazing, <br />
             campgrounds...the sky is the limit!
           </h3>
-          <br />
           <img
             className="backpack"
             src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png"
           />
           <br />
           <h3>
-            See what places other users cannot
-            <br />
-            talking about
+            See what places other users can't stop talking about!
           </h3>
 
           <img
             className="tent"
             src="https://i.postimg.cc/mDSPCvmX/kisspng-camping-tent-campsite-campfire-clip-art-sick-dog-cartoon.png"
           />
-          <br />
+
           <h2>
             Join the discussion.
             <br />

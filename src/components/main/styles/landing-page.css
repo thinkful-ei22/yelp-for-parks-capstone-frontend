@@ -10,7 +10,7 @@
   width: 50%;
   height: 50%;
   position: absolute;
-  /* background-color: pink; */
+  /* background-color: blue; */
 }
 
 .backpack {
@@ -30,9 +30,10 @@
 }
 
 .login-form-placement {
+  text-align: center;
   position: absolute;
-  height: 60%;
-  width: 30%;
-  /* background-color: yellow; */
-  left: 62%;
+  height: 130%;
+  width: 50%;
+  left: 100%;
+  top: 0%;
 }

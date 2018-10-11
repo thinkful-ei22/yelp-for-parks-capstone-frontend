@@ -106,7 +106,7 @@ class RegistrationForm extends React.Component {
               );
             }}
           >
-            Let's go!
+            Get GOing!
           </button>
         </form>
       </div>
