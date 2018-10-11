@@ -6,6 +6,7 @@ import {
 } from "../utils";
 import jwtDecode from "jwt-decode";
 import { BACKEND_URL } from "../config";
+import { getAllLocations } from "./location";
 
 export const LOGOUT = "LOGOUT";
 export const logout = () => ({
@@ -36,7 +37,7 @@ export const toggleRedirect = bool => ({
 export const fetchLogin = credentials => dispatch => {
   console.log("You've Logged In!");
   dispatch(makeLoginRequest);
-  fetch(`${BACKEND_URL}/auth/login`, {
+  return fetch(`${BACKEND_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials)
@@ -52,8 +53,9 @@ export const fetchLogin = credentials => dispatch => {
     })
     .then(decodedToken => {
       console.log("this is the decoded token", decodedToken);
-      dispatch(loginRequestSuccess(decodedToken.user));
+      return dispatch(loginRequestSuccess(decodedToken.user));
     })
+    .then(() => dispatch(getAllLocations()))
     .catch(err => {
       dispatch(loginRequestError(err.message));
     });
@@ -81,6 +83,7 @@ export const refreshAuthToken = () => dispatch => {
       console.log("this is the decoded token", decodedToken);
       dispatch(loginRequestSuccess(decodedToken.user));
     })
+    .then(() => dispatch(getAllLocations()))
     .catch(err => {
       dispatch(loginRequestError(err.message));
     });

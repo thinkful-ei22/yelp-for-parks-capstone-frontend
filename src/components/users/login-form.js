@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchLogin, refreshAuthToken } from "../../actions/login";
-import './styles/login-form.css';
+import "./styles/login-form.css";
 
 //Currently taking these out of the main design for now
 //Remember me box - not in the wireframe - not sure if even functional
@@ -28,16 +28,17 @@ import './styles/login-form.css';
 //   refresher
 // </button>
 
-
 class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-container">
-        <br/>
+        <br />
         <h1>Log in </h1>
         <form className="login-form">
-          <label htmlFor="username" className="login-label">Username</label>
-          <br/>
+          <label htmlFor="username" className="login-label">
+            Username
+          </label>
+          <br />
           <input
             id="login-username"
             className="login-input"
@@ -45,9 +46,11 @@ class LoginForm extends React.Component {
             ref={input => (this.username = input)}
             placeholder="happytrails"
           />
-          <br/>
-          <label htmlFor="password" className="login-label">Password</label>
-          <br/>
+          <br />
+          <label htmlFor="password" className="login-label">
+            Password
+          </label>
+          <br />
           <input
             id="login-password"
             className="login-input"
@@ -55,8 +58,6 @@ class LoginForm extends React.Component {
             ref={input => (this.password = input)}
             placeholder="password123"
           />
-
-
 
           <button
             type="submit"
