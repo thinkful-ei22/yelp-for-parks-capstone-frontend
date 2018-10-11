@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { createComment } from "../../actions/comment";
-import "./styles/comment-modal.css";
+import { createComment } from '../../actions/comment';
+import './styles/comment-modal.css';
 
 class CommentModal extends React.Component {
   constructor(props) {
@@ -13,12 +13,11 @@ class CommentModal extends React.Component {
   }
 
   setRatingValue(value) {
-    this.state = { ...this.state, ratingValue: value };
-    console.log(this.state.ratingValue);
+    this.setState({ratingValue: value });
   }
 
   render() {
-    const showHideClassName = this.props.show ? "modal" : "modal hidden";
+    const showHideClassName = this.props.show ? 'modal' : 'modal hidden';
 
     return (
       <div className={showHideClassName}>
@@ -38,8 +37,8 @@ class CommentModal extends React.Component {
         <form className="modal-form">
           <div className="star-rating-container">
             <p>Give it some stars!</p>
-            <div class="star-rating">
-              <div class="star-rating__wrap">
+            <div className="star-rating">
+              <div className="star-rating__wrap">
                 <input
                   className="star-rating__input"
                   id="star-rating-1"
@@ -49,7 +48,7 @@ class CommentModal extends React.Component {
                   ref={input => (this.oneStar = input)}
                   onClick={() => this.setRatingValue(1)}
                 />
-                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="1 out of 5 stars"></label>
+                <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-1" title="1 out of 5 stars"></label>
                 <input
                   className="star-rating__input"
                   id="star-rating-2"
@@ -59,7 +58,7 @@ class CommentModal extends React.Component {
                   ref={input => (this.twoStar = input)}
                   onClick={() => this.setRatingValue(2)}
                 />
-                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="2 out of 5 stars"></label>
+                <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-2" title="2 out of 5 stars"></label>
                 <input
                   className="star-rating__input"
                   id="star-rating-3"
@@ -69,7 +68,7 @@ class CommentModal extends React.Component {
                   ref={input => (this.threeStar = input)}
                   onClick={() => this.setRatingValue(3)}
                 />
-                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="3 out of 5 stars"></label>
+                <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-3" title="3 out of 5 stars"></label>
                 <input
                   className="star-rating__input"
                   id="star-rating-4"
@@ -79,7 +78,7 @@ class CommentModal extends React.Component {
                   ref={input => (this.fourStar = input)}
                   onClick={() => this.setRatingValue(4)}
                 />
-                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>
+                <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-4" title="4 out of 5 stars"></label>
                 <input
                   className="star-rating__input"
                   id="star-rating-5"
@@ -89,7 +88,7 @@ class CommentModal extends React.Component {
                   ref={input => (this.fiveStar = input)}
                   onClick={() => this.setRatingValue(5)}
                 />
-                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
+                <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-5" title="5 out of 5 stars"></label>
               </div>
             </div>
           </div>

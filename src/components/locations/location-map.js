@@ -16,7 +16,7 @@ class LocationMap extends Component {
     this.state = {
       userlocation: {
         lat: 51.505,
-        lng: -0.09,
+        lng: -0.10,
       },
       //Deleting selectedLocation - it is now stored in the state
       // selectedlocation: {
@@ -39,11 +39,9 @@ class LocationMap extends Component {
         zoom: 13
       });
     }, () => {
-      console.log('User did not give location')
       fetch("https://ipapi.co/json")
         .then(res => res.json())
         .then(location => {
-          console.log(location);
           this.setState({
             userlocation: {
               lat: location.latitude,
@@ -58,7 +56,6 @@ class LocationMap extends Component {
   render() {
     const position = [this.state.userlocation.lat, this.state.userlocation.lng]
     const position2 = [this.props.locationState.currentLatLng.lat, this.props.locationState.currentLatLng.lng]
-    console.log('This is the selectedLocation marker.', position2)
     return (
       <div>
         <Map className="map" bounds={[position, position2]} zoom={this.state.zoom}>

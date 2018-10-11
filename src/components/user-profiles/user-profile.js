@@ -1,49 +1,66 @@
-import React from "react";
-import { connect } from "react-redux";
-import "./user-profile.css";
+import React from 'react';
+import { connect } from 'react-redux';
 
- class UserProfile extends React.Component {
+import { getUserById } from '../../actions/user';
+import './user-profile.css';
+
+class UserProfile extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(getUserById(this.props.match.params.id));
+  }
   render() {
-    let userLocations = this.props.userState.currentUserLocations;
-    let locationsMap = userLocations.map(location => {
-      return <div className="user-locations-container">
-        <h3>My locations</h3>
-        <div className="locations-box">
-          <p className="indiv-location">{location.title}<br/>
-          {location.description}<br/>
-          {location.address}<br/>
-          {location.city + ','} {location.state} {location.zipCode}<br/></p>
-        </div>
-      </div>
-    })
-    if(userLocations.length !== 0) {
-        return (
-          <div className="user-profile-container">
-            <div className="placeholder"></div>
-            <div className="circle"></div>
-            <div className="user-info-container">
-              <h1 className="username">{this.props.userState.currentUser.username}</h1>
-              <h2 className="name">{this.props.userState.currentUser.firstName} {this.props.userState.currentUser.lastName}</h2>
-            </div>
-            {locationsMap}
-          </div>
-        )
+    const userProfileObj = {};
+
+    if (!this.props.userState.currentUser){
+      return <div>Loading...</div>;
     }
+    const filtered = this.props.locationState.locationList.filter(location => {
+      return location.ownerId.id === this.props.match.params.id;
+    });
+    let locationsMap = filtered.map((location, i) => {
+      userProfileObj.username = location.ownerId.username;
+      userProfileObj.firstName = location.ownerId.firstName;
+      userProfileObj.lastName = location.ownerId.lastName;
+      return (
+        <p key={i} className="indiv-location">
+          {location.title}
+          <br />
+          {location.description}
+          <br />
+          {/* {location.address}
+          <br /> */}
+          {location.city + ','} {location.state} {/*{location.zipCode}*/}
+          <br />
+        </p>
+      );
+    });
     return (
-      <div className="user-info-container">
-        <p>Username</p>
-        <p>{this.props.userState.currentUser.username}</p>
-        <p>First Name</p>
-        <p>{this.props.userState.currentUser.firstName}</p>
-        <p>Last Name</p>
-        <p>{this.props.userState.currentUser.lastName}</p>
+      <div className="user-profile-container">
+        <div className="placeholder" />
+        <div className="circle" />
+        <div className="user-info-container">
+          <h1 className="username">
+            {userProfileObj.username}
+          </h1>
+          <h2 className="name">
+            {userProfileObj.firstName}{' '}
+            {userProfileObj.lastName}
+          </h2>
+        </div>
+        <div className="user-locations-container">
+          <h3>My locations</h3>
+          <div className="locations-box">
+            {locationsMap.length ? locationsMap : ''}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  userState: state.user
+  userState: state.user,
+  locationState: state.location
 });
 
 export default connect(mapStateToProps)(UserProfile);

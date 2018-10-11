@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getAllLocations, setPage } from "../../actions/location";
-import { Redirect } from "react-router";
-import LocationListItem from "./location-list-item";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getAllLocations } from '../../actions/location';
+import LocationListItem from './location-list-item';
 import './styles/location-list.css';
 
 
@@ -18,12 +17,6 @@ class LocationList extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getAllLocations());
-  }
-
-  toggleRedirecting(bool) {
-    this.setState({
-      redirecting: bool
-    });
   }
 
   next() {
@@ -54,15 +47,6 @@ class LocationList extends React.Component {
             .includes(this.props.filter.keyword.toLowerCase())
         );
       });
-    if (this.state.redirecting === true) {
-      return (
-        <Redirect
-          to={{
-            pathname: '/location'
-          }}
-        />
-      );
-    }
 
     const indexOfLastLocation = this.state.currentPage * this.state.locationsPerPage;
     const indexOfFirstLocation = indexOfLastLocation - this.state.locationsPerPage;
@@ -108,7 +92,6 @@ class LocationList extends React.Component {
                   className="location-item"
                   key={i}
                   locationObject={location}
-                  onClick={() => this.toggleRedirecting(true)}
                 />
               );
             })

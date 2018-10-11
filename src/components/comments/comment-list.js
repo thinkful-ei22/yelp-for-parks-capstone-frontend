@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import IndividualComment from "./individual-comment";
 import "./styles/comment-list.css";
 
+
 class CommentList extends React.Component {
   render() {
     if (!this.props.locationState.currentLocation.comments) {
@@ -16,8 +17,9 @@ class CommentList extends React.Component {
     }
     return (
       <div className="comments-list-container">
-        {this.props.locationState.currentLocation.comments.map(comment => {
-          return <IndividualComment comment={comment} />;
+        {this.props.locationState.currentLocation.comments.map((comment, i) => {
+          return <IndividualComment comment={comment} key={i} />;
+
         })}
       </div>
     );

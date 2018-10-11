@@ -6,10 +6,10 @@ import LoginPage from "./components/users/login-page";
 import RegistrationPage from "./components/users/registration-page";
 import LandingPage from "./components/main/landing-page";
 import Dashboard from "./components/main/dashboard";
+import HeaderBar from './components/main/header-bar';
 import LocationForm from "./components/locations/location-form";
 import LocationIndividual from "./components/locations/location-individual";
 import UserProfile from "./components/user-profiles/user-profile";
-import AuthorProfile from "./components/author-profiles/author-profile";
 import { refreshAuthToken } from "./actions/login";
 
 export class App extends React.Component {
@@ -45,14 +45,14 @@ export class App extends React.Component {
   render() {
     return (
       <main className="App">
+        <HeaderBar />
         <Route path="/" component={LandingPage} exact />
         <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/login" component={LoginPage} exact />
         <Route path="/register" component={RegistrationPage} exact />
-        <Route path="/location/add" component={LocationForm} exact />
-        <Route path="/location" component={LocationIndividual} exact />
-        <Route path="/user" component={UserProfile} exact />
-        <Route path="/authorprofile" component={AuthorProfile} exact />
+        <Route path="/add/location/" component={LocationForm} exact />
+        <Route path="/location/:id" component={LocationIndividual} exact />
+        <Route path="/profile/:id" component={UserProfile} exact />
       </main>
     );
   }
