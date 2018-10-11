@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LocationEditor from './location-editor';
 import CommentContainer from '../comments/comment-container';
-import { geocode, updateImage } from '../../actions/location';
+import { geocode, updateImage, getOneLocation } from '../../actions/location';
 import { Link } from 'react-router-dom';
 import LocationMap from './location-map';
 import './styles/location-individual.css';
@@ -19,6 +19,7 @@ class LocationIndividual extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(geocode(this.props.locationState));
+    this.props.dispatch(getOneLocation(this.props.match.params.id))
   }
 
   toggleEditState(bool){
