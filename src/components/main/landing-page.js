@@ -33,7 +33,7 @@ class LandingPage extends React.Component {
 
   render() {
     let formContainer;
-    console.log(this.props.loggedIn.currentUser);
+
     //if they've logged in, we allow them to redirect to dashboard
     if (this.props.loggedIn.currentUser !== null) {
       return <Redirect to="/dashboard" />;
@@ -83,6 +83,7 @@ class LandingPage extends React.Component {
           <img
             className="backpack"
             src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png"
+            alt='backpack'
           />
           <br />
           <h3>
@@ -94,6 +95,7 @@ class LandingPage extends React.Component {
           <img
             className="tent"
             src="https://i.postimg.cc/mDSPCvmX/kisspng-camping-tent-campsite-campfire-clip-art-sick-dog-cartoon.png"
+            alt='tent'
           />
           <br />
           <h2>

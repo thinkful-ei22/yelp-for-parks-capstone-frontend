@@ -1,32 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchLogin, refreshAuthToken } from "../../actions/login";
-import "./styles/login-form.css";
-
-//Currently taking these out of the main design for now
-//Remember me box - not in the wireframe - not sure if even functional
-//Test refresher button - think this was mainly for testing purposes
-//
-// <div className="remember-me-container">
-//   <input
-//     type="checkbox"
-//     className="login-input"
-//     id="remember-me-box"
-//     name="remember me"
-//   />
-//   <label htmlFor="remember-me-box">Remember me</label>
-// </div>
-//
-// <button
-//   type="button"
-//   name="BUTTON-TO-TEST-AUTHTOKEN-REFRESH"
-//   onClick={e => {
-//     e.preventDefault();
-//     this.props.dispatch(refreshAuthToken());
-//   }}
-// >
-//   refresher
-// </button>
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchLogin } from '../../actions/login';
+import './styles/login-form.css';
 
 class LoginForm extends React.Component {
   render() {
@@ -57,6 +32,7 @@ class LoginForm extends React.Component {
             type="password"
             ref={input => (this.password = input)}
             placeholder="password123"
+            autoComplete='password'
           />
 
           <button

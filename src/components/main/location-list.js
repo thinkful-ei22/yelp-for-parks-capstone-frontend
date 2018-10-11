@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getAllLocations, setPage } from "../../actions/location";
-import { Redirect } from "react-router";
-import LocationListItem from "./location-list-item";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getAllLocations } from '../../actions/location';
+import LocationListItem from './location-list-item';
 import './styles/location-list.css';
 
 

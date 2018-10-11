@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import IndividualComment from "./individual-comment";
+import React from 'react';
+import { connect } from 'react-redux';
+import IndividualComment from './individual-comment';
 
 class CommentList extends React.Component {
   render() {
@@ -15,8 +15,8 @@ class CommentList extends React.Component {
     }
     return (
       <div>
-        {this.props.locationState.currentLocation.comments.map(comment => {
-          return <IndividualComment comment={comment} />;
+        {this.props.locationState.currentLocation.comments.map((comment, i) => {
+          return <IndividualComment comment={comment} key={i} />;
         })}
       </div>
     );

@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { createComment } from "../../actions/comment";
-import "./styles/comment-modal.css";
+import { createComment } from '../../actions/comment';
+import './styles/comment-modal.css';
 
 class CommentModal extends React.Component {
   constructor(props) {
@@ -13,12 +13,11 @@ class CommentModal extends React.Component {
   }
 
   setRatingValue(value) {
-    this.state = { ...this.state, ratingValue: value };
-    console.log(this.state.ratingValue);
+    this.setState({ratingValue: value });
   }
 
   render() {
-    const showHideClassName = this.props.show ? "modal" : "modal hidden";
+    const showHideClassName = this.props.show ? 'modal' : 'modal hidden';
 
     return (
       <div className={showHideClassName}>

@@ -1,37 +1,37 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { getUserById } from "../../actions/user";
-import "./user-profile.css";
+import { getUserById } from '../../actions/user';
+import './user-profile.css';
 
 class UserProfile extends React.Component {
   componentDidMount() {
     this.props.dispatch(getUserById(this.props.match.params.id));
   }
   render() {
-    console.log(this.props);
-    let userLocations = this.props.userState.currentUserLocations;
+    const userProfileObj = {};
+
+    if (!this.props.userState.currentUser){
+      return <div>Loading...</div>;
+    }
     const filtered = this.props.locationState.locationList.filter(location => {
       return location.ownerId.id === this.props.match.params.id;
     });
-    let locationsMap = filtered.map(location => {
+    let locationsMap = filtered.map((location, i) => {
+      userProfileObj.username = location.ownerId.username;
+      userProfileObj.firstName = location.ownerId.firstName;
+      userProfileObj.lastName = location.ownerId.lastName;
       return (
-        <div className="user-locations-container">
-          <h3>My locations</h3>
-          <div className="locations-box">
-            <p className="indiv-location">
-              {location.title}
-              <br />
-              {location.description}
-              <br />
-              {location.address}
-              <br />
-              {location.city + ","} {location.state} {location.zipCode}
-              <br />
-            </p>
-          </div>
-        </div>
+        <p key={i} className="indiv-location">
+          {location.title}
+          <br />
+          {location.description}
+          <br />
+          {/* {location.address}
+          <br /> */}
+          {location.city + ','} {location.state} {/*{location.zipCode}*/}
+          <br />
+        </p>
       );
     });
     return (
@@ -40,14 +40,19 @@ class UserProfile extends React.Component {
         <div className="circle" />
         <div className="user-info-container">
           <h1 className="username">
-            {this.props.userState.currentUser.username}
+            {userProfileObj.username}
           </h1>
           <h2 className="name">
-            {this.props.userState.currentUser.firstName}{" "}
-            {this.props.userState.currentUser.lastName}
+            {userProfileObj.firstName}{' '}
+            {userProfileObj.lastName}
           </h2>
         </div>
-        {locationsMap.length ? locationsMap : ""}
+        <div className="user-locations-container">
+          <h3>My locations</h3>
+          <div className="locations-box">
+            {locationsMap.length ? locationsMap : ''}
+          </div>
+        </div>
       </div>
     );
   }

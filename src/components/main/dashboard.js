@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout, createUser, createUserLocation } from "../../actions/login";
-import { getAllLocations } from "../../actions/location";
+import { logout } from "../../actions/login";
 
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
@@ -47,7 +46,7 @@ class Dashboard extends React.Component {
       );
     }
     const userId = this.props.loggedIn.currentUser.id;
-    console.log(this.props);
+
     return (
       <div className="dashboard">
         <button onClick={() => this.props.dispatch(logout())}>Log Out</button>

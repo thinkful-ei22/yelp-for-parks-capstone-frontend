@@ -1,16 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import LocationEditor from "./location-editor";
-import {
-  createAuthor,
-  createAuthorLocation,
-  toggleRedirectAuthor
-} from "../../actions/author";
-import CommentContainer from "../comments/comment-container";
-import { geocode, updateImage, getOneLocation } from "../../actions/location";
-import { Link } from "react-router-dom";
-import LocationMap from "./location-map";
-import "./styles/location-individual.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import LocationEditor from './location-editor';
+import CommentContainer from '../comments/comment-container';
+import { geocode, updateImage } from '../../actions/location';
+import { Link } from 'react-router-dom';
+import LocationMap from './location-map';
+import './styles/location-individual.css';
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -26,12 +21,11 @@ class LocationIndividual extends React.Component {
     this.props.dispatch(geocode(this.props.locationState));
   }
 
-  toggleEditState = bool => {
+  toggleEditState(bool){
     this.setState({ editing: bool });
-    console.log(this.state);
-  };
+  }
 
-  onChange = e => {
+  onChange(e){
     const files = Array.from(e.target.files);
     this.setState({ uploading: true });
 
@@ -44,7 +38,7 @@ class LocationIndividual extends React.Component {
     this.props.dispatch(
       updateImage(this.props.locationState.currentLocation.id, formData)
     );
-  };
+  }
 
   render() {
     const currentLocation = this.props.locationState.locationList.find(
@@ -52,14 +46,13 @@ class LocationIndividual extends React.Component {
         return location.id === this.props.match.params.id;
       }
     );
-    console.log(currentLocation);
     if (this.state.editing === true) {
       return <LocationEditor stopEditing={() => this.toggleEditState(false)} />;
     }
     if (!currentLocation) {
       return <div>loading...</div>;
     }
-    let editButton = "";
+    let editButton = '';
     if (currentLocation.ownerId.id === this.props.loggedIn.currentUser.id) {
       editButton = (
         <button
@@ -68,19 +61,17 @@ class LocationIndividual extends React.Component {
           onClick={() => {
             this.toggleEditState(true);
           }}
-          // className={}
         >
           Edit Location
         </button>
       );
     }
     return (
-      //later add a ternary in the classname to hide this unless owner id valid
       <div>
         {editButton}
         <Link to="/dashboard">
           <button type="button" name="back-to-dashboard">
-            Back to Dashboard{" "}
+            Back to Dashboard{' '}
           </button>
         </Link>
         {/*We pull the information from the state.*/}
@@ -88,8 +79,6 @@ class LocationIndividual extends React.Component {
         <div id="maproot">
           <LocationMap />
         </div>
-        <h1>{this.props.locationState.currentLocation.title}</h1>
-
         <h1>{this.props.locationState.currentLocation.title}</h1>
         <img
           className="location-image"
@@ -100,9 +89,9 @@ class LocationIndividual extends React.Component {
           <label
             htmlFor="single"
             style={{
-              fontWeight: "bold",
-              color: "blue",
-              textDecoration: "underline"
+              fontWeight: 'bold',
+              color: 'blue',
+              textDecoration: 'underline'
             }}
           >
             Change image
@@ -111,7 +100,7 @@ class LocationIndividual extends React.Component {
             type="file"
             id="single"
             onChange={e => this.onChange(e)}
-            style={{ visibility: "hidden" }}
+            style={{ visibility: 'hidden' }}
           />
         </div>
         <p>{this.props.locationState.currentLocation.description}</p>
@@ -126,7 +115,7 @@ class LocationIndividual extends React.Component {
           {this.props.locationState.currentLocation.zipCode}
         </p>
 
-        {"Link to redirect to author's profile page"}
+        {'Link to redirect to author\'s profile page'}
         <p>author</p>
         <Link to={`/profile/${currentLocation.ownerId.id}`}>
           <button type="button">Author Profile</button>
