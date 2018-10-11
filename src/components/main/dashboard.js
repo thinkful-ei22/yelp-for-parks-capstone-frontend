@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
           handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
         />
         <LocationList filter={this.state.filter} />
-        <Link to="/location/add">Add A New Location!</Link>
+        <Link to="add/location">Add A New Location!</Link>
       </div>
     );
   }

@@ -1,18 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createLocation, toggleRedirect } from "../../actions/location";
+import { createLocation } from "../../actions/location";
 import { Redirect } from "react-router";
 import { Link } from 'react-router-dom';
 import './styles/location-form.css';
 
 class LocationForm extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(toggleRedirect(false));
-  }
-  componentWillUnmount() {
-    this.props.dispatch(toggleRedirect(false));
-  }
 
   handleSubmit(e){
     e.preventDefault();
