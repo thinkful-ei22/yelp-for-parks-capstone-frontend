@@ -78,3 +78,11 @@
     width: 110%;
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .registration-container {
+    margin-top: 20%;
+    height: 65%;
+    width: 110%;
+  }
+}
