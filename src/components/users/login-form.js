@@ -8,23 +8,16 @@ class LoginForm extends React.Component {
     return (
       <div className="login-container">
         <br />
-        <h1>Log in </h1>
+        <h1 className="login-form-header">Log in </h1>
         <form className="login-form">
-          <label htmlFor="username" className="login-label">
-            Username
-          </label>
           <br />
           <input
             id="login-username"
             className="login-input"
             type="text"
             ref={input => (this.username = input)}
-            placeholder="happytrails"
+            placeholder="username"
           />
-          <br />
-          <label htmlFor="password" className="login-label">
-            Password
-          </label>
           <br />
           <input
             id="login-password"
@@ -34,7 +27,7 @@ class LoginForm extends React.Component {
             placeholder="password123"
             autoComplete='password'
           />
-
+          <br/>
           <button
             type="submit"
             className="login-button"
@@ -50,7 +43,7 @@ class LoginForm extends React.Component {
               );
             }}
           >
-            Go!
+            Get GOing!
           </button>
         </form>
       </div>

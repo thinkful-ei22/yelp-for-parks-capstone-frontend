@@ -19,7 +19,87 @@
   font-size: 17px;
   margin-top: 5%;
   padding: 3%;
-  width: 40%;
+  width: 45%;
   border: 5px solid #bbbcbf;
   background-color: #6f7723;
+}
+
+@media only screen and (min-width: 1300px) {
+  .registration-container {
+    height: 70%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .registration-button {
+    width: 62%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .registration-container {
+    height: 85%;
+  }
+
+  .registration-form-header {
+    font-size: 25px;
+  }
+
+  .registration-button {
+    font-size: 15px;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .registration-container {
+    height: 70%;
+    width: 110%;
+  }
+
+  .registration-form-header {
+    font-size: 20px;
+  }
+
+  .registration-button {
+    font-size: 10px;
+    width: 60%;
+  }
+
+  .registration-input {
+    border: 3px solid #e5e5e0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .registration-container {
+    height: 85%;
+    width: 110%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .registration-container {
+    height: 80%;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .registration-container {
+    margin-top: 20%;
+    height: 65%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .registration-container {
+    height: 70%;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .registration-container {
+    width: 120%;
+    height: 75%;
+  }
 }

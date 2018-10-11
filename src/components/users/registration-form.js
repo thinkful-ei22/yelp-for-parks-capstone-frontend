@@ -36,7 +36,7 @@ class RegistrationForm extends React.Component {
     return (
       <div className="registration-container">
         <br/>
-        <h1>Sign Up </h1>
+        <h1 className="registration-form-header">Sign Up </h1>
         <form>
           <label htmlFor="registration-username" className="registration-label" />
           <input
@@ -106,7 +106,7 @@ class RegistrationForm extends React.Component {
               );
             }}
           >
-            Let's go!
+            Get GOing!
           </button>
         </form>
       </div>
