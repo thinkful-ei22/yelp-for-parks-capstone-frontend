@@ -14,8 +14,6 @@ class FilterKeyword extends React.Component {
     return (
       <div className="keyword-filter-div">
         <form className="filter-keyword-form" onChange={e => this.handleOnChange(e)}>
-          <br/>
-          <br/>
           <input
             type="text"
             className="keyword-filter"
@@ -23,8 +21,6 @@ class FilterKeyword extends React.Component {
             placeholder="Search by Keyword! (i.e. Millenium Park)"
             ref={input => (this.keyword = input)}
           />
-          <br/>
-          <br/>
         </form>
       </div>
     );

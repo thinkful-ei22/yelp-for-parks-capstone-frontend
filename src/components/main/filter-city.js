@@ -14,8 +14,6 @@ class FilterCity extends React.Component {
     return (
       <div className="city-filter-div">
         <form className="filter-city-form" onChange={e => this.handleOnChange(e)}>
-          <br/>
-          <br/>
           <input
             type="text"
             className="city-filter"
@@ -23,8 +21,6 @@ class FilterCity extends React.Component {
             placeholder="Search by City! (i.e. Portland)"
             ref={input => (this.city = input)}
           />
-          <br/>
-          <br/>
         </form>
       </div>
     );

@@ -50,6 +50,8 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <div className="filter-container">
+          <br/>
+          <br/>
           <FilterCity handleCityFilter={city => this.filterByCity(city)} />
           <FilterKeyword
             handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
