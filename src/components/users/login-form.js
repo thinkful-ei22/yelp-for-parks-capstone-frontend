@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchLogin, refreshAuthToken } from "../../actions/login";
-import "./styles/login-form.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchLogin } from '../../actions/login';
+import './styles/login-form.css';
 
 class LoginForm extends React.Component {
   render() {
@@ -24,7 +24,8 @@ class LoginForm extends React.Component {
             className="login-input"
             type="password"
             ref={input => (this.password = input)}
-            placeholder="password"
+            placeholder="password123"
+            autoComplete='password'
           />
           <br/>
           <button

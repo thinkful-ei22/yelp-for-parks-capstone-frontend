@@ -172,7 +172,7 @@ class LocationForm extends React.Component {
                 value="Grill"
                 ref={input => (this.grill = input)}
               />
-              <label for="amenities1">Grill</label>
+              <label htmlFor="amenities1">Grill</label>
               <input
                 type="checkbox"
                 id="amenities2"
@@ -180,7 +180,7 @@ class LocationForm extends React.Component {
                 value="Playground"
                 ref={input => (this.playground = input)}
               />
-              <label for="amenities2">Playground</label>
+              <label htmlFor="amenities2">Playground</label>
               <input
                 type="checkbox"
                 id="fruit3"
@@ -188,7 +188,7 @@ class LocationForm extends React.Component {
                 value="Bathrooms"
                 ref={input => (this.bathroom = input)}
               />
-              <label for="fruit3">Bathrooms</label>
+              <label htmlFor="fruit3">Bathrooms</label>
             </fieldset>
             <br/>
             <label htmlFor="special-instructions">Special Instructions</label>

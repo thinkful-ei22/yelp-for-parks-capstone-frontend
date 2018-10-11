@@ -1,4 +1,4 @@
-import { loadUser, normalizeResponseErrors } from "../utils";
+import { normalizeResponseErrors } from "../utils";
 import { BACKEND_URL } from "../config";
 export const USER_REQUEST = "USER_REQUEST";
 export const userRequest = () => ({
@@ -20,18 +20,15 @@ export const toggleRedirect = () => ({
 });
 
 export const getUserById = id => dispatch => {
-  console.log("user profile request initiated");
   dispatch(userRequest());
   return fetch(`${BACKEND_URL}/users/${id}`, {
     method: "GET"
   })
     .then(res => {
-      console.log("Raw Response", res);
       normalizeResponseErrors(res);
       return res.json();
     })
     .then(parsedResponse => {
-      console.log("Parsed Response", parsedResponse);
       dispatch(userRequestSuccess(parsedResponse));
     })
     .catch(err => {
