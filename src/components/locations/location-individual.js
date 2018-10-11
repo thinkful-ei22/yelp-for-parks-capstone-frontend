@@ -164,9 +164,9 @@ class LocationIndividual extends React.Component {
             <button type="button">Author Profile</button>
           </Link>
 
-          {/* <div id="maproot">
+          {<div id="maproot">
             <LocationMap />
-          </div> */}
+          </div>}
 
           <div className="special-instructions-container">
             <h2 className="special-instructions-label">Things to Note</h2>
