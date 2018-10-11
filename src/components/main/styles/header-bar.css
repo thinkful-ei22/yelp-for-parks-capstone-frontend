@@ -29,3 +29,39 @@
 .header-bar {
   text-align: right;
 }
+
+@media only screen and (max-width: 1200px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 11%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 13%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 18%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 21%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    width: 24%;
+  }
+}

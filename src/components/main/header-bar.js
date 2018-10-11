@@ -20,7 +20,7 @@ export class HeaderBar extends React.Component {
       myProfile = (
         <Link to={`/profile/${userId}`}>
           <button type="button" name="my-profile" className="dashboard-profile-button">
-            My Profile{''}
+            {''}My Profile
           </button>
         </Link>
       );
