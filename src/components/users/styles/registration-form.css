@@ -90,3 +90,10 @@
     height: 70%;
   }
 }
+
+@media only screen and (max-width: 320px) {
+  .registration-container {
+    width: 120%;
+    height: 75%;
+  }
+}
