@@ -41,6 +41,10 @@
   display: inline-block;
 }
 
+.location-image {
+  width: 250px;
+}
+
 .location-title {
   color: white;
   display: inline-block;
