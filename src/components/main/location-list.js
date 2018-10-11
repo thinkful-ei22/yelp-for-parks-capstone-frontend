@@ -4,7 +4,6 @@ import { getAllLocations } from '../../actions/location';
 import LocationListItem from './location-list-item';
 import './styles/location-list.css';
 
-
 class LocationList extends React.Component {
   constructor(props) {
     super(props);

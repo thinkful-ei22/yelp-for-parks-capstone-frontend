@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/filter-keyword.css";
 
 class FilterKeyword extends React.Component {
   handleOnChange(e) {
@@ -11,12 +12,13 @@ class FilterKeyword extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onChange={e => this.handleOnChange(e)}>
+      <div className="keyword-filter-div">
+        <form className="filter-keyword-form" onChange={e => this.handleOnChange(e)}>
           <input
             type="text"
+            className="keyword-filter"
             name="keyword-search-box"
-            placeholder="Millenium Park"
+            placeholder="Search by Keyword! (i.e. Millenium Park)"
             ref={input => (this.keyword = input)}
           />
         </form>
