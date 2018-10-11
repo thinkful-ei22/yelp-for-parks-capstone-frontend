@@ -75,7 +75,6 @@
 @media only screen and (max-width: 500px) {
   .registration-container {
     height: 80%;
-    width: 110%;
   }
 }
 
@@ -83,6 +82,11 @@
   .registration-container {
     margin-top: 20%;
     height: 65%;
-    width: 110%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .registration-container {
+    height: 70%;
   }
 }

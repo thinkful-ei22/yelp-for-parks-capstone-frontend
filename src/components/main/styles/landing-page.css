@@ -171,5 +171,31 @@
     width: 50%;
     left: 60%;
   }
+}
 
+@media only screen and (max-width: 370px) {
+
+  .landing-page-header {
+    font-size: 16px;
+    margin-top: 10%;
+  }
+
+  .intro-text-h3 {
+    font-size: 11.5px;
+  }
+
+  .intro-text-h2 {
+    font-size: 14px;
+  }
+
+  .backpack {
+    height: 20%;
+    width: 20%;
+  }
+
+  .tent {
+    height: 35%;
+    width: 50%;
+    left: 55%;
+  }
 }
