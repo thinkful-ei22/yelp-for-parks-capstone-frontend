@@ -10,7 +10,7 @@ export default function LocationNode(props) {
   if (props.fieldName === "Description" && props.editing) {
     return (
       <div>
-        <label for={`edit-location-${props.fieldName}`}>
+        <label htmlFor={`edit-location-${props.fieldName}`}>
           {props.fieldName}
         </label>
         <textarea

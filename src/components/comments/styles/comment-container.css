@@ -1,5 +1,23 @@
 .comment-container {
-  background-color: gainsboro;
+  border: 5px solid #6f7723;
+  margin: 8%;
+  width: 74%;
+}
+
+.review-button-container {
+  border: 3px solid #C0D0E5;
+  margin: 2%;
+  text-align: center;
+}
+
+.review-button {
+  color: white;
+  border: 3px solid #e0e2e5;
+  background-color: #6f7723;
+  border-radius: 5%;
+  width: 20%;
+  padding: 1%;
+  margin-bottom: 2%;
 }
 
 .hidden {
