@@ -7,7 +7,7 @@ import './styles/header-bar.css';
 export class HeaderBar extends React.Component {
 
   render() {
-    let dashboard, myProfile, userLogout;
+    let headerBar, dashboard, myProfile, userLogout;
     if (this.props.validUser) {
       dashboard = (
         <Link to="/dashboard">
@@ -31,14 +31,19 @@ export class HeaderBar extends React.Component {
           </button>
         </Link>
       );
+      headerBar = (
+        <div className="header-bar">
+          <h1>Parks!</h1>
+          {dashboard}
+          {myProfile}
+          {userLogout}
+        </div>
+      );
     }
 
     return (
-      <div className="header-bar">
-        <h1>Parks!</h1>
-        {dashboard}
-        {myProfile}
-        {userLogout}
+      <div>
+        {headerBar}
       </div>
     );
   }
