@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
         <div className="add-location-box">
           <h3>Know a good place? Contribute to the community!</h3>
           <br/>
-          <Link className="add-location-button" to="add/location">Add A New Location!</Link>
+          <Link className="add-location-button" to="/add/location">Add A New Location!</Link>
         </div>
       </div>
     );
