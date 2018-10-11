@@ -48,6 +48,7 @@ class LandingPage extends React.Component {
           {this.state.registering ? (
             <button
               onClick={() => this.toggleRegistration(false)}
+              className="toggle-login"
               name="go-to-login"
             >
               Back to Login
@@ -55,6 +56,7 @@ class LandingPage extends React.Component {
           ) : (
             <button
               onClick={() => this.toggleRegistration(true)}
+              className="toggle-registration"
               name="go-to-registration"
             >
               Create Account
@@ -67,36 +69,33 @@ class LandingPage extends React.Component {
     return (
       <div>
         <div className="intro-topper">
-          <h1>
+          <h1 className="landing-page-header">
             GO helps you explore the great outdoors - <br />
             right in your own neighborhood
           </h1>
         </div>
 
         <div className="intro-text">
-          <h3>
+          <h3 className="intro-text-h3">
             Recommend your favorite nature sites: hiking <br />
             trails, parks, ponds, mountains, stargazing, <br />
             campgrounds...the sky is the limit!
           </h3>
-          <br />
           <img
             className="backpack"
             src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png"
           />
           <br />
-          <h3>
-            See what places other users cannot
-            <br />
-            talking about
+          <h3 className="intro-text-h3">
+            See what places other users can't stop talking about!
           </h3>
 
           <img
             className="tent"
             src="https://i.postimg.cc/mDSPCvmX/kisspng-camping-tent-campsite-campfire-clip-art-sick-dog-cartoon.png"
           />
-          <br />
-          <h2>
+
+          <h2 className="intro-text-h2">
             Join the discussion.
             <br />
             Make community.
