@@ -22,21 +22,23 @@
   /* background-color: purple; */
 }
 
+.text-container {
+  display: inline-block;
+  width: 340px;
+  /* background-color: yellow; */
+  position: relative;
+  top: 0px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: scroll;
+  height: 200px;
+}
+
 .thumbnail-container {
   height: 200px;
   width: 50%;
   /* background-color: pink; */
   display: inline-block;
-  position: relative;
-}
-
-.text-container {
-  display: inline-block;
-  height: 100%;
-  top: -60%;
-  width: 50%;
-  /* background-color: yellow; */
-  position: relative;
 }
 
 .title{
@@ -45,6 +47,8 @@
   margin-left: 5%;
   text-align: left;
   position: relative;
+  max-height: 20px;
+  line-height: 18px;
 }
 
 .description {
@@ -53,4 +57,7 @@
   text-align: left;
   position: relative;
   margin-left: 5%;
+  margin-right: 1%;
+  /* background-color: gray; */
+  line-height: 18px;
 }

@@ -1,0 +1,16 @@
+.keyword-filter-div {
+  display: inline-block;
+}
+
+.filter-keyword-form {
+  width: 575px;
+  /* background-color: red; */
+  text-align: left;
+}
+
+.keyword-filter {
+  width: 400px;
+  padding: 1.5%;
+  display: inline-block;
+  border: 3px solid black;
+}

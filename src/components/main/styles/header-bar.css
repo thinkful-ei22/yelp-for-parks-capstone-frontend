@@ -1,3 +1,31 @@
 .header-bar{
-  background-color: #39A0ED
+  height: 100px;
+  background-color: #6f7723;
+}
+
+.logo-placeholder {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  float: left;
+  position: relative;
+  margin-top: .8%;
+  margin-left: 1%;
+  background-image: url("https://i.postimg.cc/8zNQHZTf/GO.png");
+  background-size: cover;
+}
+
+.header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+  color: white;
+  font-size: 17px;
+  margin: .5%;
+  padding: 1%;
+  width: 9%;
+  border: none;
+  border-radius: 5%;
+  background-color: #6f7723;
+}
+
+.header-bar {
+  text-align: right;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/filter-city.css";
 
 class FilterCity extends React.Component {
   handleOnChange(e) {
@@ -11,14 +12,19 @@ class FilterCity extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onChange={e => this.handleOnChange(e)}>
+      <div className="city-filter-div">
+        <form className="filter-city-form" onChange={e => this.handleOnChange(e)}>
+          <br/>
+          <br/>
           <input
             type="text"
+            className="city-filter"
             name="city-search-box"
-            placeholder="Portland"
+            placeholder="Search by City! (i.e. Portland)"
             ref={input => (this.city = input)}
           />
+          <br/>
+          <br/>
         </form>
       </div>
     );

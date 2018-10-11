@@ -49,17 +49,18 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <button onClick={() => this.props.dispatch(logout())}>Log Out</button>
-        <Link to={`/profile/${userId}`}>
-          <button type="button">My Profile</button>
-        </Link>
-        <h2>Parks!</h2>
-        <FilterCity handleCityFilter={city => this.filterByCity(city)} />
-        <FilterKeyword
-          handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
-        />
+        <div className="filter-container">
+          <FilterCity handleCityFilter={city => this.filterByCity(city)} />
+          <FilterKeyword
+            handleKeywordFilter={keyword => this.filterByKeyword(keyword)}
+          />
+        </div>
         <LocationList filter={this.state.filter} />
-        <Link to="add/location">Add A New Location!</Link>
+        <div className="add-location-box">
+          <h3>Know a good place? Contribute to the community!</h3>
+          <br/>
+          <Link className="add-location-button" to="add/location">Add A New Location!</Link>
+        </div>
       </div>
     );
   }

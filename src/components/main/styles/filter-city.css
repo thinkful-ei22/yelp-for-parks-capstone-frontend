@@ -1,0 +1,17 @@
+.city-filter-div {
+  display: inline-block;
+  margin-right: 1%;
+}
+
+.filter-city-form {
+  width: 575px;
+  /* background-color: blue; */
+  text-align: right;
+}
+
+.city-filter {
+  width: 400px;
+  padding: 1.5%;
+  display: inline-block;
+  border: 3px solid black;
+}
