@@ -2,8 +2,6 @@
   border: 8px solid #919ab7;
   height: 100%;
   text-align: center;
-  background-color: pink;
-
 }
 
 .login-input {
@@ -24,6 +22,12 @@
   width: 45%;
   border: 5px solid #bbbcbf;
   background-color: #6f7723;
+}
+
+@media only screen and (min-width: 1300px) {
+  .login-container {
+    height: 70%;
+  }
 }
 
 @media only screen and (max-width: 1050px) {

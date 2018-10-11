@@ -24,6 +24,12 @@
   background-color: #6f7723;
 }
 
+@media only screen and (min-width: 1300px) {
+  .registration-container {
+    height: 70%;
+  }
+}
+
 @media only screen and (max-width: 1050px) {
   .registration-button {
     width: 62%;
