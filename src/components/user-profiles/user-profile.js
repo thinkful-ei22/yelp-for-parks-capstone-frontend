@@ -6,9 +6,11 @@ import './user-profile.css';
 
 class UserProfile extends React.Component {
   componentDidMount() {
+    console.log(this.props.match.params.id)
     this.props.dispatch(getUserById(this.props.match.params.id));
   }
   render() {
+    console.log(this.props)
     const userProfileObj = {};
 
     if (!this.props.userState.currentUser){
@@ -34,23 +36,26 @@ class UserProfile extends React.Component {
         </p>
       );
     });
+
+    const { username, firstName, lastName } = this.props.user.currentUser;
+
     return (
       <div className="user-profile-container">
         <div className="placeholder" />
         <div className="circle" />
         <div className="user-info-container">
           <h1 className="username">
-            {userProfileObj.username}
+            {username }
           </h1>
           <h2 className="name">
-            {userProfileObj.firstName}{' '}
-            {userProfileObj.lastName}
+            {firstName}
+            {lastName}
           </h2>
         </div>
         <div className="user-locations-container">
           <h3>My locations</h3>
           <div className="locations-box">
-            {locationsMap.length ? locationsMap : ''}
+            {locationsMap.length ? locationsMap : ' You have not created a location yet'}
           </div>
         </div>
       </div>
@@ -60,6 +65,7 @@ class UserProfile extends React.Component {
 
 const mapStateToProps = state => ({
   userState: state.user,
+  user: state.userProfile,
   locationState: state.location
 });
 

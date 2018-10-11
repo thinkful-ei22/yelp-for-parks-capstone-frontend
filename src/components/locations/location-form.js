@@ -29,7 +29,7 @@ class LocationForm extends React.Component {
       return (
         <Redirect
           to={{
-            pathname: "/location"
+            pathname: "/dashboard"
           }}
         />
       );
