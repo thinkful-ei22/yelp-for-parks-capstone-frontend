@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
     return (
       <div className="login-container">
         <br />
-        <h1>Log in </h1>
+        <h1 className="login-form-header">Log in </h1>
         <form className="login-form">
           <br />
           <input

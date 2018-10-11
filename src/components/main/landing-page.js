@@ -67,14 +67,14 @@ class LandingPage extends React.Component {
     return (
       <div>
         <div className="intro-topper">
-          <h1>
+          <h1 className="landing-page-header">
             GO helps you explore the great outdoors - <br />
             right in your own neighborhood
           </h1>
         </div>
 
         <div className="intro-text">
-          <h3>
+          <h3 className="intro-text-h3">
             Recommend your favorite nature sites: hiking <br />
             trails, parks, ponds, mountains, stargazing, <br />
             campgrounds...the sky is the limit!
@@ -84,7 +84,7 @@ class LandingPage extends React.Component {
             src="https://i.postimg.cc/ZnFx9sN4/climbingpack.png"
           />
           <br />
-          <h3>
+          <h3 className="intro-text-h3">
             See what places other users can't stop talking about!
           </h3>
 
@@ -93,7 +93,7 @@ class LandingPage extends React.Component {
             src="https://i.postimg.cc/mDSPCvmX/kisspng-camping-tent-campsite-campfire-clip-art-sick-dog-cartoon.png"
           />
 
-          <h2>
+          <h2 className="intro-text-h2">
             Join the discussion.
             <br />
             Make community.
