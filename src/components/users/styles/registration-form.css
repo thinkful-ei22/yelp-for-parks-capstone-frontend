@@ -24,9 +24,31 @@
   background-color: #6f7723;
 }
 
+@media only screen and (max-width: 1050px) {
+  .registration-button {
+    width: 62%;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   .registration-container {
-    height: 75%;
+    height: 85%;
+  }
+
+  .registration-form-header {
+    font-size: 25px;
+  }
+
+  .registration-button {
+    font-size: 15px;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .registration-container {
+    height: 70%;
+    width: 110%;
   }
 
   .registration-form-header {

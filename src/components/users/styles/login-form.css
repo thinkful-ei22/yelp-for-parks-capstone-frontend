@@ -26,9 +26,32 @@
   background-color: #6f7723;
 }
 
+@media only screen and (max-width: 1050px) {
+  .login-button {
+    width: 62%;
+  }
+}
+
+
 @media only screen and (max-width: 1000px) {
   .login-container {
-    height: 75%;
+    height: 80%;
+  }
+
+  .login-form-header {
+    font-size: 25px;
+  }
+
+  .login-button {
+    font-size: 15px;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .login-container {
+    height: 70%;
+    width: 110%;
   }
 
   .login-form-header {
@@ -38,9 +61,5 @@
   .login-button {
     font-size: 10px;
     width: 55%;
-  }
-
-  .login-input {
-    border: 3px solid #e5e5e0;
   }
 }
