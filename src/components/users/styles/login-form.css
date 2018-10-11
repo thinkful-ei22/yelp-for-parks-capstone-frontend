@@ -70,3 +70,10 @@
     width: 110%;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .login-container {
+    height: 75%;
+    width: 110%;
+  }
+}
