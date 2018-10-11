@@ -48,6 +48,7 @@ class LandingPage extends React.Component {
           {this.state.registering ? (
             <button
               onClick={() => this.toggleRegistration(false)}
+              className="toggle-login"
               name="go-to-login"
             >
               Back to Login
@@ -55,6 +56,7 @@ class LandingPage extends React.Component {
           ) : (
             <button
               onClick={() => this.toggleRegistration(true)}
+              className="toggle-registration"
               name="go-to-registration"
             >
               Create Account
