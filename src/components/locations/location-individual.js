@@ -83,11 +83,6 @@ class LocationIndividual extends React.Component {
     return (
       <div>
         {editButton}
-        <div>
-          <div className="sticky"></div>
-          <div className="back-to-dashboard-container">
-          </div>
-
           <div className="image-and-title">
             <div className="location-image-container">
               <img
@@ -96,6 +91,7 @@ class LocationIndividual extends React.Component {
                 src={this.props.locationState.currentLocation.image}
               />
             </div>
+            <h1 className="location-title">{this.props.locationState.currentLocation.title}</h1>
 
             <div className="change-image-button">
               <label
@@ -115,7 +111,10 @@ class LocationIndividual extends React.Component {
                 style={{ visibility: 'hidden' }}
               />
             </div>
-
+            <div className="star-ratings">Star Ratings Placeholder</div>
+            <Link to={`/profile/${currentLocation.ownerId.id}`}>
+              <button type="button" className="author-button">Author Profile</button>
+            </Link>
             <h1 className="location-title">Title Placeholder</h1>
             <div className="star-ratings">
               <StarRatings
@@ -134,20 +133,20 @@ class LocationIndividual extends React.Component {
             >
               Edit Location
             </button>
-            <h1>{this.props.locationState.currentLocation.title}</h1>
           </div>
-
+          <br/>
+          <br/>
           <div className="description-container">
             <h2 className="description-label">Description</h2>
             <div className="description-gray-box">
-              <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
+            <p className="location-description">{this.props.locationState.currentLocation.description}</p>
             </div>
           </div>
 
           <div className="address-container">
             <h2 className="address-label">Address</h2>
             <div className="address-gray-box">
-              <p>
+              <p className="location-address">
                 {this.props.locationState.currentLocation.address}
               &nbsp;
                 {this.props.locationState.currentLocation.city}
@@ -158,27 +157,17 @@ class LocationIndividual extends React.Component {
               </p>
             </div>
           </div>
-            
-          <h2>Author</h2>
-          <Link to={`/profile/${currentLocation.ownerId.id}`}>
-            <button type="button">Author Profile</button>
-          </Link>
-
-          {<div id="maproot">
+          <div id="maproot">
             <LocationMap />
-          </div>}
-
+          </div>
           <div className="special-instructions-container">
             <h2 className="special-instructions-label">Things to Note</h2>
             <div className="special-instructions-gray-box">
-              {this.props.locationState.currentLocation.specialInstructions}
-            </div>
-
+            <p className="location-special-instructions">{this.props.locationState.currentLocation.specialInstructions}</p>
           </div>
 
-
+          </div>
           <CommentContainer />
-        </div>
       </div>
     );
   }

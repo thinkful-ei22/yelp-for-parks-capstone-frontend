@@ -1,26 +1,6 @@
-.sticky {
-  height: 234px;
-  width: 100%;
-  background-color: #6f7723;
-  position: absolute;
-  top: 0%;
-  z-index: -1;
-}
-
 .back-to-dashboard-container {
   width: 100%;
   text-align: right;
-}
-
-.back-to-dashboard, .author-profile-button {
-  color: white;
-  border: none;
-  border-radius: 5%;
-  background-color: transparent;
-  font-size: 18px;
-  margin-top: 2%;
-  margin-right: 2%;
-
 }
 
 .image-and-title {
@@ -31,10 +11,23 @@
   margin-top: 5%;
 }
 
+.author-button {
+  color: white;
+  background-color: #6f7723;
+  position: absolute;
+  top: 75%;
+  left: 40%;
+  border: 5px solid #bbbcbf;
+  border-radius: 5%;
+  width: 11%;
+  font-size: 14px;
+  padding: 1%;
+}
+
 .location-image-container {
-  height: 250px;
-  width: 250px;
-  background-color: purple;
+  height: 275px;
+  width: 350px;
+  /* background-color: purple; */
   position: relative;
   top: 8%;
   left: 8%;
@@ -42,23 +35,25 @@
 }
 
 .location-image {
-  width: 250px;
+  max-width: 275px;
+  max-height: 350px;
+  height: 275px;
+  width: 350px;
 }
 
 .location-title {
-  color: white;
   display: inline-block;
   position: absolute;
   top: 10%;
-  left: 31%;
+  left: 40%;
 }
 
 .star-ratings {
-  height: 50px;
+  height: 20px;
   width: 300px;
   position: absolute;
-  bottom: 38%;
-  left: 31%;
+  top: 31%;
+  left: 40%;
   /* background-color: yellow; */
 }
 
@@ -70,12 +65,12 @@
 
 .edit-location-button {
   position: absolute;
-  left: 31%;
-  bottom: 20%;
+  left: 40%;
+  bottom: 27%;
   color: white;
   font-size: 14px;
   padding: 1%;
-  width: 10%;
+  width: 11%;
   border-radius: 5%;
   border: 5px solid #bbbcbf;
   background-color: #6f7723;
@@ -159,13 +154,351 @@
 
 .location-special-instructions {
   margin: 3%;
+  text-align: left;
 }
 
 #maproot {
-  width: 40%;
+  width: 465px;;
   height: 300px;
+  max-width: 465px;
+  max-height: 300px;
   position: absolute;
-  background-color: orange;
+  /* background-color: orange; */
   display: inline-block;
   margin-left: 9%;
+}
+
+@media only screen and (max-width: 1050px) {
+  .edit-location-button, .author-button {
+    width: 17%;
+  }
+
+  .change-image-button {
+    margin-left: 17%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .change-image-button {
+    margin-left: 17%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  .edit-location-button, .author-button {
+    width: 17%;
+    margin-left: 5%;
+  }
+
+  .location-title, .star-ratings {
+    margin-left: 5%;
+  }
+
+  .address-container {
+    height: 150px;
+    width: 68%;
+    margin-bottom: 10%;
+    margin-left: 15%;
+  }
+
+  .description-container {
+    height: 200px;
+    margin-left: 15%;
+  }
+
+  .special-instructions-container {
+    margin-left: 12%;
+  }
+
+  .change-image-button {
+    margin-left: 18%;
+  }
+
+  #maproot {
+    max-width: 700px;
+    max-height: 500px;
+    margin-left: 10%;
+    width: 700px;
+    height: 600px;
+    position: relative;
+    background-color: orange;
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .edit-location-button, .author-button {
+    width: 17%;
+    margin-left: 10%;
+  }
+
+  .location-title, .star-ratings {
+    margin-left: 10%;
+  }
+
+  .address-container {
+    height: 150px;
+    width: 68%;
+    margin-bottom: 10%;
+    margin-left: 15%;
+  }
+
+  .description-container {
+    height: 200px;
+    margin-left: 15%;
+  }
+
+  .special-instructions-container {
+    margin-left: 12%;
+  }
+
+  .change-image-button {
+    margin-left: 20%;
+  }
+
+  #maproot {
+    max-width: 700px;
+    max-height: 500px;
+    margin-left: 10%;
+    width: 700px;
+    height: 600px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .edit-location-button, .author-button {
+    width: 17%;
+    margin-left: 14%;
+  }
+
+  .location-title, .star-ratings {
+    margin-left: 14%;
+  }
+
+  .address-container {
+    height: 150px;
+    width: 68%;
+    margin-bottom: 13%;
+    margin-left: 19%;
+  }
+
+  .location-title {
+    font-size: 24px;
+  }
+
+  .description-container {
+    height: 200px;
+    margin-left: 21%;
+  }
+
+  .special-instructions-container {
+    margin-left: 14%;
+  }
+
+  .change-image-button {
+    margin-left: 20%;
+  }
+
+  #maproot {
+    max-width: 600px;
+    max-height: 400px;
+    margin-left: 10%;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .edit-location-button, .author-button {
+    width: 19%;
+    font-size: 12px;
+    margin-left: 18%;
+  }
+
+  .location-title, .star-ratings {
+    margin-left: 18%;
+    width: auto;
+  }
+
+  .address-container {
+    height: 150px;
+    width: 68%;
+    margin-bottom: 13%;
+    margin-left: 16.5%;
+  }
+
+  .description-container {
+    height: 200px;
+    margin-left: 17%;
+  }
+
+  .location-title {
+    font-size: 21px;
+  }
+
+  .location-description {
+    font-size: 15px;
+  }
+
+  .location-address {
+    font-size: 15px;
+  }
+
+  .special-instructions-container {
+    margin-left: 14%;
+  }
+
+  .change-image-button {
+    margin-left: 23%;
+  }
+
+  #maproot {
+    max-width: 450px;
+    max-height: 350px;
+    margin-left: 13.5%;
+    width: 450px;
+    height: 350px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  .image-and-title {
+    height: 200px;
+  }
+
+  .edit-location-button {
+    height: 40px;
+    top: 36%;
+    left: 34%;
+    font-size: 11px;
+    padding: 0.5%;
+  }
+
+  .author-button {
+    height: 40px;
+    top: 58%;
+    left: 34%;
+    font-size: 11px;
+    padding: 0.5%;
+  }
+
+  .location-image-container {
+    height: 150px;
+    width: 180px;
+  }
+
+  .location-image {
+    max-width: 175px;
+    max-height: 250px;
+    height: 175px;
+    width: 250px;
+  }
+
+  .location-title {
+    top: 5%;
+    margin-left: 12%;
+    width: auto;
+  }
+
+  .star-ratings {
+    width: auto;
+    left: 34%;
+    top: 23%;
+    font-size: 14px;
+  }
+
+  .address-container {
+    height: 150px;
+    width: 68%;
+    margin-bottom: 17%;
+    margin-left: 16.5%;
+  }
+
+  .description-container {
+    height: 160px;
+    margin-left: 17%;
+  }
+
+  .location-title {
+    font-size: 21px;
+  }
+
+  .location-description {
+    font-size: 13px;
+  }
+
+  .location-address {
+    font-size: 13px;
+  }
+
+  .location-special-instructions {
+    font-size: 13px;
+  }
+
+  .special-instructions-container {
+    margin-left: 14%;
+    height: 270px;
+  }
+
+  .change-image-button {
+    margin-left: 16%;
+  }
+
+  #maproot {
+    max-width: 450px;
+    max-height: 350px;
+    margin-left: 5%;
+    width: 450px;
+    height: 350px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+
+  #maproot {
+    max-width: 400px;
+    max-height: 325px;
+    margin-left: 5%;
+    width: 400px;
+    height: 325px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+
+  .location-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  #maproot {
+    max-width: 375px;
+    max-height: 300px;
+    margin-left: 5%;
+    width: 375px;
+    height: 300px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
 }
