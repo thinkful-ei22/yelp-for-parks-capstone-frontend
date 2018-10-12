@@ -65,8 +65,9 @@ class LocationList extends React.Component {
         </div>
       );
     }
+
     if (locationList) {
-      if ((numOfLocations > this.state.locationsPerPage) && (Object.values(currentLocations)[this.state.locationsPerPage - 1] !== Object.values(locationList)[numOfLocations-1]  )) {
+      if ((numOfLocations > this.state.locationsPerPage) && (Object.values(currentLocations)[this.state.locationsPerPage - 1].title !== Object.values(locationList)[numOfLocations-1].title  )) {
         nextBtn = (
           <div className="pagination-buttons-container">
             <button
