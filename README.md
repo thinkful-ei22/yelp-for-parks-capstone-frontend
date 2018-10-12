@@ -1,8 +1,5 @@
-     Yelp for Parks is an app made to encourage people to go outside. The app makes it easy to explore your natural surroundings, allowing users to register and comment on locations.
-    
-    ##Yelp For Parks!
 
-### Brief Description
+    ### Brief Description
 **Yelp For Parks**  is an app made to encourage people to go outside. The app makes it easy to explore your natural surroundings, allowing users to register and comment on locations.
 
 With **Yelp for Parks**, you can easily find locations near you, or ones that you're interested in using our filtration system. You can also help raise community awareness about the beautiful locales right outside their front doors by adding your own locations.
