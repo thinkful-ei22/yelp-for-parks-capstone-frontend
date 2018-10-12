@@ -102,6 +102,7 @@ export const updateLocation = (id, locationObject) => dispatch => {
       dispatch(toggleRedirect());
     })
     .catch(err => {
+      console.log(err)
       dispatch(locationRequestError(err.message));
     });
 };

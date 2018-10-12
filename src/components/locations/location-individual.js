@@ -6,6 +6,8 @@ import { geocode, updateImage, getOneLocation } from '../../actions/location';
 import { Link } from 'react-router-dom';
 import LocationMap from './location-map';
 import './styles/location-individual.css';
+import StarRatings from 'react-star-ratings';
+
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -42,6 +44,8 @@ class LocationIndividual extends React.Component {
   }
 
   render() {
+    // console.log(this.props.locationState.currentLocation.comments.rating)
+
     const currentLocation = this.props.locationState.locationList.find(
       location => {
         return location.id === this.props.match.params.id;
@@ -52,6 +56,14 @@ class LocationIndividual extends React.Component {
     }
     if (!currentLocation) {
       return <div>loading...</div>;
+    }
+
+    const { comments } = this.props.locationState.currentLocation;
+    let rating = 0;
+    if(comments.length){
+      rating = comments.reduce((total, comment) => {
+        return total + comment.rating;
+      }, 0) / comments.length;
     }
 
     let editButton = '';
@@ -103,6 +115,14 @@ class LocationIndividual extends React.Component {
             <Link to={`/profile/${currentLocation.ownerId.id}`}>
               <button type="button" className="author-button">Author Profile</button>
             </Link>
+            <h1 className="location-title">Title Placeholder</h1>
+            <div className="star-ratings">
+              <StarRatings
+                rating={rating}
+                starDimension="40px"
+                starSpacing="15px"
+              />
+            </div>
             <button
               type="button"
               className="edit-location-button"

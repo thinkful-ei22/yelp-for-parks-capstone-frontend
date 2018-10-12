@@ -19,7 +19,9 @@ import {
 } from "../actions/comment";
 
 const initialState = {
-  currentLocation: {},
+  currentLocation: {
+    comments:[]
+  },
   loading: false,
   error: "",
   redirecting: false,

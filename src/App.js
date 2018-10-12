@@ -11,6 +11,7 @@ import LocationForm from "./components/locations/location-form";
 import LocationIndividual from "./components/locations/location-individual";
 import UserProfile from "./components/user-profiles/user-profile";
 import { refreshAuthToken } from "./actions/login";
+import Notifications, { notify } from 'react-notify-toast'
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
@@ -53,6 +54,7 @@ export class App extends React.Component {
         <Route path="/add/location/" component={LocationForm} exact />
         <Route path="/location/:id" component={LocationIndividual} exact />
         <Route path="/profile/:id" component={UserProfile} exact />
+        <Notifications />
       </main>
     );
   }

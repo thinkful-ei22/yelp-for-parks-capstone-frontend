@@ -30,7 +30,9 @@ class LocationList extends React.Component {
   }
 
   render() {
-    let filteredLocations = this.props.locationState.locationList
+    let locationList = this.props.locationState.locationList;
+    let numOfLocations = this.props.locationState.locationList.length;
+    let filteredLocations = locationList
       .filter(location => {
         return location.city
           .toLowerCase()
@@ -63,8 +65,8 @@ class LocationList extends React.Component {
         </div>
       );
     }
-    if (this.props.locationState.locationList) {
-      if (this.props.locationState.locationList.length > this.state.locationsPerPage) {
+    if (locationList) {
+      if ((numOfLocations > this.state.locationsPerPage) && (Object.values(currentLocations)[this.state.locationsPerPage - 1] !== Object.values(locationList)[numOfLocations-1]  )) {
         nextBtn = (
           <div className="pagination-buttons-container">
             <button
