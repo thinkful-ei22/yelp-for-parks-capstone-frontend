@@ -58,7 +58,8 @@ class LocationForm extends React.Component {
                 ref={input => (this.description = input)}
               />
               <br/>
-              <label htmlFor="addressLine">Where is it?</label>
+              <br/>
+              <br/>
               <br/>
               <label htmlFor="addressLine">Address</label>
               <input
