@@ -5,10 +5,9 @@
 }
 
 .list-item-container {
-  width: 100%;
+  width: 95%;
   text-align: left;
-  background-color: green;
-  margin: 2%;
+  /* background-color: green; */
 }
 
 .location-list-item {
@@ -22,15 +21,15 @@
 .text-thumbnail-container {
   width: 100%;
   height: 200px;
-  background-color: purple;
+  /* background-color: purple; */
 }
 
 .text-container {
   display: inline-block;
   width: 340px;
-  background-color: yellow;
+  /* background-color: yellow; */
   position: relative;
-  left: -15%;
+  left: -12%;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: scroll;
@@ -40,7 +39,7 @@
 .thumbnail-container {
   height: 200px;
   width: 50%;
-  background-color: pink;
+  /* background-color: pink; */
   display: inline-block;
 }
 
@@ -50,7 +49,9 @@
   text-align: left;
   position: relative;
   max-height: 20px;
-  line-height: 18px;
+  line-height: 22px;
+  margin-bottom: 9%;
+
 }
 
 .description {
@@ -61,6 +62,12 @@
   margin-right: 1%;
   /* background-color: gray; */
   line-height: 18px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .text-container {
+    left: -8%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -96,12 +103,98 @@
   }
 
   .thumbnail {
+    height: 250px;
+    width: 300px;
   }
 
   .text-container {
-    //yellow
+    /*Yellow*/
     position: relative;
-    left: 5%;
+    left: 27.5%;
     display: block;
+  }
+
+  .title, .description {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .text-container {
+    /*Yellow*/
+    left: 26.5%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+
+  .text-container {
+    /*Yellow*/
+    left: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list-item-container {
+    height: 500px;
+  }
+
+  .text-thumbnail-container {
+    /*Purple*/
+    with: 500px;
+  }
+
+  .thumbnail-container {
+    /*Pink*/
+  }
+
+  .thumbnail {
+    height: 250px;
+    width: 300px;
+  }
+
+  .text-container {
+    /*Yellow*/
+    position: relative;
+    left: 24%;
+    display: block;
+  }
+
+  .title, .description {
+    text-align: center;
+  }
+}
+
+
+@media only screen and (max-width: 414px) {
+  .list-item-container {
+    height: 500px;
+  }
+
+  .text-thumbnail-container {
+    /*Purple*/
+    with: 400px;
+  }
+
+  .thumbnail-container {
+    /*Pink*/
+  }
+
+  .thumbnail {
+    height: 250px;
+    width: 300px;
+    left: -27%;
+  }
+
+  .text-container {
+    /*Yellow*/
+    position: relative;
+    left: 20%;
+    display: block;
+  }
+
+  .title, .description {
+    text-align: center;
   }
 }
