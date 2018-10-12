@@ -56,6 +56,7 @@ class LocationMap extends Component {
   render() {
     const position = [this.state.userlocation.lat, this.state.userlocation.lng]
     const position2 = [this.props.locationState.currentLatLng.lat, this.props.locationState.currentLatLng.lng]
+    console.log(position2)
     return (
       <div>
         <Map className="map" bounds={[position, position2]} zoom={this.state.zoom}>

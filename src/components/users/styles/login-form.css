@@ -24,6 +24,10 @@
   background-color: #6f7723;
 }
 
+.login-form-header {
+  font-size: 20px;
+}
+
 @media only screen and (min-width: 1300px) {
   .login-container {
     height: 70%;
@@ -42,10 +46,6 @@
     height: 80%;
   }
 
-  .login-form-header {
-    font-size: 25px;
-  }
-
   .login-button {
     font-size: 15px;
     width: 60%;
@@ -56,10 +56,6 @@
   .login-container {
     height: 70%;
     width: 110%;
-  }
-
-  .login-form-header {
-    font-size: 20px;
   }
 
   .login-button {

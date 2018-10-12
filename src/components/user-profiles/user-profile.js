@@ -40,13 +40,13 @@ class UserProfile extends React.Component {
 
     return (
       <div className="user-profile-container">
-        <div className="placeholder" />
         <div className="user-info-container">
           <h1 className="username">
             {username }
           </h1>
           <h2 className="name">
             {firstName}
+            {' '}
             {lastName}
           </h2>
         </div>

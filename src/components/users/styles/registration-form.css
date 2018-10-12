@@ -24,6 +24,10 @@
   background-color: #6f7723;
 }
 
+.registration-form-header {
+  font-size: 20px;
+}
+
 @media only screen and (min-width: 1300px) {
   .registration-container {
     height: 70%;
@@ -41,10 +45,6 @@
     height: 85%;
   }
 
-  .registration-form-header {
-    font-size: 25px;
-  }
-
   .registration-button {
     font-size: 15px;
     width: 60%;
@@ -55,10 +55,6 @@
   .registration-container {
     height: 70%;
     width: 110%;
-  }
-
-  .registration-form-header {
-    font-size: 20px;
   }
 
   .registration-button {
