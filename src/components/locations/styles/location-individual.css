@@ -1,3 +1,9 @@
+.star-ratings-location {
+  position: absolute;
+  top: 33%;
+  left: 35%;
+}
+
 .back-to-dashboard-container {
   width: 100%;
   text-align: right;
@@ -167,6 +173,12 @@
   margin-left: 9%;
 }
 
+@media only screen and (max-width: 1200px) {
+  .star-ratings-location {
+    left: 35%;
+  }
+}
+
 @media only screen and (max-width: 1050px) {
   .edit-location-button, .author-button {
     width: 17%;
@@ -175,11 +187,19 @@
   .change-image-button {
     margin-left: 17%;
   }
+
+  .star-ratings-location {
+    left: 34%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
   .change-image-button {
     margin-left: 17%;
+  }
+
+  .star-ratings-location {
+    left: 34%;
   }
 }
 
@@ -224,6 +244,11 @@
     background-color: orange;
     display: inline-block;
   }
+
+  .star-ratings-location {
+    width: 50%;
+    left: 22.5%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -266,6 +291,10 @@
     position: relative;
     /* background-color: orange; */
     display: inline-block;
+  }
+
+  .star-ratings-location {
+    left: 25%;
   }
 }
 
@@ -313,6 +342,10 @@
     position: relative;
     /* background-color: orange; */
     display: inline-block;
+  }
+
+  .star-ratings-location {
+    left: 27%;
   }
 }
 
@@ -371,6 +404,10 @@
     /* background-color: orange; */
     display: inline-block;
   }
+
+  .star-ratings-location {
+    left: 29%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -381,7 +418,7 @@
 
   .edit-location-button {
     height: 40px;
-    top: 36%;
+    top: 55%;
     left: 34%;
     font-size: 11px;
     padding: 0.5%;
@@ -389,7 +426,7 @@
 
   .author-button {
     height: 40px;
-    top: 58%;
+    top: 77%;
     left: 34%;
     font-size: 11px;
     padding: 0.5%;
@@ -457,6 +494,10 @@
     margin-left: 16%;
   }
 
+  .star-ratings-location {
+    left: 26%;
+  }
+
   #maproot {
     max-width: 450px;
     max-height: 350px;
@@ -480,6 +521,10 @@
     position: relative;
     /* background-color: orange; */
     display: inline-block;
+  }
+
+  .author-button, .edit-location-button {
+    width: 23%;
   }
 }
 

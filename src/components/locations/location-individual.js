@@ -1,13 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import LocationEditor from './location-editor';
-import CommentContainer from '../comments/comment-container';
-import { geocode, updateImage, getOneLocation } from '../../actions/location';
-import { Link } from 'react-router-dom';
-import LocationMap from './location-map';
-import './styles/location-individual.css';
-import StarRatings from 'react-star-ratings';
-
+import React from "react";
+import { connect } from "react-redux";
+import LocationEditor from "./location-editor";
+import CommentContainer from "../comments/comment-container";
+import { geocode, updateImage, getOneLocation } from "../../actions/location";
+import { Link } from "react-router-dom";
+import LocationMap from "./location-map";
+import "./styles/location-individual.css";
+import StarRatings from "react-star-ratings";
 
 class LocationIndividual extends React.Component {
   constructor(props) {
@@ -24,11 +23,11 @@ class LocationIndividual extends React.Component {
     this.props.dispatch(getOneLocation(this.props.match.params.id));
   }
 
-  toggleEditState(bool){
+  toggleEditState(bool) {
     this.setState({ editing: bool });
   }
 
-  onChange(e){
+  onChange(e) {
     const files = Array.from(e.target.files);
     this.setState({ uploading: true });
 
@@ -58,13 +57,14 @@ class LocationIndividual extends React.Component {
 
     const { comments } = this.props.locationState.currentLocation;
     let rating = 0;
-    if(comments.length){
-      rating = comments.reduce((total, comment) => {
-        return total + comment.rating;
-      }, 0) / comments.length;
+    if (comments.length) {
+      rating =
+        comments.reduce((total, comment) => {
+          return total + comment.rating;
+        }, 0) / comments.length;
     }
 
-    let editButton = '';
+    let editButton = "";
     if (currentLocation.ownerId.id === this.props.loggedIn.currentUser.id) {
       editButton = (
         <button
@@ -89,15 +89,17 @@ class LocationIndividual extends React.Component {
               src={this.props.locationState.currentLocation.image}
             />
           </div>
-          <h1 className="location-title">{this.props.locationState.currentLocation.title}</h1>
+          <h1 className="location-title">
+            {this.props.locationState.currentLocation.title}
+          </h1>
 
           <div className="change-image-button">
             <label
               htmlFor="single"
               style={{
-                fontWeight: 'bold',
-                color: 'blue',
-                textDecoration: 'underline'
+                fontWeight: "bold",
+                color: "blue",
+                textDecoration: "underline"
               }}
             >
               Change image
@@ -106,36 +108,30 @@ class LocationIndividual extends React.Component {
               type="file"
               id="single"
               onChange={e => this.onChange(e)}
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: "hidden" }}
             />
           </div>
           <Link to={`/profile/${currentLocation.ownerId.id}`}>
-            <button type="button" className="author-button">Author Profile</button>
+            <button type="button" className="author-button">
+              Author Profile
+            </button>
           </Link>
-          <div className="star-ratings">
+          <div className="star-ratings-location">
             <StarRatings
               rating={rating}
-              starDimension="40px"
-              starSpacing="15px"
+              starDimension="28px"
+              starSpacing="2px"
             />
           </div>
-          <button
-            type="button"
-            className="edit-location-button"
-            name="edit-location"
-            onClick={() => {
-              this.toggleEditState(true);
-            }}
-          >
-              Edit Location
-          </button>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div className="description-container">
           <h2 className="description-label">Description</h2>
           <div className="description-gray-box">
-            <p className="location-description">{this.props.locationState.currentLocation.description}</p>
+            <p className="location-description">
+              {this.props.locationState.currentLocation.description}
+            </p>
           </div>
         </div>
 
@@ -159,9 +155,10 @@ class LocationIndividual extends React.Component {
         <div className="special-instructions-container">
           <h2 className="special-instructions-label">Things to Note</h2>
           <div className="special-instructions-gray-box">
-            <p className="location-special-instructions">{this.props.locationState.currentLocation.specialInstructions}</p>
+            <p className="location-special-instructions">
+              {this.props.locationState.currentLocation.specialInstructions}
+            </p>
           </div>
-
         </div>
         <CommentContainer />
       </div>
