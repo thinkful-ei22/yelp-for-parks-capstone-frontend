@@ -1,0 +1,253 @@
+.edit-header {
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.location-form-container-edit {
+    border: 5px solid #e5e5e0;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    padding: 5%;
+    width: 900px;
+}
+
+#addressLine {
+  width: 710px;
+}
+
+.city-label-edit {
+  margin-left: 2.5%;
+}
+
+#special-instructions-edit {
+  width: 730px;
+}
+
+fieldset {
+  width: 740px;
+}
+
+input[type=checkbox] + label {
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+  content: "\2714";
+  border: 0.1em solid #000;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  padding-left: 0.2em;
+  padding-bottom: 0.3em;
+  margin-right: 0.2em;
+  vertical-align: bottom;
+  color: transparent;
+  transition: .2s;
+  font-size: 13px;
+}
+
+.location-edit-submit {
+  color: white;
+  font-size: 14px;
+  margin-top: 2%;
+  margin-right: 5%;
+  padding: 2%;
+  width: 20%;
+  border-radius: 5%;
+  border: 5px solid #bbbcbf;
+  background-color: #6f7723;
+}
+
+input[type=checkbox] + label:active:before {
+  transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+  background-color: MediumSeaGreen;
+  border-color: MediumSeaGreen;
+  color: #fff;
+}
+
+input[type=checkbox]:disabled + label:before {
+  transform: scale(1);
+  border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled + label:before {
+  transform: scale(1);
+  background-color: #bfb;
+  border-color: #bfb;
+}
+
+@media only screen and (max-width: 1000px) {
+  .location-form-container-edit {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .location-form-container-edit {
+    width: 650px;
+  }
+
+  #addressLine {
+    width: 510px;
+  }
+
+  fieldset {
+    width: 530px;
+  }
+
+  #special-instructions-edit {
+    width: 530px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .location-form-container-edit {
+    width: 560px;
+  }
+
+  #addressLine {
+    width: 440px;
+  }
+
+  fieldset {
+    width: 450px;
+  }
+
+  #zipCode {
+    width: 60px;
+  }
+
+  #description-edit {
+    height: 90px;
+  }
+
+  #special-instructions-edit {
+    width: 450px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .location-form-container-edit {
+    width: 480px;
+  }
+
+  #addressLine {
+    width: 380px;
+  }
+
+  fieldset {
+    width: 450px;
+  }
+
+  .city-label-edit, .state-label-edit, .zipcode-label-edit {
+    font-size: 13px;
+  }
+
+  #state {
+    width: 70px;
+  }
+
+  #zipCode {
+    width: 35px;
+  }
+
+  #description-edit {
+    height: 90px;
+  }
+
+  #special-instructions-edit {
+    width: 450px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .location-form-container-edit {
+    width: 400px;
+  }
+
+  #addressLine {
+    width: 320px;
+  }
+
+  fieldset {
+    width: 330px;
+  }
+
+  .city-label-edit, .state-label-edit, .zipcode-label-edit {
+    font-size: 13px;
+  }
+
+  #state {
+    width: 120px;
+  }
+
+  #zipCode {
+    width: 35px;
+  }
+
+  #description-edit {
+    height: 90px;
+  }
+
+  #special-instructions-edit {
+    width: 340px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .location-form-container-edit {
+    width: 300px;
+  }
+
+  #addressLine {
+    width: 230px;
+  }
+
+  fieldset {
+    width: 240px;
+  }
+
+  .city-label-edit, .state-label-edit, .zipcode-label-edit {
+    font-size: 13px;
+  }
+
+  #city {
+    width: 60px;
+  }
+
+  #state {
+    width: 120px;
+  }
+
+  #zipCode {
+    width: 35px;
+  }
+
+  #description-edit {
+    height: 90px;
+  }
+
+  #special-instructions-edit {
+    width: 250px;
+    height: 60px;
+  }
+
+  .location-edit-submit {
+    width: 25%;
+  }
+}
