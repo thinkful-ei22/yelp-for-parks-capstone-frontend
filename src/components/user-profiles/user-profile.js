@@ -41,7 +41,6 @@ class UserProfile extends React.Component {
     return (
       <div className="user-profile-container">
         <div className="placeholder" />
-        <div className="circle" />
         <div className="user-info-container">
           <h1 className="username">
             {username }
