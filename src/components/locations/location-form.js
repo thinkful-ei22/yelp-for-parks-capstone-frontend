@@ -37,7 +37,6 @@ class LocationForm extends React.Component {
     //else, we present the form.
     return (
       <div className="location-form-container">
-        <div className="sticky"></div>
         <h1 className="main-header">Add A Location</h1>
         <div className="form-container">
           <form onSubmit={e => this.handleSubmit(e)}>
@@ -150,6 +149,7 @@ class LocationForm extends React.Component {
                 type="file"
                 id="file"
                 ref={(ref) => { this.uploadImage = ref; }}
+                className="photo-upload"
                 name="file"
                 placeholder="upload an image"
               />
@@ -202,9 +202,6 @@ class LocationForm extends React.Component {
               </button>
             </div>
           </form>
-        </div>
-        <div className="dashboard-button-container">
-          <Link className="dashboard-button" to="/dashboard">Back to Dashboard</Link>
         </div>
       </div>
     );

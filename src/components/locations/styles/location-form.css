@@ -1,14 +1,5 @@
-.sticky {
-  height: 164px;
-  width: 100%;
-  background-color: #6f7723;
-  position: absolute;
-  top: 0%;
-  z-index: -1;
-}
-
 .main-header {
-  color: white;
+  color: black;
   font-size: 40px;
   margin-top: 8%;
   margin-left: 5%;
@@ -183,4 +174,184 @@ input[type=checkbox]:checked:disabled + label:before {
   transform: scale(1);
   background-color: #bfb;
   border-color: #bfb;
+}
+
+@media only screen and (max-width: 1000px) {
+  .stock-photo {
+    height: 260px;
+  }
+
+  .image-container {
+    height: 320px;
+  }
+
+  #addressLine {
+    width: 68%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .stock-photo {
+    height: 230px;
+  }
+
+  .image-container {
+    height: 320px;
+  }
+
+  .photo-upload {
+    margin-top: 0%;
+    height: 20px;
+  }
+
+  #city {
+    width: 34px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .image-container {
+    height: 272px;
+  }
+
+  .stock-photo {
+    height: 200px;
+  }
+
+  .photo-upload {
+    margin-top: 4%;
+  }
+
+  #addressLine {
+    width: 62%;
+  }
+
+  #city {
+    width: 80px;
+    margin-right: 5%;
+  }
+
+  #state {
+    width: 100px;
+  }
+
+  #zipCode {
+    width: 12%;
+  }
+
+  .form-container {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 77%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .image-container {
+    height: 272px;
+  }
+
+  .stock-photo {
+    height: 200px;
+    width: 300px;
+  }
+
+  .photo-upload {
+    margin-top: 4%;
+  }
+
+  #addressLine {
+    width: 60%;
+  }
+
+  #city {
+    width: 60px;
+    margin-right: 5%;
+  }
+
+  #state {
+    width: 100px;
+  }
+
+  #zipCode {
+    width: 12%;
+  }
+
+  .form-container {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 77%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .main-header {
+    font-size: 30px;
+  }
+
+  .stock-photo {
+    height: 160px;
+    width: 220px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  .main-header {
+    font-size: 30px;
+  }
+
+  .stock-photo {
+    height: 130px;
+    width: 180px;
+  }
+
+  #addressLine {
+    width: 55%;
+  }
+
+  #city {
+    width: 130px;
+  }
+
+  #state {
+    width: 150px;
+  }
+
+  #zipCode {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+
+  .main-header {
+    font-size: 30px;
+  }
+
+  .stock-photo {
+    height: 100px;
+    width: 130px;
+  }
+
+  #addressLine {
+    width: 51%;
+  }
+
+  #city {
+    width: 102px;
+  }
+
+  #state {
+    width: 150px;
+  }
+
+  #zipCode {
+    width: 22%;
+  }
+
+  .add-location-submit {
+    width: 25%;
+  }
 }
