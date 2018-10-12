@@ -16,12 +16,16 @@ https://dry-waters-99312.herokuapp.com
 
 ![alt text][mainpage]
 
-[mainpage]: https://s3.amazonaws.com/donics/Screen+Shot+2018-09-14+at+17.18.41.png "Mainpage"
+[mainpage]: https://i.postimg.cc/PxzSk8cN/Screen-Shot-2018-10-12-at-2-21-06-PM.png "Main Page"
 
-![alt text][practice]
+![alt text][dashboard]
 
-[practice]: https://s3.amazonaws.com/donics/Screen+Shot+2018-09-14+at+17.19.36.png "Practice page"
+[dashboard]: https://i.postimg.cc/nhy2jkfC/Screen-Shot-2018-10-12-at-2-21-19-PM.png "Dashboard"
 
-![alt text][progress]
+![alt text][individuallocation]
 
-[progress]: https://s3.amazonaws.com/donics/Screen+Shot+2018-09-14+at+17.20.41.png "Progress page"
+[individuallocation]: https://i.postimg.cc/y6jLQccb/Screen-Shot-2018-10-12-at-2-21-32-PM.png "Individual Location"
+
+![alt text][individuallocation2]
+
+[individuallocation2]: https://i.postimg.cc/VLND3vFL/Screen-Shot-2018-10-12-at-2-21-43-PM.png "Individual Location 2"
