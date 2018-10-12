@@ -6,11 +6,9 @@ import './user-profile.css';
 
 class UserProfile extends React.Component {
   componentDidMount() {
-    console.log(this.props.match.params.id)
     this.props.dispatch(getUserById(this.props.match.params.id));
   }
   render() {
-    console.log(this.props)
     const userProfileObj = {};
 
     if (!this.props.userState.currentUser){

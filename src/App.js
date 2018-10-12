@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Route, withRouter } from "react-router-dom";
-import "./App.css";
-import LoginPage from "./components/users/login-page";
-import RegistrationPage from "./components/users/registration-page";
-import LandingPage from "./components/main/landing-page";
-import Dashboard from "./components/main/dashboard";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+import './App.css';
+import LoginPage from './components/users/login-page';
+import RegistrationPage from './components/users/registration-page';
+import LandingPage from './components/main/landing-page';
+import Dashboard from './components/main/dashboard';
 import HeaderBar from './components/main/header-bar';
-import LocationForm from "./components/locations/location-form";
-import LocationIndividual from "./components/locations/location-individual";
-import UserProfile from "./components/user-profiles/user-profile";
-import { refreshAuthToken } from "./actions/login";
-import Notifications, { notify } from 'react-notify-toast'
+import LocationForm from './components/locations/location-form';
+import LocationIndividual from './components/locations/location-individual';
+import UserProfile from './components/user-profiles/user-profile';
+import { refreshAuthToken } from './actions/login';
+import Notifications from 'react-notify-toast';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {

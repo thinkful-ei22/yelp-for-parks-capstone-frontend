@@ -1,6 +1,6 @@
 //LOCAL STORAGE OPERATIONS
 import jwtDecode from 'jwt-decode';
-import Notifications, { notify } from 'react-notify-toast';
+import { notify } from 'react-notify-toast';
 
 
 export const loadAuthToken = () => {

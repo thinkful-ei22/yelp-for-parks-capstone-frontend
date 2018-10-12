@@ -13,7 +13,6 @@ class CommentModal extends React.Component {
   }
 
   setRatingValue(value) {
-    console.log(value)
     this.setState({ratingValue: value });
   }
 

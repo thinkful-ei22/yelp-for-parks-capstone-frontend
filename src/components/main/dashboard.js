@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logout } from "../../actions/login";
-
 import { Redirect } from "react-router";
 import LocationList from "./location-list";
 import FilterCity from "./filter-city";
@@ -45,8 +43,6 @@ class Dashboard extends React.Component {
         />
       );
     }
-    const userId = this.props.loggedIn.currentUser.id;
-
     return (
       <div className="dashboard">
         <div className="filter-container">
