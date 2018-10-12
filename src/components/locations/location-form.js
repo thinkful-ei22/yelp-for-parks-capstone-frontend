@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createLocation } from "../../actions/location";
-import { Redirect } from "react-router";
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createLocation } from '../../actions/location';
+import { Redirect } from 'react-router';
 import './styles/location-form.css';
 
 class LocationForm extends React.Component {
@@ -29,7 +28,7 @@ class LocationForm extends React.Component {
       return (
         <Redirect
           to={{
-            pathname: "/dashboard"
+            pathname: '/dashboard'
           }}
         />
       );

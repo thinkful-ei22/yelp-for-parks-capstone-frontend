@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import locationReducer from './reducers/location';
-// import commentReducer from "./reducers/comment";
+import commentReducer from "./reducers/comment";
 import loginReducer from './reducers/login';
 import registrationReducer from './reducers/registration';
 import authorReducer from './reducers/author';
@@ -17,7 +17,8 @@ const store = createStore(
     registration: registrationReducer,
     location: locationReducer,
     userProfile: userReducer,
-    authorProfile: authorReducer
+    authorProfile: authorReducer,
+    comment: commentReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

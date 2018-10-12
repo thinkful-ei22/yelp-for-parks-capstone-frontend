@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import { getUserById } from '../../actions/user';
 import './user-profile.css';
 
@@ -21,9 +21,10 @@ class UserProfile extends React.Component {
       userProfileObj.username = location.ownerId.username;
       userProfileObj.firstName = location.ownerId.firstName;
       userProfileObj.lastName = location.ownerId.lastName;
+      const locationId = `/location/${location.id}`;
       return (
         <p key={i} className="indiv-location">
-          {location.title}
+          <Link to={locationId}>{location.title}</Link>
           <br />
           {location.description}
           <br />
@@ -45,12 +46,12 @@ class UserProfile extends React.Component {
             {username }
           </h1>
           <h2 className="name">
-            {firstName}{" "}
+            {firstName}
             {lastName}
           </h2>
         </div>
         <div className="user-locations-container">
-          <h3 className="locations-label">My locations</h3>
+          <h3>My locations</h3>
           <div className="locations-box">
             {locationsMap.length ? locationsMap : ' You have not created a location yet'}
           </div>
