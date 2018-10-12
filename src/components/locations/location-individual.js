@@ -126,7 +126,7 @@ class LocationIndividual extends React.Component {
           <div className="address-container">
             <h2 className="address-label">Address</h2>
             <div className="address-gray-box">
-              <p>
+              <p className="location-address">
                 {this.props.locationState.currentLocation.address}
               &nbsp;
                 {this.props.locationState.currentLocation.city}
@@ -140,8 +140,6 @@ class LocationIndividual extends React.Component {
           <div id="maproot">
             <LocationMap />
           </div>
-          <br/>
-          <br/>
           <div className="special-instructions-container">
             <h2 className="special-instructions-label">Things to Note</h2>
             <div className="special-instructions-gray-box">
