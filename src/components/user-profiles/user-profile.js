@@ -46,12 +46,12 @@ class UserProfile extends React.Component {
             {username }
           </h1>
           <h2 className="name">
-            {firstName}
+            {firstName}{" "}
             {lastName}
           </h2>
         </div>
         <div className="user-locations-container">
-          <h3>My locations</h3>
+          <h3 className="locations-label">My locations</h3>
           <div className="locations-box">
             {locationsMap.length ? locationsMap : ' You have not created a location yet'}
           </div>
