@@ -111,11 +111,9 @@ class LocationIndividual extends React.Component {
                 style={{ visibility: 'hidden' }}
               />
             </div>
-            <div className="star-ratings">Star Ratings Placeholder</div>
             <Link to={`/profile/${currentLocation.ownerId.id}`}>
               <button type="button" className="author-button">Author Profile</button>
             </Link>
-            <h1 className="location-title">Title Placeholder</h1>
             <div className="star-ratings">
               <StarRatings
                 rating={rating}
