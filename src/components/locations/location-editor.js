@@ -26,6 +26,7 @@ class LocationEditor extends React.Component {
             <label htmlFor="description">Edit Description</label>
             <textarea
               name="description-text-area"
+              id="description-edit"
               placeholder="A recently renovated neighborhood park in the heart of Portland's Pearl District"
               ref={input => (this.description = input)}
               defaultValue={this.props.locationState.currentLocation.description}
@@ -49,7 +50,7 @@ class LocationEditor extends React.Component {
               defaultValue={this.props.locationState.currentLocation.city}
             />
 
-            <label htmlFor="state">State</label>
+            <label className="state-label-edit" htmlFor="state">State</label>
             <select
               id="state"
               ref={input => (this.stateName = input)}
@@ -107,7 +108,7 @@ class LocationEditor extends React.Component {
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
             </select>
-            <label htmlFor="zipCode">Zip code</label>
+            <label className="zipcode-label-edit" htmlFor="zipCode">Zip code</label>
             <input
               type="text"
               id="zipCode"
