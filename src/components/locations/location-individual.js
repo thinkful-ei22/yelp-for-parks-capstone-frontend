@@ -114,11 +114,11 @@ class LocationIndividual extends React.Component {
             <Link to={`/profile/${currentLocation.ownerId.id}`}>
               <button type="button" className="author-button">Author Profile</button>
             </Link>
-            <div className="star-ratings">
+            <div className="star-ratings-location">
               <StarRatings
                 rating={rating}
-                starDimension="40px"
-                starSpacing="15px"
+                starDimension="28px"
+                starSpacing="2px"
               />
             </div>
             <button
