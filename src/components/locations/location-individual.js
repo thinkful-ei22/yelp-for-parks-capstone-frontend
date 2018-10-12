@@ -71,16 +71,6 @@ class LocationIndividual extends React.Component {
     return (
       <div>
         {editButton}
-        <Link to="/dashboard">
-          <button type="button" name="back-to-dashboard">
-            Back to Dashboard{' '}
-          </button>
-        </Link>
-        <div>
-          <div className="sticky"></div>
-          <div className="back-to-dashboard-container">
-          </div>
-
           <div className="image-and-title">
             <div className="location-image-container">
               <img
@@ -89,6 +79,7 @@ class LocationIndividual extends React.Component {
                 src={this.props.locationState.currentLocation.image}
               />
             </div>
+            <h1 className="location-title">{this.props.locationState.currentLocation.title}</h1>
 
             <div className="change-image-button">
               <label
@@ -108,9 +99,10 @@ class LocationIndividual extends React.Component {
                 style={{ visibility: 'hidden' }}
               />
             </div>
-
-            <h1 className="location-title">Title Placeholder</h1>
             <div className="star-ratings">Star Ratings Placeholder</div>
+            <Link to={`/profile/${currentLocation.ownerId.id}`}>
+              <button type="button" className="author-button">Author Profile</button>
+            </Link>
             <button
               type="button"
               className="edit-location-button"
@@ -121,25 +113,19 @@ class LocationIndividual extends React.Component {
             >
               Edit Location
             </button>
-            <h1>{this.props.locationState.currentLocation.title}</h1>
           </div>
-
+          <br/>
+          <br/>
           <div className="description-container">
             <h2 className="description-label">Description</h2>
             <div className="description-gray-box">
-              <p className="location-description">Description Text Placeholder. Here are Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p className="location-description">{this.props.locationState.currentLocation.description}</p>
             </div>
-            <h2 className="location-description">{this.props.locationState.currentLocation.description}</h2>
           </div>
 
           <div className="address-container">
             <h2 className="address-label">Address</h2>
             <div className="address-gray-box">
-              <p>
-              Address Line Placeholder
-                <br/>
-              City, State, Zipcode
-              </p>
               <p>
                 {this.props.locationState.currentLocation.address}
               &nbsp;
@@ -151,29 +137,19 @@ class LocationIndividual extends React.Component {
               </p>
             </div>
           </div>
-
-
           <div id="maproot">
             <LocationMap />
           </div>
-
+          <br/>
+          <br/>
           <div className="special-instructions-container">
             <h2 className="special-instructions-label">Things to Note</h2>
             <div className="special-instructions-gray-box">
-              <p className="location-special-instructions">Special Instructions Text Placeholder. Here are Lorem Ipsum text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-              <p className="location-special-instructions">{this.props.locationState.currentLocation.specialInstructions}</p>
-            </div>
-
+            <p className="location-special-instructions">{this.props.locationState.currentLocation.specialInstructions}</p>
           </div>
 
-
+          </div>
           <CommentContainer />
-          <p>author</p>
-          <Link to={`/profile/${currentLocation.ownerId.id}`}>
-            <button type="button">Author Profile</button>
-          </Link>
-          <Link to="/dashboard">Dashboard</Link>
-        </div>
       </div>
     );
   }
