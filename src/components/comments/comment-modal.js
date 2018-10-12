@@ -16,6 +16,20 @@ class CommentModal extends React.Component {
     this.setState({ratingValue: value });
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+    this.props
+      .dispatch(
+        createComment({
+          subject: this.subject.value,
+          text: this.text.value,
+          rating: this.state.ratingValue,
+          locationId: this.props.locationState.currentLocation.id
+        })
+      )
+      .then(() => this.props.handleClose());
+  }
+
   render() {
     const showHideClassName = this.props.show ? 'modal' : 'modal hidden';
 
@@ -34,7 +48,7 @@ class CommentModal extends React.Component {
           </button>
         </div>
 
-        <form className="modal-form">
+        <form className="modal-form" onSubmit={(e) => this.handleSubmit(e)}>
           <div className="star-rating-container">
             <p>Give it some stars!</p>
             <div className="star-rating">
@@ -115,21 +129,9 @@ class CommentModal extends React.Component {
 
           <div className="comment-submit-button-container">
             <button
-              type="button"
+              type="submit"
               name="submit-comment"
               className="submit-comment-button"
-              onClick={() => {
-                this.props
-                  .dispatch(
-                    createComment({
-                      subject: this.subject.value,
-                      text: this.text.value,
-                      rating: this.state.ratingValue,
-                      locationId: this.props.locationState.currentLocation.id
-                    })
-                  )
-                  .then(() => this.props.handleClose());
-              }}
             >
               Submit
             </button>
