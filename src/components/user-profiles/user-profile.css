@@ -15,7 +15,9 @@
 }
 
 .circle {
-  background-color: pink;
+  background-image: url('https://i.postimg.cc/8zNQHZTf/GO.png');
+  background-color: #6f7723;
+  background-size: cover;
   position: absolute;
   height: 200px;
   width: 200px;
