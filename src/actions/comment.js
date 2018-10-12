@@ -25,15 +25,79 @@ export const getOneCommentSuccess = comment => ({
   type: GET_ONE_COMMENT_SUCCESS,
   payload: comment
 });
-export const GET_ALL_COMMENTS_SUCCESS = 'GET_ALL_COMMENTS_SUCCESS';
-export const getAllCommentsSuccess = () => ({
-  type: GET_ALL_COMMENTS_SUCCESS
+
+export const GET_ONE_COMMENT_ERROR = 'GET_ONE_COMMENT_ERROR';
+export const getOneCommentError = err => ({
+  type: GET_ONE_COMMENT_ERROR,
+  payload: err
 });
+
+export const GET_ALL_COMMENTS_REQUEST = 'GET_ALL_COMMENTS_REQUEST';
+export const getAllCommentsRequest = () => ({
+  type: GET_ALL_COMMENTS_REQUEST
+});
+
+export const GET_ALL_COMMENTS_SUCCESS = 'GET_ALL_COMMENTS_SUCCESS';
+export const getAllCommentsSuccess = commentList => ({
+  type: GET_ALL_COMMENTS_SUCCESS,
+  payload: commentList
+});
+
+export const GET_ALL_COMMENTS_ERROR = 'GET_ALL_COMMENTS_ERROR';
+export const getALlCommentsError = err => ({
+  type: GET_ALL_COMMENTS_ERROR,
+  payload: err
+});
+
 export const COMMENT_REQUEST_ERROR = 'COMMENT_REQUEST_ERROR';
 export const commentRequestError = err => ({
   type: COMMENT_REQUEST_ERROR,
   payload: err
 });
+
+export const getOneComment = (id) => dispatch => {
+  const token = loadAuthToken();
+  dispatch(getAllCommentsRequest());
+  fetch(
+    `${BACKEND_URL}/comments/${id}`,
+    {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  )
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      dispatch(getOneCommentSuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(getOneCommentError(err.message));
+    });
+};
+
+export const getAllComments = () => dispatch => {
+  const token = loadAuthToken();
+  dispatch(getAllCommentsRequest());
+  fetch(
+    `${BACKEND_URL}/comments`,
+    {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  )
+    .then(res => {
+      normalizeResponseErrors(res);
+      return res.json();
+    })
+    .then(parsedResponse => {
+      dispatch(getAllCommentsSuccess(parsedResponse));
+    })
+    .catch(err => {
+      dispatch(getALlCommentsError(err.message));
+    });
+};
 
 export const createComment = commentObject => dispatch => {
   //grab the token from localstorage
