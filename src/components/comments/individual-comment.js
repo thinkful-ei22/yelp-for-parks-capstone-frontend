@@ -28,7 +28,7 @@ class IndividualComment extends React.Component {
 
   render() {
     let editModeToggler = (
-      <button onClick={() => this.toggleEditMode(true)}>delete</button>
+      <button className="delete-comment-button" onClick={() => this.toggleEditMode(true)}>Delete Comment</button>
     );
     if (this.state.editMode === true) {
       editModeToggler = (
@@ -58,17 +58,13 @@ class IndividualComment extends React.Component {
         {this.props.comment.ownerId === this.props.userState.currentUser.id
           ? editModeToggler
           : null}
-        <big>User:</big>
-        <p>{this.props.comment.ownerId}</p>
-        <br />
-        <big>Subject:</big>
-        <strong>{this.props.comment.subject}</strong>
-        <br />
-        <big>Rating:</big>
-        <p>{this.props.comment.rating}</p>
-        <br />
-        <big>Text:</big>
-        <p>{this.props.comment.text}</p>
+
+        <div className="comment-gray-box">
+          <p className="comment-text">User: {this.props.comment.ownerId}</p>
+          <p className="comment-text">Subject:<strong> {this.props.comment.subject}</strong></p>
+          <p className="comment-text">Rating: {this.props.comment.rating}</p>
+          <p className="comment-text">Review: {this.props.comment.text}</p>
+        </div>
       </div>
     );
   }

@@ -92,7 +92,7 @@ class CommentModal extends React.Component {
               </div>
             </div>
           </div>
-
+          <br/>
           <div className="subject-and-comment">
             <label htmlFor="comment-subject">Subject</label>
             <input
