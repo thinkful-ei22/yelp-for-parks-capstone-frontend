@@ -5,15 +5,17 @@
 }
 
 .list-item-container {
-  width: 100%;
-  text-align: center;
+  width: 95%;
+  text-align: left;
+  /* background-color: green; */
 }
 
 .location-list-item {
   height: 200px;
-  width: 60%;
+  width: 100%;
   border: none;
   margin: 2%;
+  /* background-color: orange; */
 }
 
 .text-thumbnail-container {
@@ -27,7 +29,7 @@
   width: 340px;
   /* background-color: yellow; */
   position: relative;
-  top: 0px;
+  left: -12%;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: scroll;
@@ -44,11 +46,12 @@
 .title{
   color: black;
   font-size: 22px;
-  margin-left: 5%;
   text-align: left;
   position: relative;
   max-height: 20px;
-  line-height: 18px;
+  line-height: 22px;
+  margin-bottom: 9%;
+
 }
 
 .description {
@@ -56,8 +59,142 @@
   font-size: 15px;
   text-align: left;
   position: relative;
-  margin-left: 5%;
   margin-right: 1%;
   /* background-color: gray; */
   line-height: 18px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .text-container {
+    left: -8%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .text-container {
+    left: -12%;
+    width: 240px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .thumbnail {
+    left: -10%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .list-item-container {
+    height: 500px;
+  }
+
+  .text-thumbnail-container {
+    /*Purple*/
+  }
+
+  .thumbnail-container {
+    /*Pink*/
+  }
+
+  .thumbnail {
+    height: 250px;
+    width: 300px;
+  }
+
+  .text-container {
+    /*Yellow*/
+    position: relative;
+    left: 27.5%;
+    display: block;
+  }
+
+  .title, .description {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .text-container {
+    /*Yellow*/
+    left: 26.5%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+
+  .text-container {
+    /*Yellow*/
+    left: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list-item-container {
+    height: 500px;
+  }
+
+  .text-thumbnail-container {
+    /*Purple*/
+    with: 500px;
+  }
+
+  .thumbnail-container {
+    /*Pink*/
+  }
+
+  .thumbnail {
+    height: 250px;
+    width: 300px;
+  }
+
+  .text-container {
+    /*Yellow*/
+    position: relative;
+    left: 24%;
+    display: block;
+  }
+
+  .title, .description {
+    text-align: center;
+  }
+}
+
+
+@media only screen and (max-width: 414px) {
+  .list-item-container {
+    height: 500px;
+  }
+
+  .text-thumbnail-container {
+    /*Purple*/
+    with: 400px;
+  }
+
+  .thumbnail-container {
+    /*Pink*/
+  }
+
+  .thumbnail {
+    height: 250px;
+    width: 300px;
+    left: -27%;
+  }
+
+  .text-container {
+    /*Yellow*/
+    position: relative;
+    left: 20%;
+    display: block;
+  }
+
+  .title, .description {
+    text-align: center;
+  }
 }

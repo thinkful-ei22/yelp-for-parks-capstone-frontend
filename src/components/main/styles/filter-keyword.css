@@ -57,7 +57,7 @@
 
 @media only screen and (max-width: 800px) {
   .filter-keyword-form {
-    width: 800px;
+    width: 648px;
     text-align: left;
     margin-left: 10%;
   }
@@ -70,7 +70,7 @@
 
 @media only screen and (max-width: 650px) {
   .filter-keyword-form {
-    width: 650px;
+    width: 598px;
     text-align: left;
     margin-left: 8%;
   }
@@ -83,7 +83,20 @@
 
 @media only screen and (max-width: 525px) {
   .filter-keyword-form {
-    width: 525px;
+    width: 450px;
+    text-align: left;
+    margin-left: 6%;
+  }
+
+  .keyword-filter {
+    width: 300px;
+    padding: 1%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .filter-keyword-form {
+    width: 375px;
     text-align: left;
     margin-left: 6%;
   }
