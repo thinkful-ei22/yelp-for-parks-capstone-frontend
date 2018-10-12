@@ -39,3 +39,17 @@
     height: 350px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .map {
+    width: 400px;
+    height: 325px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .map {
+    width: 375px;
+    height: 300px;
+  }
+}

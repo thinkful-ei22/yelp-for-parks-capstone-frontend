@@ -469,3 +469,36 @@
     display: inline-block;
   }
 }
+
+@media only screen and (max-width: 450px) {
+
+  #maproot {
+    max-width: 400px;
+    max-height: 325px;
+    margin-left: 5%;
+    width: 400px;
+    height: 325px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+
+  .location-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  #maproot {
+    max-width: 375px;
+    max-height: 300px;
+    margin-left: 5%;
+    width: 375px;
+    height: 300px;
+    position: relative;
+    /* background-color: orange; */
+    display: inline-block;
+  }
+}
