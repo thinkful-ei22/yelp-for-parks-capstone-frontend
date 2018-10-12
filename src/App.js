@@ -51,7 +51,7 @@ export class App extends React.Component {
         <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/login" component={LoginPage} exact />
         <Route path="/register" component={RegistrationPage} exact />
-        <Route path="/add/location/" component={LocationForm} exact />
+        <Route path="/add/location" component={LocationForm} exact />
         <Route path="/location/:id" component={LocationIndividual} exact />
         <Route path="/profile/:id" component={UserProfile} exact />
         <Notifications />
