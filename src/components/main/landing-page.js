@@ -87,7 +87,7 @@ class LandingPage extends React.Component {
             alt='backpack'
           />
           <br />
-          <h3 className="intro-text-h3">
+          <h3 className="intro-text-h4">
             See what places other users can't stop talking about!
           </h3>
 

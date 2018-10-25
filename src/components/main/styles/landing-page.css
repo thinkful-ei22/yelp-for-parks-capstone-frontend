@@ -229,19 +229,38 @@
     font-size: 15px;
   }
 
-  .intro-text-h3 {
-    font-size: 10.5px;
-  }
-
-  .intro-text-h2 {
-    font-size: 13px;
+  .backpack {
+    position: absolute;
+    top: 170%;
   }
 
   .tent {
+    position: absolute;
+    top: 170%;
     height: 32%;
     width: 50%;
     left: 55%;
   }
+
+  .intro-text-h3 {
+    position: absolute;
+    top: 125%;
+    font-size: 10.5px;
+  }
+
+  .intro-text-h4 {
+    position: absolute;
+    top: 150%;
+    font-size: 10.5px;
+  }
+
+  .intro-text-h2 {
+    position: absolute;
+    top: 200%;
+    font-size: 13px;
+  }
+
+
 
   .toggle-login {
     margin-top: 3%;
@@ -251,5 +270,10 @@
   .toggle-registration {
     margin-top: 3%;
     margin-left: 31%;
+  }
+
+  .login-form-placement {
+    position: absolute;
+    top: -5%;
   }
 }
