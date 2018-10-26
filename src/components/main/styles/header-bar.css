@@ -65,3 +65,9 @@
     width: 24%;
   }
 }
+
+@media only screen and (max-width: 400px) {
+  .header-dashboard-button, .dashboard-profile-button, .dashboard-logout-button {
+    font-size: 15px;
+  }
+}

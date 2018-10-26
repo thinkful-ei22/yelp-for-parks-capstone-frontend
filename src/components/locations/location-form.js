@@ -35,7 +35,7 @@ class LocationForm extends React.Component {
     }
     //else, we present the form.
     return (
-      <div className="location-form-container">
+      <section className="location-form-container">
         <h1 className="main-header">Add A Location</h1>
         <div className="form-container">
           <form onSubmit={e => this.handleSubmit(e)}>
@@ -203,7 +203,7 @@ class LocationForm extends React.Component {
             </div>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

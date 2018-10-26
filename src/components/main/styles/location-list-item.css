@@ -81,7 +81,7 @@
   }
 
   .description {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .thumbnail {
@@ -117,6 +117,7 @@
   .title, .description {
     text-align: center;
   }
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -124,6 +125,7 @@
   .text-container {
     /*Yellow*/
     left: 26.5%;
+    overflow: hidden;
   }
 }
 
@@ -132,6 +134,7 @@
   .text-container {
     /*Yellow*/
     left: 25%;
+    overflow: hidden;
   }
 }
 
@@ -159,6 +162,7 @@
     position: relative;
     left: 24%;
     display: block;
+    overflow: hidden;
   }
 
   .title, .description {
@@ -192,6 +196,7 @@
     position: relative;
     left: 20%;
     display: block;
+    overflow: hidden;
   }
 
   .title, .description {

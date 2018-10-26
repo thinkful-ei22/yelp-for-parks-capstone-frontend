@@ -178,7 +178,7 @@
   }
 
   .intro-text-h2 {
-    font-size: 16px;
+    font-size: 17px;
     position: absolute;
     top: 190%;
   }
@@ -186,13 +186,13 @@
   .intro-text-h3 {
     position: absolute;
     top: 123%;
-    font-size: 13.5px;
+    font-size: 14.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
     top: 150%;
-    font-size: 13.5px;
+    font-size: 14.5px;
   }
 
   .backpack {
@@ -234,7 +234,7 @@
   }
 
   .intro-text-h2 {
-    font-size: 15px;
+    font-size: 16px;
     position: absolute;
     top: 195%;
   }
@@ -242,13 +242,13 @@
   .intro-text-h3 {
     position: absolute;
     top: 123%;
-    font-size: 12.5px;
+    font-size: 13.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
     top: 149%;
-    font-size: 12.5px;
+    font-size: 13.5px;
   }
 
   .backpack {
@@ -292,19 +292,19 @@
   .intro-text-h3 {
     position: absolute;
     top: 125%;
-    font-size: 11.5px;
+    font-size: 12.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
     top: 145%;
-    font-size: 11.5px;
+    font-size: 12.5px;
   }
 
   .intro-text-h2 {
     position: absolute;
     top: 190%;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .backpack {
@@ -360,19 +360,19 @@
   .intro-text-h3 {
     position: absolute;
     top: 125%;
-    font-size: 10.5px;
+    font-size: 11.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
     top: 150%;
-    font-size: 10.5px;
+    font-size: 11.5px;
   }
 
   .intro-text-h2 {
     position: absolute;
     top: 200%;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .toggle-login {

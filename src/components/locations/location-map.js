@@ -57,7 +57,7 @@ class LocationMap extends Component {
     const position = [this.state.userlocation.lat, this.state.userlocation.lng]
     const position2 = [this.props.locationState.currentLatLng.lat, this.props.locationState.currentLatLng.lng]
     return (
-      <div>
+      <section>
         <Map className="map" bounds={[position, position2]} zoom={this.state.zoom}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -83,7 +83,7 @@ class LocationMap extends Component {
             </Popup>
           </Marker>
         </Map>
-      </div>
+      </section>
     );
   }
 }

@@ -18,7 +18,7 @@
 
 @media only screen and (max-width: 1300px) {
   .filter-city-form {
-    width: 500px;
+    width: 520px;
   }
 
   .city-filter {
@@ -28,7 +28,7 @@
 
 @media only screen and (max-width: 1100px) {
   .filter-city-form {
-    width: 450px;
+    width: 485px;
   }
 
   .city-filter {
@@ -38,7 +38,7 @@
 
 @media only screen and (max-width: 1000px) {
   .filter-city-form {
-    width: 400px;
+    width: 435px;
   }
 
   .city-filter {
@@ -48,7 +48,7 @@
 
 @media only screen and (max-width: 900px) {
   .filter-city-form {
-    width: 350px;
+    width: 390px;
   }
 
   .city-filter {
@@ -59,8 +59,8 @@
 @media only screen and (max-width: 800px) {
   .filter-city-form {
     width: 648px;
-    text-align: left;
-    margin-left: 10%;
+    text-align: center;
+    margin-left: 18%;
   }
 
   .city-filter {
@@ -69,11 +69,27 @@
   }
 }
 
+@media only screen and (max-width: 750px) {
+  .filter-city-form {
+    width: 600px;
+    text-align: center;
+    margin-left: 15%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .filter-city-form {
+    width: 550px;
+    text-align: center;
+    margin-left: 17%;
+  }
+}
+
 @media only screen and (max-width: 650px) {
   .filter-city-form {
-    width: 598px;
-    text-align: left;
-    margin-left: 8%;
+    width: 500px;
+    text-align: center;
+    margin-left: 14%;
   }
 
   .city-filter {
@@ -82,11 +98,24 @@
   }
 }
 
+@media only screen and (max-width: 575px) {
+  .filter-city-form {
+    width: 450px;
+    text-align: center;
+    margin-left: 12%;
+  }
+
+  .city-filter {
+    width: 300px;
+    padding: 1%;
+  }
+}
+
 @media only screen and (max-width: 525px) {
   .filter-city-form {
     width: 450px;
-    text-align: left;
-    margin-left: 6%;
+    text-align: center;
+    margin-left: 9%;
   }
 
   .city-filter {
@@ -98,12 +127,25 @@
 @media only screen and (max-width: 450px) {
   .filter-city-form {
     width: 375px;
-    text-align: left;
-    margin-left: 6%;
+    text-align: center;
+    margin-left: 17%;
   }
 
   .city-filter {
     width: 300px;
+    padding: 1%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .filter-city-form {
+    width: 330px;
+    text-align: center;
+    margin-left: 10%;
+  }
+
+  .city-filter {
+    width: 200px;
     padding: 1%;
   }
 }

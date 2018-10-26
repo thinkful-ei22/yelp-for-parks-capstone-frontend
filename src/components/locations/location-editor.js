@@ -10,7 +10,7 @@ class LocationEditor extends React.Component {
 
   render() {
     return (
-      <div className="location-edit-main">
+      <section className="location-edit-main">
         <h1 className="edit-header">Edit Location</h1>
         <div className="location-form-container-edit">
           <form>
@@ -181,7 +181,7 @@ class LocationEditor extends React.Component {
             </button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

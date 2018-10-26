@@ -7,7 +7,7 @@ import './styles/location-list-item.css';
 class LocationListItem extends React.Component {
   render() {
     return (
-      <div className="list-item-container">
+      <section className="list-item-container">
         <Link to={`/location/${this.props.locationObject.id}`}>
           <button
             id={this.props.locationObject.id}
@@ -32,7 +32,7 @@ class LocationListItem extends React.Component {
             </div>
           </button>
         </Link>
-      </div>
+      </section>
     );
   }
 }
