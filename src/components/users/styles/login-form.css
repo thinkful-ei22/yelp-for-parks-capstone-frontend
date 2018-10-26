@@ -24,6 +24,16 @@
   background-color: #6f7723;
 }
 
+.demo-account {
+  color: white;
+  font-size: 17px;
+  margin-top: 5%;
+  padding: 3%;
+  width: 45%;
+  border: 5px solid #bbbcbf;
+  background-color: #6f7723;
+}
+
 .login-form-header {
   font-size: 20px;
 }
