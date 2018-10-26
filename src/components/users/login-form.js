@@ -4,6 +4,19 @@ import { fetchLogin } from '../../actions/login';
 import './styles/login-form.css';
 
 class LoginForm extends React.Component {
+  demoLogin = () => {
+      document.getElementById('login-username').value = 'demouser';
+      document.getElementById('login-password').value = 'demopassword';
+      setTimeout(() => {
+        this.props.dispatch(
+          fetchLogin({
+            username: 'demouser',
+            password: 'demopassword'
+          })
+        );
+      }, 500);
+    }
+
   render() {
     return (
       <div className="login-container">
@@ -45,6 +58,14 @@ class LoginForm extends React.Component {
           >
             Get GOing!
           </button>
+
+          <div className='demo-account-container'>
+            <button type="submit" className='demo-account' onClick={e => {
+              e.preventDefault();
+              this.demoLogin()
+            }}>Play Demo</button>
+          </div>
+
         </form>
       </div>
     );
