@@ -124,6 +124,7 @@
   .text-container {
     /*Yellow*/
     left: 26.5%;
+    overflow: hidden;
   }
 }
 
@@ -132,6 +133,7 @@
   .text-container {
     /*Yellow*/
     left: 25%;
+    overflow: hidden;
   }
 }
 
@@ -159,6 +161,7 @@
     position: relative;
     left: 24%;
     display: block;
+    overflow: hidden;
   }
 
   .title, .description {
@@ -192,6 +195,7 @@
     position: relative;
     left: 20%;
     display: block;
+    overflow: hidden;
   }
 
   .title, .description {
