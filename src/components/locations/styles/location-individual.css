@@ -517,6 +517,7 @@
   #maproot {
     max-width: 400px;
     max-height: 325px;
+    margin-top: 5%;
     margin-left: 5%;
     width: 400px;
     height: 325px;
@@ -527,6 +528,11 @@
 
   .author-button, .edit-location-button {
     width: 23%;
+    top: 55%;
+  }
+
+  .special-instructions-container {
+    margin-bottom: 5%;
   }
 }
 
@@ -537,14 +543,24 @@
     width: 150px;
   }
 
+  .special-instructions-container {
+    margin-bottom: 5%;
+  }
+
   #maproot {
-    max-width: 375px;
-    max-height: 300px;
+    max-width: 325px;
+    max-height: 250px;
+    margin-top: 5%;
     margin-left: 5%;
     width: 375px;
     height: 300px;
     position: relative;
     /* background-color: orange; */
     display: inline-block;
+  }
+
+  .author-button, .edit-location-button {
+    width: 23%;
+    top: 55%;
   }
 }
