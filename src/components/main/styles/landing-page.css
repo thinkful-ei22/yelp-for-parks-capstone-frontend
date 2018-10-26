@@ -38,6 +38,8 @@
   top: 0%;
 }
 
+
+
 @media only screen and (min-width: 1400px) {
   .landing-page-header {
     font-size: 45px;
@@ -46,6 +48,20 @@
 }
 
 @media only screen and (min-width: 1300px) {
+  .landing-page-header {
+    font-size: 40px;
+    margin-top: 8%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .landing-page-header {
+    font-size: 40px;
+    margin-top: 8%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
   .landing-page-header {
     font-size: 40px;
     margin-top: 8%;
@@ -106,31 +122,31 @@
   .intro-text-h2 {
     font-size: 20px;
     position: absolute;
-    top: 190%;
+    top: 200%;
   }
 
   .intro-text-h3 {
     position: absolute;
-    top: 125%;
+    top: 130%;
     font-size: 14px;
   }
 
   .intro-text-h4 {
     position: absolute;
-    top: 152%;
+    top: 157%;
     font-size: 13.5px;
   }
 
   .backpack {
     position: absolute;
-    top: 170%;
+    top: 175%;
     height: 20%;
     width: 14%;
   }
 
   .tent {
     position: absolute;
-    top: 180%;
+    top: 195%;
     height: 35%;
     width: 37%;
     left: 70%;
@@ -164,31 +180,31 @@
   .intro-text-h2 {
     font-size: 16px;
     position: absolute;
-    top: 180%;
+    top: 190%;
   }
 
   .intro-text-h3 {
     position: absolute;
-    top: 113%;
+    top: 123%;
     font-size: 13.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
-    top: 140%;
+    top: 150%;
     font-size: 13.5px;
   }
 
   .backpack {
     position: absolute;
-    top: 155%;
+    top: 165%;
     height: 20%;
     width: 16%;
   }
 
   .tent {
     position: absolute;
-    top: 170%;
+    top: 180%;
     height: 35%;
     width: 40%;
     left: 70%;
@@ -220,31 +236,31 @@
   .intro-text-h2 {
     font-size: 15px;
     position: absolute;
-    top: 180%;
+    top: 195%;
   }
 
   .intro-text-h3 {
     position: absolute;
-    top: 108%;
+    top: 123%;
     font-size: 12.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
-    top: 134%;
+    top: 149%;
     font-size: 12.5px;
   }
 
   .backpack {
     position: absolute;
-    top: 155%;
+    top: 170%;
     height: 20%;
     width: 20%;
   }
 
   .tent {
     position: absolute;
-    top: 170%;
+    top: 185%;
     height: 35%;
     width: 50%;
     left: 60%;
@@ -275,32 +291,32 @@
 
   .intro-text-h3 {
     position: absolute;
-    top: 115%;
+    top: 125%;
     font-size: 11.5px;
   }
 
   .intro-text-h4 {
     position: absolute;
-    top: 135%;
+    top: 145%;
     font-size: 11.5px;
   }
 
   .intro-text-h2 {
     position: absolute;
-    top: 180%;
+    top: 190%;
     font-size: 14px;
   }
 
   .backpack {
     position: absolute;
-    top: 155%;
+    top: 165%;
     height: 20%;
     width: 20%;
   }
 
   .tent {
     position: absolute;
-    top: 155%;
+    top: 175%;
     height: 35%;
     width: 50%;
     left: 55%;
