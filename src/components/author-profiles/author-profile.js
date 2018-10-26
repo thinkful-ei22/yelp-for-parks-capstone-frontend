@@ -16,7 +16,7 @@ import { connect } from "react-redux";
     })
     if(authorLocations.length !== 0) {
         return (
-          <div className="author-profile-container">
+          <section className="author-profile-container">
             <div className="author-info-container">
               <p>Username</p>
               <p>{this.props.authorState.currentAuthor.username}</p>
@@ -26,7 +26,7 @@ import { connect } from "react-redux";
               <p>{this.props.authorState.currentAuthor.lastName}</p>
             </div>
             {locationsMap}
-          </div>
+          </section>
         )
     }
 

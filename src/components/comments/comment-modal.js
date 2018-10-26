@@ -34,7 +34,7 @@ class CommentModal extends React.Component {
     const showHideClassName = this.props.show ? 'modal' : 'modal hidden';
 
     return (
-      <div className={showHideClassName}>
+      <section className={showHideClassName}>
         <div className="close-modal-button-container">
           <button
             type="button"
@@ -138,7 +138,7 @@ class CommentModal extends React.Component {
           </div>
 
         </form>
-      </div>
+      </section>
     );
   }
 }

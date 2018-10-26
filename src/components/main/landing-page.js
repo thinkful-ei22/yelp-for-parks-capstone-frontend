@@ -67,7 +67,7 @@ class LandingPage extends React.Component {
     }
 
     return (
-      <div>
+      <section className="landing-page-container">
         <div className="intro-topper">
           <h1 className="landing-page-header">
             GO helps you explore the great outdoors - <br />
@@ -106,7 +106,7 @@ class LandingPage extends React.Component {
           </h2>
           {formContainer}
         </div>
-      </div>
+      </section>
     );
   }
 }

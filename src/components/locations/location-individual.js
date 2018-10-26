@@ -79,7 +79,7 @@ class LocationIndividual extends React.Component {
       );
     }
     return (
-      <div>
+      <section>
         {editButton}
         <div className="image-and-title">
           <div className="location-image-container">
@@ -161,7 +161,7 @@ class LocationIndividual extends React.Component {
           </div>
         </div>
         <CommentContainer />
-      </div>
+      </section>
     );
   }
 }

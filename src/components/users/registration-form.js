@@ -34,7 +34,7 @@ class RegistrationForm extends React.Component {
       );
     }
     return (
-      <div className="registration-container">
+      <section className="registration-container">
         <h1 className="registration-form-header">Sign Up </h1>
         <form>
           <label htmlFor="registration-username" className="registration-label" />
@@ -108,7 +108,7 @@ class RegistrationForm extends React.Component {
             Get GOing!
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }

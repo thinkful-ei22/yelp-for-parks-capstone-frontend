@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
       );
     }
     return (
-      <div className="dashboard">
+      <section className="dashboard">
         <div className="filter-container">
           <br/>
           <br/>
@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
           <br/>
           <Link className="add-location-button" to="/add/location">Add A New Location!</Link>
         </div>
-      </div>
+      </section>
     );
   }
 }

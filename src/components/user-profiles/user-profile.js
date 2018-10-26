@@ -39,7 +39,7 @@ class UserProfile extends React.Component {
     const { username, firstName, lastName } = this.props.user.currentUser;
 
     return (
-      <div className="user-profile-container">
+      <section className="user-profile-container">
         <div className="user-info-container">
           <h1 className="username">
             {username }
@@ -56,7 +56,7 @@ class UserProfile extends React.Component {
             {locationsMap.length ? locationsMap : ' You have not created a location yet'}
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

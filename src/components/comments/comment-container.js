@@ -17,7 +17,7 @@ class CommentContainer extends React.Component {
 
   render() {
     return (
-      <div className="comment-container">
+      <section className="comment-container">
         <div className="review-button-container">
           <h3>Have you been here?</h3>
           <button className="review-button" type="button" onClick={this.showModal}>
@@ -27,7 +27,7 @@ class CommentContainer extends React.Component {
         <Overlay show={this.state.show} onClick={() => this.hideModal} />
         <CommentModal show={this.state.show} handleClose={this.hideModal} />
         <CommentList />
-      </div>
+      </section>
     );
   }
 }

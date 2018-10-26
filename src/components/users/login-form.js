@@ -19,8 +19,8 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-container">
-      <br/>
+      <section className="login-container">
+        <br/>
         <h1 className="login-form-header">Log in </h1>
         <form className="login-form">
           <br />
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
           </div>
 
         </form>
-      </div>
+      </section>
     );
   }
 }
