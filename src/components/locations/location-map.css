@@ -49,7 +49,24 @@
 
 @media only screen and (max-width: 400px) {
   .map {
-    width: 375px;
-    height: 300px;
+    left: 6.5%;
+    width: 325px;
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .map {
+    left: 6.5%;
+    width: 300px;
+    height: 225px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .map {
+    left: 6.5%;
+    width: 275px;
+    height: 200px;
   }
 }
