@@ -24,6 +24,10 @@
   background-color: #6f7723;
 }
 
+.demo-account-container {
+  margin-top: 20px;
+}
+
 .demo-account {
   color: white;
   font-size: 17px;
