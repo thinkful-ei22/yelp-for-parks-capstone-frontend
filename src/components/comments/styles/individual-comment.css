@@ -27,6 +27,11 @@
   left: 83%;
 }
 
+#comment a.link {
+  background-color: transparent;
+  box-shadow: none;
+}
+
 @media only screen and (max-width: 900px) {
   .delete-comment-button {
     left: 78%;

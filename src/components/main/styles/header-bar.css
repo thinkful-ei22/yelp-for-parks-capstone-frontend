@@ -3,6 +3,12 @@
   background-color: #6f7723;
 }
 
+#header-bar a.link {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
 .logo-placeholder {
   height: 80px;
   width: 80px;

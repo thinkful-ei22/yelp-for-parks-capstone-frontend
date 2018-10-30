@@ -58,8 +58,8 @@ class IndividualComment extends React.Component {
           ? editModeToggler
           : null}
 
-        <div className="comment-gray-box">
-          <p className="comment-text">User: <Link to={`/profile/${this.props.comment.ownerId.id}`}>{this.props.comment.ownerId.firstLastInitial}</Link></p>
+        <div id="comment" className="comment-gray-box">
+          <p className="comment-text">User: <Link className="link" to={`/profile/${this.props.comment.ownerId.id}`}>{this.props.comment.ownerId.firstLastInitial}</Link></p>
           <p className="comment-text">Subject:<strong> {this.props.comment.subject}</strong></p>
           <p className="comment-text">Rating: {this.props.comment.rating}</p>
           <p className="comment-text">Review: {this.props.comment.text}</p>

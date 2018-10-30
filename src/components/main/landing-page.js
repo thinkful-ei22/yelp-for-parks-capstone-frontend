@@ -103,6 +103,10 @@ class LandingPage extends React.Component {
             Make community.
             <br />
             Get Outside.
+            <br />
+            Demo user: demouser1
+            <br /> 
+            Demo pass: password123
           </h2>
           {formContainer}
         </div>

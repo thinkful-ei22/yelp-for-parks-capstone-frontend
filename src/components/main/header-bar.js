@@ -10,7 +10,7 @@ export class HeaderBar extends React.Component {
     let headerBar, dashboard, myProfile, userLogout;
     if (this.props.validUser) {
       dashboard = (
-        <Link to="/dashboard">
+        <Link className="link" to="/dashboard">
           <button type="button" name="back-to-dashboard" className="header-dashboard-button">
             Dashboard{''}
           </button>
@@ -18,21 +18,21 @@ export class HeaderBar extends React.Component {
       );
       const userId = this.props.loggedIn.currentUser.id;
       myProfile = (
-        <Link to={`/profile/${userId}`}>
+        <Link className="link" to={`/profile/${userId}`}>
           <button type="button" name="my-profile" className="dashboard-profile-button">
             {''}My Profile
           </button>
         </Link>
       );
       userLogout = (
-        <Link to={'/'}>
+        <Link className="link" to={'/'}>
           <button type="button" className="dashboard-logout-button" onClick={() => this.props.dispatch(logout())}>
             Log Out
           </button>
         </Link>
       );
       headerBar = (
-        <div className="header-bar">
+        <div id="header-bar" className="header-bar">
         <div className="logo-placeholder"></div>
         <br/>
           {dashboard}

@@ -7,11 +7,11 @@ import './styles/location-list-item.css';
 class LocationListItem extends React.Component {
   render() {
     return (
-      <section className="list-item-container">
-        <Link to={`/location/${this.props.locationObject.id}`}>
+      <section id="list-item-container" className="list-item-container row">
+        <Link className="col-12" to={`/location/${this.props.locationObject.id}`}>
           <button
             id={this.props.locationObject.id}
-            className="location-list-item"
+            className="location-list-item col-12"
             type="button"
             onClick={() => {
               this.props.dispatch(getOneLocation(this.props.locationObject.id));
